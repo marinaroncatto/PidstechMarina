@@ -1,0 +1,301 @@
+/*formatação 1920 x 1080 */
+/*layoyt */
+main{
+	width: 100%;
+	height: auto;
+}
+#sectionLogin{
+	width: 100%;
+	height: auto;
+	display: flex;
+}
+#DivEsq{
+	width: 50%;
+	height: 100vh;
+	background-color: #448ccb;
+	background-size: cover;
+}
+#DivDir{
+	width: 50%;
+	height: 100vh;
+	background-color: #f7f7f7;
+	background-size: cover;
+}
+#sectionForm{
+	width: 50%;
+	height: auto;
+	margin: 0 auto;
+	margin-top: 37%;
+
+}
+
+/*imagem*/
+#logoLogin{
+	margin-top: 40%;
+	
+}
+
+/*Estilo*/
+.ussenha{
+	font-family: calibri;
+	font-size: 22px;
+	letter-spacing: 1px;
+	color: #292a31;
+	font-weight: bold;
+	padding-bottom: 3%;
+	padding-top:3%;
+	padding-left: 3%;
+}
+#esqueciSenha{
+	font-family: calibri;
+	font-size: 18px;
+	color: #292a31;
+	font-weight: bold;
+	padding-bottom: 3%;
+	padding-top:3%;
+	padding-left: 3%;
+	
+}
+.txtBox{
+	width: 300px;
+	height: 40px;
+	border-radius: 20px;
+	background-color: #80b6e5;
+	border: none;
+	box-shadow: 0px 1px 5px #888;
+}
+#btnEntrar{
+	font-family: calibri;
+	font-size: 20px;
+	color: #dedfe6;
+	background-color: #ff7400;
+	border-radius: 20px;
+	border: none;
+	box-shadow: 0px 1px 5px #888;
+	width: 100px;
+	height: 30px;
+	margin-left: 22%;
+	padding-bottom:1.5%;
+}
+#btnEntrar:hover{
+	color: #dedfe6;
+	background-color: #ffa443;
+	box-shadow: 0px 1px 5px #888;
+}
+
+/*responsividade */
+@media all and (max-width: 1366px){
+
+#sectionForm{
+	width: 50%;
+	height: auto;
+	margin: 0 auto;
+	margin-top: 30%;
+}
+	.ussenha{
+	font-family: calibri;
+	font-size: 20px;
+	letter-spacing: 0.5px;
+	font-weight: bold;
+	padding-bottom: 3%;
+	padding-top:3%;
+	padding-left: 3%;
+}
+#esqueciSenha{
+	font-family: calibri;
+	font-size: 18px;
+	font-weight: bold;
+	padding-bottom: 5%;
+	padding-top:3%;
+	padding-left: 3%;
+	letter-spacing: 0.5px;
+	text-decoration: underline #292a31;
+	
+}
+.txtBox{
+	width: 300px;
+	height: 40px;
+	border-radius: 20px;
+	background-color: #80b6e5;
+	border: none;
+	box-shadow: 0px 1px 5px #888;
+}
+#btnEntrar{
+	font-family: calibri;
+	font-size: 20px;
+	color: #dedfe6;
+	background-color: #ff7400;
+	border-radius: 20px;
+	border: none;
+	box-shadow: 0px 1px 5px #888;
+	width: 100px;
+	height: 30px;
+	margin-left: 30%;
+	padding-bottom:1.5%;
+}
+#logoLogin{
+	margin-top: 30%;
+	
+}	
+	
+}
+
+@media all and (max-width: 810px){
+	#sectionLogin{
+	width: 100%;
+	height: auto;
+	display: block;
+}
+#DivEsq{
+	width: 100%;
+	height: 20vh;
+	background-color: #448ccb;
+	background-size: cover;
+}
+#DivDir{
+	width: 100%;
+	height: 80vh;
+	background-color: #f7f7f7;
+	background-size: cover;
+}
+#sectionForm{
+	width: 50%;
+	height: auto;
+	margin: 0 auto;
+	margin-top:0%;
+	padding-left: 12%;
+	padding-top: 15%;
+	
+}
+#btnEntrar{
+	font-family: calibri;
+	font-size: 20px;
+	color: #dedfe6;
+	background-color: #ff7400;
+	border-radius: 20px;
+	border: none;
+	box-shadow: 0px 1px 5px #888;
+	width: 250px;
+	height: 30px;
+	margin-left:6%;
+	margin-top: 3%;
+	padding-bottom:1.5%;
+}
+/*imagem*/
+#logoLogin{
+	margin-top: 2%;
+	margin-left: 0%;
+	width: 100px;
+	height: auto;
+	
+}
+		
+}
+@media all and (max-width: 730px){
+	#sectionForm{
+	width: 50%;
+	height: auto;
+	margin: 0 auto;
+	margin-top:0%;
+	padding-left: 10%;
+	padding-top: 15%;
+	
+}
+}
+@media all and (max-width: 700px){
+	#sectionForm{
+	width: 50%;
+	height: auto;
+	margin: 0 auto;
+	margin-top:0%;
+	padding-left: 8%;
+	padding-top: 15%;
+	
+}
+}
+@media all and (max-width: 680px){
+	#sectionForm{
+	width: 50%;
+	height: auto;
+	margin: 0 auto;
+	margin-top:0%;
+	padding-left: 6%;
+	padding-top: 15%;
+	
+}
+}
+@media all and (max-width: 650px){
+	#sectionForm{
+	width: 50%;
+	height: auto;
+	margin: 0 auto;
+	margin-top:0%;
+	padding-left: 3%;
+	padding-top: 15%;
+	
+}
+
+	#sectionForm{
+	width: 100%;
+	height: auto;
+	margin: 0 auto;
+	margin-top:0%;
+	padding-left: 3%;
+	padding-top: 15%;
+	
+}
+   /*Estilo*/
+.ussenha{
+	font-family: calibri;
+	font-size: 22px;
+	letter-spacing: 1px;
+	padding-bottom: 3%;
+	padding-top:3%;
+	padding-left: 10%;
+	
+}
+#esqueciSenha{
+	font-family: calibri;
+	font-size: 18px;
+	color: #292a31;
+	font-weight: bold;
+	padding-bottom: 3%;
+	padding-top:3%;
+	padding-left: 10%;
+	
+}
+.txtBox{
+	width: 80%;
+	height: 40px;
+	border-radius: 20px;
+	background-color: #80b6e5;
+	border: none;
+	box-shadow: 0px 1px 5px #888;
+	margin-left: 5%;
+
+}
+#btnEntrar{
+	margin-left: 20%;
+	width: 50%;
+	
+}
+
+}
+@media all and (max-width: 430px){
+	.txtBox{
+	width: 85%;
+	height: 40px;
+	border-radius: 20px;
+	background-color: #80b6e5;
+	border: none;
+	box-shadow: 0px 1px 5px #888;
+	margin-left: 5%;
+
+}
+#btnEntrar{
+	margin-left: 18%;
+	width: 55%;
+	
+}
+}	
+	

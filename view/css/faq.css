@@ -1,0 +1,116 @@
+/* nesta página formatações específicas da FAQ */
+
+/*layout*/
+#articlePerguntasSup{
+	width: 100%;
+	height: auto;
+	padding-top: 3%;
+	padding-bottom: 5%;
+}
+.articleP1, .articleP2{
+	width: 100%;
+	height: auto;
+	
+}
+.divP1{
+	width: 100%;
+	height: 75px;
+	background-color: #3f52c5;
+	margin-bottom: 2%;
+	margin-top: 2%;
+}
+.divP2{
+	width: 100%;
+	height: 75px;
+	background-color: #90d8e7;
+	margin-bottom: 2%;
+	margin-top: 2%;
+}
+#articleLinkSub{
+	width: 100%;
+	height: auto;
+	display: flex;
+}
+#slotsSubEsq{
+	width: 65%;
+	height: auto;
+	padding-bottom:5%;
+	padding-top:5%;	
+}
+#slotsSubDir{
+	width: 35%;
+	height: auto;
+	padding-bottom:5%;
+	padding-top:5%;
+}
+
+
+/*estilo*/
+
+.NumTipo1{
+	font-family: Bradley Hand ITC;
+	font-size: 48px;
+	color: #e9ecfc;
+}
+.NumTipo2{
+	font-family: Bradley Hand ITC;
+	font-size: 48px;
+	color: #1f3695;
+}
+
+.PergTipo1{
+	font-family: Calibri Light;
+	font-size: 35px;
+	text-align: left;
+	color: #ffffff;
+}
+.PergTipo2{
+	font-family: Calibri Light;
+	font-size: 35px;
+	text-align: left;
+	color: #13248e;
+}
+.textResposta{
+	font-family:arial narrow;
+	font-size: 20px;
+	color: #656a8b;
+	text-align: left;
+	line-height: 1.5;
+	padding-left: 20%;
+	padding-right: 10%;
+}
+#LinkSub1{
+	font-family:arial ;
+	font-size: 22px;
+	color: #3f52c5;
+	text-align: center;
+	padding-top:1%;
+	padding-bottom:1.5%;
+	padding-left:42%;
+}
+#LinkSub2{
+	font-family:arial ;
+	font-size: 20px;
+	color: #656a8b;
+	text-decoration: underline;
+	text-align: center;
+	padding-left:42%;
+}
+
+
+/*teste para por na mesma linha usando table */
+.faqTable{
+	width: 100%;
+}
+
+.faqTable td, .faqTable th{
+	padding: 8px;
+	text-align: center;
+}
+.faqTable .linhaN{
+	width: 12%;	
+	padding-left:15%;
+}
+.faqTable .linhaP{
+	padding-left: 8%;
+}

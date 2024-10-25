@@ -1,0 +1,67 @@
+/*Aqui todas as divs e tabelas referentes a consultas */
+
+/*layout */
+#sectionTabelas{
+	width: 100%;
+	height: auto;
+}
+#articleConsultaG{
+	width: 100%;
+	height: auto;
+	justify-content: center;
+	padding-top: 5%;
+	padding-bottom: 5%;
+}
+#articleCrud{
+	width: 100%;
+	height: auto;
+	justify-content: center;
+	padding-bottom: 5%;
+}
+#divTabG{
+	width: 90%;
+	height: auto;
+	margin: 0 auto;
+	padding-top: 3%;
+	padding-bottom: 3%;
+}
+.divCon1, .divCon2{
+	width: 90%;
+	height: auto;
+	margin: 0 auto;
+	padding-top: 2%;
+	
+}
+#divPesquisa{
+	width: 70%;
+	height: auto;
+	margin: 0 auto;
+}
+
+
+/*estilo */
+
+.tabela {
+  font-family: Arial;
+  border-collapse: collapse;
+  width: 100%;
+
+}
+
+.tabela td, .tabela th {
+  border: 1px solid #ddd;
+  padding: 8px;
+  text-align: center;
+}
+
+.tabela tr:nth-child(even){background-color: #f2f2f2;}
+
+.tabela tr:hover {background-color: #ddd;}
+
+.tabela th {
+  padding-top: 12px;
+  padding-bottom: 12px;
+  text-align: center;
+  background-color: #707fb7;
+  color: white;
+}

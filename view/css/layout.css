@@ -1,0 +1,421 @@
+main{
+	width: 100%;
+	height: auto;
+}	
+header{
+	width: 100%;
+	height: auto;
+}
+#sectionMeio{
+	width: 100%;
+	height: auto;
+}
+/*Index */
+#divBanner1{
+	width: 100%;
+	height: auto;
+}
+#divBanner2{
+	display: none;
+}
+#articleSup{
+	width: 100%;
+	height: auto;
+	margin-bottom: 3%;
+}
+#articleSub{
+	width: 100%;
+	height: auto;
+	background-color: #f1f1f1;
+	box-shadow: 0px 1px 5px #C0C0C0;
+}
+#divContCards{
+	width: 100%;
+	height: auto;
+	margin: 0 auto;
+	justify-content: center;
+	display: flex;
+}
+.divCards{
+	width: 33.33%;
+	height: auto;
+	margin-top: 8%;
+	margin-bottom: 8%;
+}
+#sectionMeioLoc{
+	width: 100%;
+	height: auto;
+	margin: 0 auto;
+	justify-content: center;
+	display: flex;
+}
+#articleEndereco{
+	width: 50%;
+	height: auto;
+	padding-top: 5%;
+	padding-bottom: 5%;
+}
+#articleMaps{
+	width: 50%;
+	height: auto;
+	padding-top: 5%;
+	padding-bottom: 5%;
+}
+
+
+
+
+/*parte ADM*/
+#sectionMeioAdm{
+	width: 100%;
+	height: auto;
+	background-color: #f8f4f1;
+	display: block;
+}
+#divPagina{
+	width: 100%;
+	height: auto;
+	padding-top: 5%;
+
+}
+#divForm{
+	width: 100%;
+	height: auto;
+	
+	
+}
+#divContorno{
+	width: 300px;
+	height: 55px;
+	background-color: #5674b9;
+	border-radius: 40px;
+	margin-left: -2.5%;
+
+	}
+#divBotoes{	
+	width: 50%;
+	height: auto;
+	margin: 0 auto;
+	
+}
+#divDados1{
+	width: 70%;
+	height: auto;
+	margin: 0 auto;
+	background-color: #fff;
+	margin-bottom: 2%;
+	margin-top:2%;
+	padding-top: 3%;
+	padding-bottom:3%;
+	border-radius: 8px;
+}
+#DivDados2{
+	width: 70%;
+	height: auto;
+	margin: 0 auto;
+	background-color: #E6E6FA;
+	margin-bottom: 2%;
+	margin-top:2%;
+	padding-top: 3%;
+	padding-bottom:3%;
+	border-radius: 8px;
+}
+#articleHome{
+	width: 100%;
+	height: 27vh;
+	padding-top: 15%;
+	padding-bottom:15%;
+}
+
+
+
+
+
+/*história*/
+#sectionMeioHist{
+	width: 100%;
+	height: auto;
+	margin: 0 auto;
+	justify-content: center;
+	display: flex;
+}
+#articleHistoria{
+	width: 60%;
+	height: auto;
+	padding-top: 4%;
+	padding-bottom: 8%;
+}
+#articleFigura{
+	width:40%;
+	height: auto;
+	padding-top: 4%;
+	padding-bottom: 8%;
+}
+
+
+
+
+/*responsividade*/
+
+@media all and (max-width: 1366px){
+	#divContorno{
+	width: 300px;
+	height: 55px;
+	background-color: #5674b9;
+	border-radius: 40px;
+	margin-left: -4%;
+
+	}
+
+@media all and (max-width: 1300px){	
+#divBotoes{	
+	width: 50%;
+	height: auto;
+	margin: 0 auto;
+	
+}
+#divDados1{
+	width: 90%;
+	height: auto;
+	margin: 0 auto;
+	background-color: #fff;
+	margin-bottom: 2%;
+	margin-top:2%;
+	padding-top: 3%;
+	padding-bottom:3%;
+	border-radius: 8px;
+}
+#DivDados2{
+	width: 90%;
+	height: auto;
+	margin: 0 auto;
+	background-color: #E6E6FA;
+	margin-bottom: 2%;
+	margin-top:2%;
+	padding-top: 3%;
+	padding-bottom:3%;
+	border-radius: 8px;
+}
+}
+
+@media all and (max-width: 1024px){	
+	#divContorno{
+	width: 300px;
+	height: 55px;
+	background-color: #5674b9;
+	border-radius: 40px;
+	margin-left: -4%;
+	margin-bottom: 5%;
+
+	}
+
+}
+
+
+@media all and (max-width: 1115px){
+	#sectionMeioHist{
+	width: 100%;
+	height: auto;
+	margin: 0 auto;
+	justify-content: center;
+	display: block;
+}
+#articleHistoria{
+	width: 100%;
+	height: auto;
+	padding-top: 4%;
+	padding-bottom: 8%;
+}
+#articleFigura{
+	width:100%;
+	height: auto;
+	padding-top: 0%;
+	padding-bottom: 8%;
+}
+
+}
+@media all and (max-width: 1000px){
+	#divContCards{
+	display: block;
+}
+.divCards{
+	width: 100%;
+	height: auto;
+	margin-top: 0%;
+	margin-bottom: 0%;
+	padding-top: 5%;
+	padding-bottom: 5%;
+}
+	
+}
+@media all and (max-width: 880px){	
+#divBotoes{	
+	width: 50%;
+	height: auto;
+	margin: 0 auto;
+	
+}
+#divContorno{
+	width: 300px;
+	height: 55px;
+	background-color: #5674b9;
+	border-radius: 40px;
+	margin-left: -5%;
+	margin-bottom: 5%;
+
+	}
+#divDados1{
+	width: 98%;
+	height: auto;
+	margin: 0 auto;
+	background-color: #fff;
+	margin-bottom: 2%;
+	margin-top:2%;
+	padding-top: 3%;
+	padding-bottom:3%;
+	border-radius: 8px;
+}
+#DivDados2{
+	width: 98%;
+	height: auto;
+	margin: 0 auto;
+	background-color: #E6E6FA;
+	margin-bottom: 2%;
+	margin-top:2%;
+	padding-top: 3%;
+	padding-bottom:3%;
+	border-radius: 8px;
+}
+}
+
+
+@media all and (max-width: 800px){
+	#divContorno{
+	width: 300px;
+	height: 55px;
+	background-color: #5674b9;
+	border-radius: 40px;
+	margin-left: -6%;
+	margin-bottom: 5%;
+
+	}
+	
+}
+@media all and (max-width: 750px){
+
+#divBanner1{
+	display: none;
+}
+#divBanner2{
+	display: contents;
+	width: 100%;
+	height: auto;
+}
+
+}
+@media all and (max-width: 700px){
+	#divContorno{
+	width: 300px;
+	height: 55px;
+	background-color: #5674b9;
+	border-radius: 40px;
+	margin-left: -7%;
+	margin-bottom: 5%;
+
+	}
+	
+}
+@media all and (max-width: 600px){
+	#divContorno{
+	width: 300px;
+	height: 55px;
+	background-color: #5674b9;
+	border-radius: 40px;
+	margin-left: -8%;
+	margin-bottom: 5%;
+
+	}
+	
+}
+@media all and (max-width: 500px){
+	#divContorno{
+	width: 300px;
+	height: 55px;
+	background-color: #5674b9;
+	border-radius: 40px;
+	margin-left: -10%;
+	margin-bottom: 5%;
+	
+	}	
+	#divDados1{
+	width: 98%;
+	height: auto;
+	margin: 0 auto;
+	background-color: #fff;
+	margin-bottom: 2%;
+	margin-top:2%;
+	padding-top: 8%;
+	padding-bottom:8%;
+	border-radius: 8px;
+}
+#DivDados2{
+	width: 98%;
+	height: auto;
+	margin: 0 auto;
+	background-color: #E6E6FA;
+	margin-bottom: 2%;
+	margin-top:2%;
+	padding-top: 8%;
+	padding-bottom:8%;
+	border-radius: 8px;
+}
+	
+	
+}
+@media all and (max-width: 450px){
+	#divContorno{
+	width: 300px;
+	height: 55px;
+	background-color: #5674b9;
+	border-radius: 40px;
+	margin-left: -12%;
+	margin-bottom: 5%;
+	
+	}
+}
+@media all and (max-width: 400px){
+	#divContorno{
+	width: 300px;
+	height: 55px;
+	background-color: #5674b9;
+	border-radius: 40px;
+	margin-left: -14%;
+	margin-bottom: 5%;
+	
+	}
+}
+@media all and (max-width: 350px){
+	#divContorno{
+	width: 300px;
+	height: 55px;
+	background-color: #5674b9;
+	border-radius: 40px;
+	margin-left: -16%;
+	margin-bottom: 8%;
+	margin-top: 3%;
+	
+	}
+}
+@media all and (max-width: 300px){
+	#divContorno{
+	width: 280px;
+	height: 50px;
+	background-color: #5674b9;
+	border-radius: 40px;
+	margin-left: -18%;
+	margin-bottom: 8%;
+	margin-top: 3%;
+	
+	}
+}
+}
