@@ -55,11 +55,11 @@
 	<section id="sectionMeioLoc">
 	
 		<article id="articleEndereco">
-			<h1 class="TboldMenor">Localização Senac Tech</h1>
+			<h1 id="TboldMenor">Localização Senac Tech</h1>
 			<h2 class="txtLocalizacao">Av. Venâncio Aires, 93 - Cidade Baixa, Porto Alegre - RS<h2>
 			<h2 class="txtLocalizacao">Funcionamento - Segunda a sexta-feira: 08:30 às 20:00</h2>
 			<h2 class="txtLocalizacao">Projeto Pids Tech - Quinta-Feira: 14h às 17h</h2>
-			<h2 class="txtLocalizacao">(51) 3288-7750</h2>
+			<h2 class="txtLocalizacao">Contato: (51) 3288-7750</h2>
 			
 			
 		</article>
