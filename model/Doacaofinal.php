@@ -2,6 +2,7 @@
 
 class Doacaofinal {
     private $idDoacao_final;
+    private $titulo;
     private $descricao;
     private $situacao;
     private $data_saida;
