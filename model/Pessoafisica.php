@@ -1,6 +1,7 @@
 <?php
 
 class Pessoafisica {
+    private $idPessoaFisica;
     private $cpf;
     private $rg;
     private $idPessoa;

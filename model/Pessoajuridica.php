@@ -1,6 +1,7 @@
 <?php
 
 class Pessoajuridica {
+    private $idPessoaJuridica;
     private $cnpj;
     private $responsavel_pj;
     private $idPessoa;
