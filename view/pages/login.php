@@ -20,12 +20,12 @@
 			
 			<div id="DivDir">	
 				<section id="sectionForm">
-					<form name="frmLogin" action="#" method="post">
+					<form name="frmLogin" action="../../controller/LoginBO.php" method="post">
 					<h3 class="ussenha">Usuário</h3>
-					<input class="txtBox" type="text" name="txtUsuario" value="" required />			
+					<input class="txtBox" type="text" name="usuario" value="" required />			
 					
 					<h3 class="ussenha">Senha</h3>
-					<input class="txtBox" type="password" name="txtSenha" value="" required />
+					<input class="txtBox" type="password" name="senha" value="" required />
 					
 					<a href="./trocasenha.html"><h3 id="esqueciSenha">Esqueci a senha</h3></a>
 				
