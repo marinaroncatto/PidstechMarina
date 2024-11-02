@@ -1,5 +1,9 @@
 <?php
 include_once '../model/Doacao.php';
+include_once '../model/Pessoa.php';
+include_once '../model/Pessoafisica.php';
+include_once '../model/database/PessoafisicaDAO.php';
+include_once '../model/database/PessoaDAO.php';
 include_once '../model/database/DoacaoDAO.php';
 
 if (isset($_REQUEST['acao'])){ //verifica se o hidden chegou
@@ -7,25 +11,29 @@ if (isset($_REQUEST['acao'])){ //verifica se o hidden chegou
 $acao = $_REQUEST['acao'];
     
     switch ($acao) {
-        case 'inserir':
-            //inserindo um ingrediente
-            if (isset($_POST['txtnome']) && 
-                !empty($_POST['txtnome'])){
-                $dao = new DoacaoDAO();
-                $objeto = new Doacao();
-                $objeto->descricao = $_POST['txtnome'];
-
+        case 'inserirPessoa':            
+            if (isset($_POST['txtNome']) && isset($_POST['txtTelefone']) 
+                && isset($_POST['txtEmail']) && isset($_POST['CatPessoa']) && !empty($_POST['CatPessoa']) ){
+                $dao = new PessoaDAO();
+                $objeto = new Pessoa();
+                $objeto->nome = $_POST['txtNome'];
+                $objeto->email = $_POST['txtEmail'];
+                $objeto->telefone = $_POST['txtTelefone'];                            
+                
                 if($dao->insert($objeto)){
-                    ?>
-                    <script type="text/javascript">
-                        alert('Ingrediente salvo com sucesso.');
-                        location.href = '../view/listaingredientes.php';
-                    </script>
-                    <?php
+                   session_start();//Lançar o idPessoa na sessão
+                   $_SESSION['idPessoa'] = $idPessoa;
+                   
+                        if($_POST['CatPessoa'] == 'PF'){
+                             header('location: ../view/pages/doacao2PF.php');
+                        }else{
+                            header('location: ../view/pages/doacao2PJ.php');
+                        }
+                    
                 }else{
                     ?>
                     <script type="text/javascript">
-                        alert('Problema ao salvar o ingrediente');
+                        alert('Problema ao cadastrar pessoa');
                         history.go(-1);
                     </script>
                     <?php
@@ -33,25 +41,135 @@ $acao = $_REQUEST['acao'];
             }else{
                 ?>
                     <script type="text/javascript">
-                        alert('Prencha o campo adequadamente.');
+                        alert('Prencha os campos adequadamente.');
                         history.go(-1);
                     </script>
                 <?php
             }
             break;
+            
+        case 'inserirPF':            
+            if (isset($_POST['txtCpf']) && !empty($_POST['txtCpf']) && isset($_POST['txtRg']) 
+                && isset($_POST['txtBairro']) && isset($_POST['txtRua']) && isset($_POST['txtNumero']) && isset($_POST['txtComplemento'])){
+                $dao = new PessoafisicaDAO();
+                $objeto = new Pessoafisica();
+                $objeto->cpf = $_POST['txtCpf'];
+                $objeto->rg = $_POST['rg'];
+                $objeto->idPessoa = $_POST['valor'];
+                
+                
+                         
+                
+                if($dao->insert($objeto)){
+                    ?>
+                    <script type="text/javascript">
+                        alert('Item salvo com sucesso.');
+                        location.href = '../view/listaitens.php';
+                    </script>
+                    <?php
+                }else{
+                    ?>
+                    <script type="text/javascript">
+                        alert('Problema ao salvar o item');
+                        history.go(-1);
+                    </script>
+                    <?php
+                }
+            }else{
+                ?>
+                    <script type="text/javascript">
+                        alert('Prencha os campos adequadamente.');
+                        history.go(-1);
+                    </script>
+                <?php
+            }
+            break;
+        
+        case 'inserirPJ':            
+            if (isset($_POST['combo']) && isset($_POST['txtnome']) && !empty($_POST['txtnome'])
+                && isset($_POST['data']) && isset($_POST['valor'])){
+                $dao = new ItemDAO();
+                $objeto = new Item();
+                $objeto->nome = $_POST['txtnome'];
+                $objeto->validade = $_POST['data'];
+                $objeto->valor = $_POST['valor'];
+                $objeto->idingredientes = $_POST['combo'];                
+                
+                if($dao->insert($objeto)){
+                    ?>
+                    <script type="text/javascript">
+                        alert('Item salvo com sucesso.');
+                        location.href = '../view/listaitens.php';
+                    </script>
+                    <?php
+                }else{
+                    ?>
+                    <script type="text/javascript">
+                        alert('Problema ao salvar o item');
+                        history.go(-1);
+                    </script>
+                    <?php
+                }
+            }else{
+                ?>
+                    <script type="text/javascript">
+                        alert('Prencha os campos adequadamente.');
+                        history.go(-1);
+                    </script>
+                <?php
+            }
+            break;    
+        
+        case 'inserirDoacao':            
+            if (isset($_POST['combo']) && isset($_POST['txtnome']) && !empty($_POST['txtnome'])
+                && isset($_POST['data']) && isset($_POST['valor'])){
+                $dao = new ItemDAO();
+                $objeto = new Item();
+                $objeto->nome = $_POST['txtnome'];
+                $objeto->validade = $_POST['data'];
+                $objeto->valor = $_POST['valor'];
+                $objeto->idingredientes = $_POST['combo'];                
+                
+                if($dao->insert($objeto)){
+                    ?>
+                    <script type="text/javascript">
+                        alert('Item salvo com sucesso.');
+                        location.href = '../view/listaitens.php';
+                    </script>
+                    <?php
+                }else{
+                    ?>
+                    <script type="text/javascript">
+                        alert('Problema ao salvar o item');
+                        history.go(-1);
+                    </script>
+                    <?php
+                }
+            }else{
+                ?>
+                    <script type="text/javascript">
+                        alert('Prencha os campos adequadamente.');
+                        history.go(-1);
+                    </script>
+                <?php
+            }
+            break;    
+            
         case 'alterar':
-            if (isset($_POST['idingredientes'])
-                && isset($_POST['txtnome'])
-                && !empty($_POST['txtnome'])){
-                    $dao = new IngredienteDAO();
-                    $objeto = new Ingrediente();
-                    $objeto->idingredientes = $_POST['idingredientes'];
-                    $objeto->descricao = $_POST['txtnome'];
+            if (isset($_POST['combo']) && isset($_POST['txtnome']) && !empty($_POST['txtnome'])
+                && isset($_POST['data']) && isset($_POST['valor']) && isset($_POST['iditem'])){
+                    $dao = new ItemDAO();
+                    $objeto = new Item();
+                    $objeto->nome = $_POST['txtnome'];
+                    $objeto->validade = $_POST['data'];
+                    $objeto->valor = $_POST['valor'];
+                    $objeto->idingredientes = $_POST['combo']; 
+                    $objeto->iditem = $_POST['iditem']; 
                     if($dao->update($objeto)){
                     ?>
                         <script type="text/javascript">
-                            alert('Ingrediente alterado com sucesso.');
-                            location.href = '../view/listaingredientes.php';
+                            alert('Iteme alterado com sucesso.');
+                            location.href = '../view/listaitens.php';
                         </script>
                     <?php
                     }else{
@@ -72,20 +190,20 @@ $acao = $_REQUEST['acao'];
                 }
             break;
         case 'deletar':
-            if (isset($_GET['idingredientes'])){
-                $dao = new IngredienteDAO();
-                $id = $_GET['idingredientes'];
+            if (isset($_GET['iditem'])){
+                $dao = new ItemDAO();
+                $id = $_GET['iditem'];
                 if($dao->delete($id)){
                     ?>
                     <script type="text/javascript">
-                        alert('Ingrediente excluído com sucesso.');
-                        location.href = '../view/listaingredientes.php';
+                        alert('Item excluído com sucesso.');
+                        location.href = '../view/listaitens.php';
                     </script>
                     <?php
                 }else{
                     ?>
                     <script type="text/javascript">
-                        alert('Problema ao excluir o ingrediente.');
+                        alert('Problema ao excluir o item.');
                         history.go(-1);
                     </script>
                     <?php
@@ -95,7 +213,7 @@ $acao = $_REQUEST['acao'];
         default:
             break;
 
-            }        
+            }    
 }       
 
 ?>

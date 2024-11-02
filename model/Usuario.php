@@ -1,5 +1,6 @@
 <?php
 
+include_once 'database/DB.php';
 class Usuario {
     private $idUsuario;
     private $login;

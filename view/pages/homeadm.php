@@ -10,8 +10,11 @@
 		<link rel="stylesheet" type="text/css" href="../css/layout.css" />
 		<link rel="stylesheet" type="text/css" href="../css/imagens.css" />
 		<link rel="stylesheet" type="text/css" href="../css/navadm.css" />
-		
-	</head>	
+		 <?php
+                    include_once '../../model/Login.php';
+                    Login::verificaSessao();
+                  ?>
+            </head>	
 <body>
 <main>
 	<header> 
@@ -47,7 +50,7 @@
 						</ul>
 					</li>
 					<li>
-						<a href="../index_pids.php">Sair</a>
+                                            <a href="../../controller/LogoutBO.php">Sair</a>
 					</li>
 					
 					

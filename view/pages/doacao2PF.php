@@ -75,38 +75,43 @@
                     <form name="frmDoacao" action="../../controller/DoacaoBO.php" method="post">
 				
 				<div id="divDados1">	
-					<h1 class="TCategorias">Dados do(a) Doador(a) </h1>	
+                                    <h1 class="TCategorias">Dados da Pessoa Física</h1>	
 					
-					<h3 class="TformAdm">*Nome Completo:</h3>
-						<p class="center">
-							<input class="boxTxtAdm" type="text" name="txtNome" value="" required/>
-						</p>
-					
-					<h3 class="TformAdm">Telefone:</h3>
+					<h3 class="TformAdm">CPF:</h3>
 						<p class="center">	
-							<input class="boxTxtAdm" type="tel" name="txtTelefone" value="" />
+                                                    <input class="boxTxtAdm" type="number" name="txtCpf" value="" required/>
 						</p>
-					<h3 class="TformAdm">E-mail:</h3>
+					<h3 class="TformAdm">RG:</h3>
 						<p class="center">
-							<input class="boxTxtAdm" type="email" name="txtEmail" value="" />
+							<input  class="boxTxtAdm" type="number" name="txtRg" value="" />
+						</p>					
+                                    
+				</div>
+																
+				<div id="DivDados2">	
+					<h1 class="TCategorias">Endereço</h1>
+					
+					<h3 class="TformAdm">Bairro:</h3>
+						<p class="center">
+							<input class="boxTxtAdm" type="text" name="txtBairro" value="" />
 						</p>
-                                        
-                                        <h3 class="TformAdmCenter">*Categoria:</h3>
-                                        <p class="center">
-                                                        <select id="boxTxtDestino" name="CatPessoa" required>
-                                                        <option name="" value=""></option>
-                                                        <option name="optPF" value="PF">Pessoa Física</option>
-                                                        <option name="optPJ" value="PJ">Pessoa Jurídica</option>
-                                                        //o que entra no banco é o valor do value
-
-                                        </select>
-
-                                        </p>        
-				</div>																
+					<h3 class="TformAdm">Rua:</h3>
+						<p class="center">
+							<input class="boxTxtAdm" type="text" name="txtRua" value="" />
+						</p>
+					<h3 class="TformAdm">Número:</h3>
+						<p class="center">	
+							<input class="boxTxtAdm" type="text" name="txtNumero" value="" />
+						</p>
+					<h3 class="TformAdm">Complemento:</h3>
+						<p class="center">	
+							<input class="boxTxtAdm" type="text" name="txtComplemento" value="" />
+						</p>
+				</div>
 				
 				<div id="divBotoes">
 					<p class="center">
-                                                <input type="hidden" name="acao" value="inserirPessoa"/>
+                                                <input type="hidden" name="acao" value="inserirPF"/>
 						<input class="btnAdms" type="submit" name="btnAvancar" value="Avançar" />
 						<input class="btnAdms" type="reset" name="btnCancelar" value="Cancelar" />
 					</p>
