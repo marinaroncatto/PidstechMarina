@@ -72,7 +72,7 @@
 		</div>
 		
 		<div id="divForm">
-			<form name="frmDoacao" action="#" method="post">
+			<form name="frmDoacao" action="../../controller/DoacaoBO.php" method="post">
 				
 				<div id="divDados1">	
 					<h1 class="TCategorias">Dados da Doação</h1>	
@@ -83,7 +83,7 @@
 						</p>
 					<h3 class="TformAdm">*Descrição:</h3>
 						<p class="center">
-							<textarea id="boxTxtDescricao" cols="30" rows="10" name="txtMensagem" value="" required></textarea>			
+							<textarea id="boxTxtDescricao" cols="30" rows="10" name="txtDescricao" value="" required></textarea>			
 						</p>
 					<h3 class="TformAdmCenter">Destino:</h3>
 						<p class="center">

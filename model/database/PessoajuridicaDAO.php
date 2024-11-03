@@ -12,7 +12,7 @@ class PessoajuridicaDAO {
     }
     
     public function insert(Pessoajuridica $obj) {
-        $query = "INSERT INTO pessoajuridica (idDoacao_final, cnpj, responsavel_pj, idPessoa) "
+        $query = "INSERT INTO pessoajuridica (idPessoaJuridica, cnpj, responsavel_pj, idPessoa) "
                 . "VALUES (null,:cnpj, :responsavel_pj, :idPessoa)";
         $conn = DB::getInstancia()->prepare($query);
         $conn->execute(array( ':cnpj'=>$obj->cnpj,

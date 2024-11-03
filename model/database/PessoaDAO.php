@@ -17,8 +17,8 @@ class PessoaDAO {
         $conn = DB::getInstancia()->prepare($query);
         $conn->execute(array( ':nome'=>$obj->nome,
                               ':email'=>$obj->email,
-                              ':telefone'=>$obj->telefone));
-        return $conn->rowCount()>0;
+                              ':telefone'=>$obj->telefone));               
+        return $conn->rowCount()>0;;
         //descobrir uma forma de ao invés de retornar o número de colunas alteradas, 
         //retornar o valor do ID criado
     }

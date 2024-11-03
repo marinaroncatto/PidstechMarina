@@ -72,7 +72,7 @@
 		</div>
 		
 		<div id="divForm">
-			<form name="frmDoacao" action="#" method="post">
+			<form name="frmDoacao" action="../../controller/DoacaoBO.php" method="post">
 								
 				<div id="divDados1">	
 					<h1 class="TCategorias">Dados da Pessoa Jurídica</h1>

@@ -24,11 +24,10 @@ abstract class Login {
             ?>
             <script>
                 alert('Por favor, realize o login');
-                document.location.href='../view/pages/login.php';
+                document.location.href="../view/pages/login.php";
             </script>
-            
 
-            <?php
+            <?php     
         }else{
             return true;
             }
