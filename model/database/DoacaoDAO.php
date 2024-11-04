@@ -4,24 +4,38 @@ include_once 'DB.php';
 
 class DoacaoDAO {
     
-     public function list($id = null) {
-        $where = ($id ? "where idDoacao = $id":'');
+     public function listAll($id = null) {
+        $where = ($id ? "where doa.idDoacao = $id ":'');
         $query = "SELECT
-                    doa.titulo, doa.descricao, doa.destino, doa.data_entrada, doa.baixa,
+                    doa.idDoacao, doa.titulo, doa.descricao, doa.destino, doa.data_entrada, doa.baixa,
                     pe.nome, pe.email, pe.telefone,
                     pf.cpf, pf.rg, pj.cnpj, pj.responsavel_pj,
                     en.bairro, en.rua, en.numero, en.complemento
                  FROM
                     doacao doa
                 INNER JOIN pessoa pe on doa.idPessoa = pe.idPessoa
-                INNER JOIN pessoafisica pf on doa.idPessoa = pf.idPessoa
-                INNER JOIN pessoajuridica pj on doa.idPessoa = pj.idPessoa
+                LEFT JOIN pessoafisica pf on doa.idPessoa = pf.idPessoa
+                LEFT JOIN pessoajuridica pj on doa.idPessoa = pj.idPessoa
                 INNER JOIN endereco en on doa.idPessoa = en.idPessoa"               
                 . " $where";
         $conn = DB::getInstancia()->query($query);
         $resultado = $conn->fetchAll();
         return $resultado;
     }
+    
+         public function listParc($id = null) {
+        $where = ($id ? "where idDoacao = $id":'');
+        $query = "SELECT
+                    doa.idDoacao, doa.titulo, doa.data_entrada, pe.nome, doa.baixa                                        
+                 FROM
+                    doacao doa
+                INNER JOIN pessoa pe on doa.idPessoa = pe.idPessoa"               
+                . " $where";
+        $conn = DB::getInstancia()->query($query);
+        $resultado = $conn->fetchAll();
+        return $resultado;
+    }
+    
     
     public function insert(Doacao $obj) {
         $query = "INSERT INTO doacao (idDoacao, titulo, descricao, data_entrada, destino, baixa, idPessoa) "

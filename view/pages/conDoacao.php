@@ -73,12 +73,38 @@
 		</div>
 		<section id="sectionTabelas">
 			
+                    <article id="articleCrud">
+				<h1 class="TCategorias">Pesquisar/Editar Doação</h1>
+				<div id="divPesquisa">		
+                                    <form name="frmPesquisa" action="doacaobyId.php" method="get" >
+						<h3 class="TformAdmCenter">Informe o Id: 
+							
+                                                <input type="number" name="txtId" value="" />
+                                                <input  type="submit" name="btnPesquisarId" value=" Pesquisar" />														
+                                                </h3>
+					</form>		
+					<form name="formEditar" action="./editarDoacao.html" method="post">
+								
+					</form>	
+				</div>
+				 
+			</article> <!-- fim articleCrud -->
+                                                                                
 			<article id="articleConsultaG">
 			
 			<h1 class="TCategorias">Doações Recebidas</h1>
 				<div id="divTabG">	
 								
 					<table class="tabela">
+                                             <!-- Dados da listagem -->
+                                                <?php
+                                                    include_once '../../model/database/DoacaoDAO.php';
+                                                    $dao = new DoacaoDAO();
+                                                    $lista = $dao->listParc();
+                                                    foreach ($lista as $value) {
+                                                        
+                                                    
+                                                ?>
 						  <tr>
 							<th>Id</th>
 							<th>Título</th>
@@ -87,178 +113,20 @@
 							<th>Disponível</th>
 						  </tr>
 						  <tr>
-							<td>0</td>
-							<td>mouse</td>
-							<td>02/01/2024</td>
-							<td>Josefina Cardoso</td>
-							<td>n</td>
+							<td><?php echo $value->idDoacao;?></td>
+							<td><?php echo $value->titulo;?></td>
+							<td><?php echo $value->data_entrada;?></td>
+							<td><?php echo $value->nome;?></td>
+							<td><?php echo $value->baixa;?></td>
 						  </tr>
-						  <tr>
-							<td>0</td>
-							<td>mouse</td>
-							<td>02/01/2024</td>
-							<td>Josefina Cardoso</td>
-							<td>n</td>
-						  </tr>
-						  <tr>
-							<td>0</td>
-							<td>mouse</td>
-							<td>02/01/2024</td>
-							<td>Josefina Cardoso</td>
-							<td>n</td>
-						  </tr>
-						  <tr>
-							<td>0</td>
-							<td>mouse</td>
-							<td>02/01/2024</td>
-							<td>Josefina Cardoso</td>
-							<td>n</td>
-						  </tr>
-						  <tr>
-							<td>0</td>
-							<td>mouse</td>
-							<td>02/01/2024</td>
-							<td>Josefina Cardoso</td>
-							<td>n</td>
-						  </tr>
-						  <tr>
-							<td>0</td>
-							<td>mouse</td>
-							<td>02/01/2024</td>
-							<td>Josefina Cardoso</td>
-							<td>n</td>
-						  </tr>
-						  <tr>
-							<td>0</td>
-							<td>mouse</td>
-							<td>02/01/2024</td>
-							<td>Josefina Cardoso</td>
-							<td>n</td>
-						  </tr>
-						  <tr>
-							<td>0</td>
-							<td>mouse</td>
-							<td>02/01/2024</td>
-							<td>Josefina Cardoso</td>
-							<td>n</td>
-						  </tr>
-						  <tr>
-							<td>0</td>
-							<td>mouse</td>
-							<td>02/01/2024</td>
-							<td>Josefina Cardoso</td>
-							<td>n</td>
-						  </tr>
-						  <tr>
-							<td>0</td>
-							<td>mouse</td>
-							<td>02/01/2024</td>
-							<td>Josefina Cardoso</td>
-							<td>n</td>
-							
-						  </tr>
+						  <?php
+                                                    }
+                                                ?>
+      
 					</table>
 				</div> <!--divTabG-->	
 			</article> <!--fim articleConsultaG -->
-			
-			<article id="articleCrud">
-				<h1 class="TCategorias">Pesquisar/Editar Doação</h1>
-				<div id="divPesquisa">		
-						<form name="frmPesquisa" action="#" method="post" >
-						<h3 class="TformAdmCenter">Informe o Id: 
-							
-								<input type="number" name="txtId" value="" />
-								<input  type="submit" name="btnPesquisarId" value=" Pesquisar" />														
-								</h3>
-					</form>		
-					<form name="formEditar" action="./editarDoacao.html" method="post">
-								<p class="right"><input  type="submit" name="btnEditar" value="Editar" /></p>
-					</form>	
-				</div>
-				
-				<div class="divCon1">
-				<h3 class="TformAdmCenter">Dados da Doação</h3>
-				<table class="tabela">
-					  <tr>
-						<th>Título</th>
-						<th>Descrição</th>
-						<th>Destino</th>
-						<th>Data</th>
-						<th>Disponível</th>
-					  </tr>
-					  <tr>
-						<td>mouse</td>
-						<td>entrada usb</td>
-						<td>triagem</td>
-						<td>02/01/2024</td>
-						<td>s</td>
-					  </tr>
-					 
-				</table>
-				</div>
-				
-				<div class="divCon2">
-					<h3 class="TformAdmCenter">Dados do Doadoar PF</h3>
-					<table class="tabela">
-						  <tr>
-							<th>Nome</th>
-							<th>CPF</th>
-							<th>RG</th>
-							<th>Telefone</th>
-							<th>E-mail</th>
-						  </tr>
-						  <tr>
-							<td>Godofredo Alves</td>
-							<td>5465843444</td>
-							<td>65465464</td>
-							<td>5199668754</td>
-							<td>masd@asdasd</td>
-						  </tr>
-						 
-					</table>
-				</div>
-
-				<div class="divCon1">	
-					<h3 class="TformAdmCenter">Dados do Doadoar PJ</h3>
-					<table class="tabela">
-						  <tr>
-							<th>Nome</th>
-							<th>CNPJ</th>
-							<th>Responsável PJ</th>
-							<th>Telefone</th>
-							<th>E-mail</th>
-							
-						  </tr>
-						  <tr>
-							<td>Americanas</td>
-							<td>5465843444</td>
-							<td>Fred</td>						
-							<td>456456312</td>						
-							<td>Fred@GMAIL</td>						
-						  </tr>
-						 
-					</table>
-				</div>
-				
-				<div class="divCon2">
-					<h3 class="TformAdmCenter">Endereço</h3>
-					<table class="tabela">
-						  <tr>
-							<th>Bairro</th>
-							<th>Rua</th>
-							<th>Número</th>
-							<th>Complemento</th>						
-						  </tr>
-						  <tr>
-							<td>Alpes</td>
-							<td>Avenida</td>
-							<td>05</td>
-							<td>ap 01</td>						
-						  </tr>
-						 
-					</table>
-				</div>
-			</article> <!-- fim articleCrud -->
+						
 		</section> <!--fim sectionTabelas -->
 	</section> <!--fim sectionMeioAdm -->
 	

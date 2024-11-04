@@ -1,0 +1,202 @@
+<!DOCTYPE HTML>
+<html lang="pt-br">
+	<head>
+		<title>Projeto Pids Tech</title>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<link rel="shortcut icon" type="image/x-icon" href="../img/favicon.ico" />
+		<link rel="stylesheet" type="text/css" href="../css/reset.css" />
+		<link rel="stylesheet" type="text/css" href="../css/estilo.css" />
+		<link rel="stylesheet" type="text/css" href="../css/layout.css" />
+		<link rel="stylesheet" type="text/css" href="../css/imagens.css" />
+		<link rel="stylesheet" type="text/css" href="../css/navadm.css" />
+		<link rel="stylesheet" type="text/css" href="../css/tabelas.css" />
+                <?php
+                    include_once '../../model/Login.php';
+                    Login::verificaSessao();
+                ?>
+	</head>	
+<body>
+<main>
+	<header> 
+		<section id="cabecalho">
+			<div id="divLogo">
+				<p class="center"><img id="logoPids" src="../img/LogoPidsTransparente.png" alt="Logotipo Pids Tech" title="Logotipo Pids Tech" /></p>
+			</div>
+							
+			<input type="checkbox" id="bt_menu"/>
+			<label for="bt_menu">
+			<p class="right"><img id="btnMenu" src="../img/menu-aberto.png" alt="ícone menu" title="ícone menu" /></p>
+			</label>
+			
+			<nav id="menu">
+				<ul>
+					<li>
+						<a href="./homeAdm.php">Início</a>
+					</li>
+					<li>
+						<a href="#">Cadastrar</a>
+						<ul>
+							<li><a href="./doacao.php">Doação ao Projeto</a></li>
+							<li><a href="./cadDoacaofinal.php">Doação Final</a></li>						
+							<li><a href="./cadUsuario.php">Novo Usuário</a></li>						
+						</ul>
+					</li>
+					<li>
+						<a href="#">Consultar ou Editar</a>
+						<ul>
+							<li><a href="./conDoacao.php">Doações ao Projeto</a></li>
+							<li><a href="./conDoacaofinal.php">Doações Finais</a></li>						
+							<li><a href="./conUsuario.php">Usuários</a></li>						
+						</ul>
+					</li>
+					<li>
+						<a href="../../controller/LogoutBO.php">Sair</a>
+					</li>
+					
+					
+				</ul>
+			</nav>
+		</section>
+	</header>	
+	
+	<hr id="hrSupAdm" />
+	
+	<section id="sectionMeioAdm">
+		
+		<div id="divPagina">
+			
+			<div id="divContorno">
+				<h1 id="Tpagina">Consulta de Doações</h1>
+			</div>
+		
+		</div>
+		<section id="sectionTabelas">
+									
+			<article id="articleCrud">
+				
+				<div class="divCon1">
+				<h3 class="TformAdmCenter">Dados da Doação</h3>
+                                <p class="right"><input  type="submit" name="btnEditar" value="Editar" /></p>
+				<table class="tabela">
+                                     
+                                    <?php
+                                 
+                                     if (isset($_GET['txtId'])) {
+                                        include_once '../../model/database/DoacaoDAO.php';
+                                        $dao = new DoacaoDAO();
+                                        $id = $_GET['txtId'];
+                                        $lista = $dao->listAll($id);
+                                        if (!empty($lista)) {
+                                            ?>
+                                            <tr>
+                                                <th>Título</th>
+                                                <th>Descrição</th>
+                                                <th>Destino</th>
+                                                <th>Data</th>
+                                                <th>Disponível</th>
+                                            </tr>
+                                            <?php
+                                            foreach ($lista as $value) {
+                                                ?>
+                                                <tr>
+                                                    <td><?php echo $value->titulo; ?></td>
+                                                    <td><?php echo $value->descricao; ?></td>
+                                                    <td><?php echo $value->destino; ?></td>
+                                                    <td><?php echo $value->data_entrada; ?></td>
+                                                    <td><?php echo $value->baixa; ?></td>
+                                                </tr>
+                                                
+				</table>
+				</div>
+                            
+                                <div class="divCon1">
+					<h3 class="TformAdmCenter">Dados do(a) Doadoar(a)</h3>
+					<table class="tabela">
+						  <tr>
+							<th>Nome</th>												
+							<th>Telefone</th>
+							<th>E-mail</th>
+						  </tr>
+						  <tr>
+							<td><?php echo $value->nome;?></td>							
+							<td><?php echo $value->telefone;?></td>
+							<td><?php echo $value->email;?></td>
+						  </tr>
+						 
+					</table>
+				</div>
+				
+				<div class="divCon2">
+					<h3 class="TformAdmCenter">Pessoa Física</h3>
+					<table class="tabela">
+						  <tr>							
+							<th>CPF</th>
+							<th>RG</th>							
+						  </tr>
+						  <tr>							
+							<td><?php echo $value->cpf;?></td>
+							<td><?php echo $value->rg;?></td>							
+						  </tr>
+						 
+					</table>
+				</div>
+
+				<div class="divCon1">	
+					<h3 class="TformAdmCenter">Pessoa Jurídica</h3>
+					<table class="tabela">
+						  <tr>							
+							<th>CNPJ</th>
+							<th>Responsável PJ</th>														
+						  </tr>
+						  <tr>
+							
+							<td><?php echo $value->cnpj;?></td>
+							<td><?php echo $value->responsavel_pj;?></td>
+												
+						  </tr>
+						 
+					</table>
+				</div>
+				
+				<div class="divCon2">
+					<h3 class="TformAdmCenter">Endereço</h3>
+					<table class="tabela">
+						  <tr>
+							<th>Bairro</th>
+							<th>Rua</th>
+							<th>Número</th>
+							<th>Complemento</th>						
+						  </tr>
+						  <tr>
+							<td><?php echo $value->bairro;?></td>
+							<td><?php echo $value->rua;?></td>
+							<td><?php echo $value->numero;?></td>
+							<td><?php echo $value->complemento;?></td>												
+						  </tr>
+						 <?php
+                                            }
+                                        } else {
+                                            echo "<tr><td colspan='5'>Nenhuma doação encontrada.</td></tr>";
+                                        }
+                                    } else {
+                                        echo "<script>alert('Preencha o campo adequadamente.'); "
+                                        . "location.href = './conDoacao.php';</script>";
+                                    } ?>
+					</table>
+				</div>
+			</article> <!-- fim articleCrud -->
+		</section> <!--fim sectionTabelas -->
+	</section> <!--fim sectionMeioAdm -->
+	
+	<footer>
+	
+	<div id="divDireitos">
+	<p id="txtDireitos">
+	© Todos os Direitos Reservados - 2024.
+	</p>
+	</div>
+	</footer>
+</main>
+</body>
+</html>
