@@ -15,6 +15,13 @@
                     include_once '../../model/Login.php';
                     Login::verificaSessao();
                 ?>
+                 <script type="text/javascript">
+                function deletar(idDoacao){
+                    if(confirm('deseja excluir a Doação?')){
+                        document.location.href='../../controller/DoacaoBO.php?acao=deletar&idDoacao='+idDoacao;
+                    }
+                    }
+               </script>
 	</head>	
 <body>
 <main>
@@ -74,13 +81,7 @@
 		<section id="sectionTabelas">
 									
 			<article id="articleCrud">
-				
-				<div class="divCon1">
-				<h3 class="TformAdmCenter">Dados da Doação</h3>
-                                <p class="right"><input  type="submit" name="btnEditar" value="Editar" /></p>
-				<table class="tabela">
-                                     
-                                    <?php
+				 <?php
                                  
                                      if (isset($_GET['txtId'])) {
                                         include_once '../../model/database/DoacaoDAO.php';
@@ -89,6 +90,13 @@
                                         $lista = $dao->listAll($id);
                                         if (!empty($lista)) {
                                             ?>
+				<div class="divCon1">
+				<h3 class="TformAdmCenter">Dados da Doação</h3>
+                                <p class="right"> <button name="btnalterar" onclick="location.href='editarDoacao.php?idDoacao=<?php echo $value->idDoacao; ?>'" > Alterar</button></p>
+                                <p class="right"><button name="btnexcluir" onclick="javascript:deletar(<?php echo $value->idDoacao; ?>)" > Excluir</button></p>
+				<table class="tabela">
+                                     
+                                   
                                             <tr>
                                                 <th>Título</th>
                                                 <th>Descrição</th>

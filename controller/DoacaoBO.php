@@ -175,7 +175,7 @@ $acao = $_REQUEST['acao'];
             }
             break; 
             
-        case 'alterar':
+        case 'alterarPF':
             if (isset($_POST['combo']) && isset($_POST['txtnome']) && !empty($_POST['txtnome'])
                 && isset($_POST['data']) && isset($_POST['valor']) && isset($_POST['iditem'])){
                     $dao = new ItemDAO();
@@ -209,6 +209,41 @@ $acao = $_REQUEST['acao'];
                 <?php
                 }
             break;
+         case 'alterarPJ':
+            if (isset($_POST['combo']) && isset($_POST['txtnome']) && !empty($_POST['txtnome'])
+                && isset($_POST['data']) && isset($_POST['valor']) && isset($_POST['iditem'])){
+                    $dao = new ItemDAO();
+                    $objeto = new Item();
+                    $objeto->nome = $_POST['txtnome'];
+                    $objeto->validade = $_POST['data'];
+                    $objeto->valor = $_POST['valor'];
+                    $objeto->idingredientes = $_POST['combo']; 
+                    $objeto->iditem = $_POST['iditem']; 
+                    if($dao->update($objeto)){
+                    ?>
+                        <script type="text/javascript">
+                            alert('Iteme alterado com sucesso.');
+                            location.href = '../view/listaitens.php';
+                        </script>
+                    <?php
+                    }else{
+                    ?>
+                        <script type="text/javascript">
+                            alert('Problema ao alterar o ingrediente');
+                            history.go(-1);
+                        </script>    
+                    <?php
+                    }
+                }else{
+                ?>
+                    <script type="text/javascript">
+                        alert('Prencha o campo adequadamente.');
+                        history.go(-1);
+                    </script>
+                <?php
+                }
+            break;    
+            
         case 'deletar':
             if (isset($_GET['iditem'])){
                 $dao = new ItemDAO();
