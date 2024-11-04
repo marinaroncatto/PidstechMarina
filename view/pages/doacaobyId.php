@@ -109,56 +109,62 @@
                                                 
 				</table>
 				</div>
+                                
                             
-                                <div class="divCon1">
-					<h3 class="TformAdmCenter">Dados do(a) Doadoar(a)</h3>
-					<table class="tabela">
-						  <tr>
-							<th>Nome</th>												
-							<th>Telefone</th>
-							<th>E-mail</th>
-						  </tr>
-						  <tr>
-							<td><?php echo $value->nome;?></td>							
-							<td><?php echo $value->telefone;?></td>
-							<td><?php echo $value->email;?></td>
-						  </tr>
-						 
-					</table>
-				</div>
-				
-				<div class="divCon2">
-					<h3 class="TformAdmCenter">Pessoa Física</h3>
-					<table class="tabela">
-						  <tr>							
-							<th>CPF</th>
-							<th>RG</th>							
-						  </tr>
-						  <tr>							
-							<td><?php echo $value->cpf;?></td>
-							<td><?php echo $value->rg;?></td>							
-						  </tr>
-						 
-					</table>
-				</div>
+                                <?PHP 
+                                    
+                                if(!empty($value->cpf)){
+                                
+                                        ?>
+                                                <div class="divCon1">
+                                                        <h3 class="TformAdmCenter">Dados do(a) Doadoar(a) PF</h3>
+                                                        <table class="tabela">
+                                                                  <tr>
+                                                                        <th>Nome</th>	
+                                                                        <th>CPF</th>
+                                                                        <th>RG</th>	
+                                                                        <th>Telefone</th>
+                                                                        <th>E-mail</th>
+                                                                  </tr>
+                                                                  <tr>
+                                                                        <td><?php echo $value->nome;?></td>
+                                                                        <td><?php echo $value->cpf;?></td>
+                                                                        <td><?php echo $value->rg;?></td>
+                                                                        <td><?php echo $value->telefone;?></td>
+                                                                        <td><?php echo $value->email;?></td>
+                                                                  </tr>
 
-				<div class="divCon1">	
-					<h3 class="TformAdmCenter">Pessoa Jurídica</h3>
-					<table class="tabela">
-						  <tr>							
-							<th>CNPJ</th>
-							<th>Responsável PJ</th>														
-						  </tr>
-						  <tr>
-							
-							<td><?php echo $value->cnpj;?></td>
-							<td><?php echo $value->responsavel_pj;?></td>
-												
-						  </tr>
-						 
-					</table>
-				</div>
-				
+                                                        </table>
+                                                </div>
+                            <?php 
+                                            }else{
+                                                
+                                            ?>
+                                                
+                                               <div class="divCon1">
+                                                        <h3 class="TformAdmCenter">Dados do(a) Doadoar(a) PJ</h3>
+                                                        <table class="tabela">
+                                                                  <tr>
+                                                                        <th>Nome</th>	
+                                                                        <th>CNPJ</th>
+                                                                        <th>Responsável PJ</th>	
+                                                                        <th>Telefone</th>
+                                                                        <th>E-mail</th>
+                                                                  </tr>
+                                                                  <tr>
+                                                                        <td><?php echo $value->nome;?></td>
+                                                                         <td><?php echo $value->cnpj;?></td>
+                                                                        <td><?php echo $value->responsavel_pj;?></td>
+                                                                        <td><?php echo $value->telefone;?></td>
+                                                                        <td><?php echo $value->email;?></td>
+                                                                  </tr>
+
+                                                        </table>
+                                                </div>
+                                               
+				<?php
+                                            }
+                                ?>
 				<div class="divCon2">
 					<h3 class="TformAdmCenter">Endereço</h3>
 					<table class="tabela">
