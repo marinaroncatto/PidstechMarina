@@ -51,15 +51,39 @@ class DoacaoDAO {
     }
     
     public function update(Doacao $obj) {
-        $query = "UPDATE doacao set titulo = :ptitulo, descricao = :pdescricao, data_entrada = :pdata_entrada, destino = :pdestino, baixa = :pbaixa, idPessoa = :pidPessoa "
-                . "where idDoacao = :pidDoacao";
+        $query = "  UPDATE doacao as doa
+                    INNER JOIN pessoa as pe on doa.idPessoa = pe.idPessoa
+                    LEFT JOIN pessoafisica as pf on doa.idPessoa = pf.idPessoa
+                    LEFT JOIN pessoajuridica as pj on doa.idPessoa = pj.idPessoa
+                    INNER JOIN endereco en on doa.idPessoa = en.idPessoa
+                    SET
+                    doa.titulo = :ptitulo, 
+                    doa.descricao = :pdescricao, 
+                    doa.destino = :pdestino, 
+                    doa.data_entrada = :pdata_entrada, 
+                    doa.baixa = :pbaixa,
+                    pe.nome = :pnome, 
+                    pe.email = :pemail, 
+                    pe.telefone = :ptelefone,
+                    pf.cpf = :pcpf, 
+                    pf.rg = :prg, 
+                    pj.cnpj = :pcnpj, 
+                    pj.responsavel_pj = :presponsavel_pj,
+                    en.bairro = :pbairro, 
+                    en.rua = :prua, 
+                    en.numero = :pnumero, 
+                    en.complemento = :pcomplemento
+                    WHERE doa.idDoacao = :pidDoacao ";
+        
+        
+        
         $conn = DB::getInstancia()->prepare($query);
         $conn->execute(array(':ptitulo'=>$obj->titulo,
                               ':pdescricao'=>$obj->descricao,
                               ':pdata_entrada'=>$obj->data_entrada,
                               ':pdestino'=>$obj->destino,            
                               ':pbaixa'=>$obj->baixa,
-                              ':pidPessoa'=>$obj->idPessoa,
+                                
                               ':pidDoacao'=>$obj->idDoacao));
         return $conn->rowCount()>0;
     }
