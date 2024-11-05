@@ -9,16 +9,22 @@ include_once 'Endereco.php';
 class DoacaoUpdate {
     private Doacao $doacao;
     private Pessoa $pessoa;
-    private Pessoafisica $pessoafísica;
+    private Pessoafisica $pessoafisica;
     private Pessoajuridica $pessoajuridica;
     private Endereco $endereco;
     
-    public function __construct(Doacao $d) { 
+    public function __constructPF(Doacao $d, Pessoa $p, Pessoafisica $pf, Endereco $e) { 
         $this->doacao = $d;
-        $this->pessoa = new Pessoa();  
-        $this->pessoafisica = new Pessoafisica();
-        $this->pessoajuridica = new Pessoajuridica();
-        $this->endereco = new Endereco();
+        $this->pessoa = $p;  
+        $this->pessoafisica = $pf;    
+        $this->endereco = $e;
+    }
+    
+      public function __constructPJ(Doacao $d, Pessoa $p, Pessoajuridica $pj, Endereco $e) { 
+        $this->doacao = $d;
+        $this->pessoa = $p;          
+        $this->pessoajuridica = $pj;
+        $this->endereco = $e;
     }
     
      public function __get($param) {

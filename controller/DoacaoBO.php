@@ -181,31 +181,45 @@ $acao = $_REQUEST['acao'];
                 && isset($_POST['destino']) && !empty($_POST['destino']) && isset($_POST['txtData']) && !empty($_POST['txtData'])                              
                 && isset($_POST['txtCpf']) && !empty($_POST['txtCpf']) && isset($_POST['txtRg']) && isset($_POST['txtBairro']) 
                 && isset($_POST['txtRua']) && isset($_POST['txtNumero']) && isset($_POST['txtComplemento'])){
-                $dao = new DoacaoDAO();
-                $objeto = new DoacaoUpdate();
-                $objeto->doacao= new Doacao();
-                $objeto->doacao->titulo = $_POST['txtTitulo']; 
-                $objeto->doacao->descricao = $_POST['txtDescricao'];   
-                $objeto->doacao->destino = $_POST['destino'];
-                $objeto->doacao->data_entrada = $_POST['txtData'];
-                $objeto->doacao->baixa = isset($_POST['boxBaixa']) ? $_POST['boxBaixa'] : null;
+                $dao = new DoacaoDAO();                                               
+                $doacao = new Doacao();
+                $doacao->titulo = $_POST['txtTitulo']; 
+                $doacao->descricao = $_POST['txtDescricao'];   
+                $doacao->destino = $_POST['destino'];
+                $doacao->data_entrada = $_POST['txtData'];
+                $doacao->baixa = isset($_POST['boxBaixa']) ? $_POST['boxBaixa'] : null;
+                $doacao->idDoacao = $_POST['txtId'];
                 
+                $objetoUp->doacao= $doacao;
                 
-                $objeto->pessoa->nome = $_POST['txtNome'];
-                $objeto->pessoa->email = $_POST['txtEmail'];
-                $objeto->pessoa->telefone = $_POST['txtTelefone'];   
-                $objeto->pessoafisica->cpf = $_POST['txtCpf'];
-                $objeto->pessoafisica->rg = $_POST['txtRg'];   
+                $pessoa = new Pessoa();
                 
-                $objeto->endereco->bairro = $_POST['txtBairro'];
-                $objeto->endereco->rua = $_POST['txtRua'];
-                $objeto->endereco->numero = $_POST['txtNumero'];
-                $objeto->endereco->complemento = $_POST['txtComplemento'];
+                $pessoa->nome = $_POST['txtNome'];
+                $pessoa->email = $_POST['txtEmail'];
+                $pessoa->telefone = $_POST['txtTelefone'];   
+                
+                $objetoUp->pessoa= $pessoa;
+                
+                $pessoafisica = new Pessoafisica();
+                
+                $pessoafisica->cpf = $_POST['txtCpf'];
+                $pessoafisica->rg = $_POST['txtRg']; 
+                
+               $objetoUp->pessoafisica= $pessoafisica;
+                
+                $endereco= new Endereco();
+                
+                $endereco->bairro = $_POST['txtBairro'];
+                $endereco->rua = $_POST['txtRua'];
+                $endereco->numero = $_POST['txtNumero'];
+                $endereco->complemento = $_POST['txtComplemento'];
                                 
+               $objetoUp->endereco= $endereco;
                 
-                $objeto->idDoacao = $_POST['txtId'];                                                                         
-                var_dump($objeto);
-                    if($dao->update($objeto)){
+              $objetoUp = new DoacaoUpdate();
+              $objetoUp->__constructPF( $objetoUp->doacao,  $objetoUp->pessoa,  $objetoUp->pessoafisica,  $objetoUp->endereco);
+              
+                    if($dao->updatePF($objetoUp)){
                     ?>
                         <script type="text/javascript">
                             alert('Dados alterados com sucesso.');
