@@ -3,13 +3,40 @@
 include_once 'DB.php';
 
 class DoacaofinalDAO {
-     public function list($id = null) {
-        $where = ($id ? "where idDoacao_final = $id":'');
-        $query = "SELECT * FROM doacaofinal $where";
+    
+    
+     public function listAll($id = null) {
+        $where = ($id ? "where df.idDoacao_final = $id ":'');
+        $query = "SELECT
+                    df.idDoacao_final, df.titulo, df.descricao, df.situacao, df.data_saida,
+                    pe.nome, pe.email, pe.telefone,
+                    pf.cpf, pf.rg, pj.cnpj, pj.responsavel_pj,
+                    en.bairro, en.rua, en.numero, en.complemento
+                 FROM
+                    doacaofinal df
+                INNER JOIN pessoa pe on df.idPessoa = pe.idPessoa
+                LEFT JOIN pessoafisica pf on df.idPessoa = pf.idPessoa
+                LEFT JOIN pessoajuridica pj on df.idPessoa = pj.idPessoa
+                INNER JOIN endereco en on df.idPessoa = en.idPessoa"               
+                . " $where";
         $conn = DB::getInstancia()->query($query);
         $resultado = $conn->fetchAll();
         return $resultado;
     }
+    
+     public function listParc($id = null) {
+        $where = ($id ? "where df.idDoacao_final = $id":'');
+        $query = "SELECT
+                    df.idDoacao_final, df.titulo, df.data_saida, pe.nome, df.situacao                                        
+                 FROM
+                    doacaofinal df
+                INNER JOIN pessoa pe on df.idPessoa = pe.idPessoa"               
+                . " $where";
+        $conn = DB::getInstancia()->query($query);
+        $resultado = $conn->fetchAll();
+        return $resultado;
+    }
+   
     
     public function insert(Doacaofinal $obj) {
         $query = "INSERT INTO doacaofinal (idDoacao_final, titulo, descricao, situacao, data_saida, idPessoa) "

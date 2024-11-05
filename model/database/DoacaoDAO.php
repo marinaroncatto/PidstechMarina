@@ -146,6 +146,21 @@ class DoacaoDAO {
         $conn = DB::getInstancia()->prepare($query);
         $conn->execute(array(':pid'=>$id));
         return $conn->rowcount()>0;
+        
+        /* 
+            
+        DELETE doa, pe, pf, pj, en FROM doacao as doa
+                LEFT JOIN pessoa  as pe on doa.idPessoa = pe.idPessoa
+                LEFT JOIN pessoafisica as pf on doa.idPessoa = pf.idPessoa
+                LEFT JOIN pessoajuridica as pj on doa.idPessoa = pj.idPessoa
+                LEFT JOIN endereco as en on doa.idPessoa = en.idPessoa               
+                where doa.idDoacao = 1; 
+
+
+
+
+         * 
+         *          */
     }
 }
 ?>

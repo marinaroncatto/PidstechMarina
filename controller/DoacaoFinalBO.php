@@ -1,5 +1,5 @@
 <?php
-include_once '../model/Doacao.php';
+include_once '../model/Doacaofinal.php';
 include_once '../model/Pessoa.php';
 include_once '../model/Pessoafisica.php';
 include_once '../model/Pessoajuridica.php';
@@ -8,7 +8,7 @@ include_once '../model/DoacaoUpdate.php';
 include_once '../model/database/PessoafisicaDAO.php';
 include_once '../model/database/PessoajuridicaDAO.php';
 include_once '../model/database/PessoaDAO.php';
-include_once '../model/database/DoacaoDAO.php';
+include_once '../model/database/DoacaofinalDAO.php';
 include_once '../model/database/EnderecoDAO.php';
 include_once '../model/database/DB.php';
 
@@ -31,9 +31,9 @@ $acao = $_REQUEST['acao'];
                    $_SESSION['idPessoa'] = DB::getInstancia()->lastInsertId('pessoa');
                    
                         if($_POST['CatPessoa'] == 'PF'){
-                             header('location: ../view/pages/doacao2PF.php');
+                             header('location: ../view/pages/doacaoFinal2PF.php');
                         }else{
-                            header('location: ../view/pages/doacao2PJ.php');
+                            header('location: ../view/pages/doacaoFinal2PJ.php');
                         }
                     
                 }else{
@@ -75,7 +75,7 @@ $acao = $_REQUEST['acao'];
                 
                 if($dao->insert($objeto) && $daoE->insert($objE)){
                     
-                    header('location: ../view/pages/doacao3.php');
+                    header('location: ../view/pages/doacaoFinal3.php');
                     
                 }else{
                     ?>
@@ -116,7 +116,7 @@ $acao = $_REQUEST['acao'];
                 
                 if($dao->insert($objeto) && $daoE->insert($objE)){
                     
-                    header('location: ../view/pages/doacao3.php');
+                    header('location: ../view/pages/doacaoFinal3.php');
                     
                 }else{
                     ?>
@@ -138,30 +138,29 @@ $acao = $_REQUEST['acao'];
         
         
         case 'inserirDoacao':            
-               if (isset($_POST['txtTitulo']) && !empty($_POST['txtTitulo']) && isset($_POST['txtDescricao']) && !empty($_POST['txtDescricao']) 
-                && isset($_POST['destino']) && !empty($_POST['destino']) && isset($_POST['txtData']) && !empty($_POST['txtData'])){
-                $dao = new DoacaoDAO();
-                $objeto = new Doacao();
+               if (isset($_POST['txtTitulo']) && !empty($_POST['txtTitulo'])  
+                && isset($_POST['situacao']) && !empty($_POST['situacao']) && isset($_POST['txtData']) && !empty($_POST['txtData'])){
+                $dao = new DoacaofinalDAO();
+                $objeto = new Doacaofinal();
                 $objeto->titulo = $_POST['txtTitulo'];
-                $objeto->descricao = $_POST['txtDescricao'];
-                $objeto->data_entrada = $_POST['txtData'];
-                $objeto->destino = $_POST['destino'];
-                $objeto->baixa = $_POST['boxBaixa'];
+                $objeto->descricao = isset($_POST['txtDescricao']) ? $_POST['txtDescricao'] : null; 
+                $objeto->data_saida = $_POST['txtData'];
+                $objeto->situacao = $_POST['situacao'];
                 session_start();
                 $objeto->idPessoa = $_SESSION['idPessoa'];                             
                 
                 if($dao->insert($objeto)){
                      ?>
                         <script type="text/javascript">
-                            alert('Doação Cadastrada com Sucesso!');
-                            location.href = '../view/pages/doacao.php';
+                            alert('Doação Final Cadastrada com Sucesso!');
+                            location.href = '../view/pages/cadDoacaofinal.php';
                         </script>
                     <?php
                     
                 }else{
                     ?>
                     <script type="text/javascript">
-                        alert('Problema ao cadastrar pessoa jurídica');
+                        alert('Problema ao cadastrar Doação Final');
                         history.go(-1);
                     </script>
                     <?php
