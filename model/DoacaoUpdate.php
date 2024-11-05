@@ -13,8 +13,8 @@ class DoacaoUpdate {
     private Pessoajuridica $pessoajuridica;
     private Endereco $endereco;
     
-    public function __construct() {
-        $this->doacao = new Doacao();  
+    public function __construct(Doacao $d) { 
+        $this->doacao = $d;
         $this->pessoa = new Pessoa();  
         $this->pessoafisica = new Pessoafisica();
         $this->pessoajuridica = new Pessoajuridica();

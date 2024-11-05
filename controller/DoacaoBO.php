@@ -183,6 +183,7 @@ $acao = $_REQUEST['acao'];
                 && isset($_POST['txtRua']) && isset($_POST['txtNumero']) && isset($_POST['txtComplemento'])){
                 $dao = new DoacaoDAO();
                 $objeto = new DoacaoUpdate();
+                $objeto->doacao= new Doacao();
                 $objeto->doacao->titulo = $_POST['txtTitulo']; 
                 $objeto->doacao->descricao = $_POST['txtDescricao'];   
                 $objeto->doacao->destino = $_POST['destino'];
