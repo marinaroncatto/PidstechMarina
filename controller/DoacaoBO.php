@@ -4,12 +4,13 @@ include_once '../model/Pessoa.php';
 include_once '../model/Pessoafisica.php';
 include_once '../model/Pessoajuridica.php';
 include_once '../model/Endereco.php';
+include_once '../model/DoacaoUpdate.php';
 include_once '../model/database/PessoafisicaDAO.php';
 include_once '../model/database/PessoajuridicaDAO.php';
 include_once '../model/database/PessoaDAO.php';
 include_once '../model/database/DoacaoDAO.php';
 include_once '../model/database/EnderecoDAO.php';
-include_once 'DB.php';
+include_once '../model/database/DB.php';
 
 if (isset($_REQUEST['acao'])){ //verifica se o hidden chegou
 
@@ -176,26 +177,44 @@ $acao = $_REQUEST['acao'];
             break; 
             
         case 'alterarPF':
-            if (isset($_POST['combo']) && isset($_POST['txtnome']) && !empty($_POST['txtnome'])
-                && isset($_POST['data']) && isset($_POST['valor']) && isset($_POST['iditem'])){
-                    $dao = new ItemDAO();
-                    $objeto = new Item();
-                    $objeto->nome = $_POST['txtnome'];
-                    $objeto->validade = $_POST['data'];
-                    $objeto->valor = $_POST['valor'];
-                    $objeto->idingredientes = $_POST['combo']; 
-                    $objeto->iditem = $_POST['iditem']; 
+            if (isset($_POST['txtId']) && !empty($_POST['txtId']) && isset($_POST['txtTitulo']) && !empty($_POST['txtTitulo']) && isset($_POST['txtDescricao']) && !empty($_POST['txtDescricao']) 
+                && isset($_POST['destino']) && !empty($_POST['destino']) && isset($_POST['txtData']) && !empty($_POST['txtData'])                              
+                && isset($_POST['txtCpf']) && !empty($_POST['txtCpf']) && isset($_POST['txtRg']) && isset($_POST['txtBairro']) 
+                && isset($_POST['txtRua']) && isset($_POST['txtNumero']) && isset($_POST['txtComplemento'])){
+                $dao = new DoacaoDAO();
+                $objeto = new DoacaoUpdate();
+                $objeto->doacao->titulo = $_POST['txtTitulo']; 
+                $objeto->doacao->descricao = $_POST['txtDescricao'];   
+                $objeto->doacao->destino = $_POST['destino'];
+                $objeto->doacao->data_entrada = $_POST['txtData'];
+                $objeto->doacao->baixa = isset($_POST['boxBaixa']) ? $_POST['boxBaixa'] : null;
+                
+                
+                $objeto->pessoa->nome = $_POST['txtNome'];
+                $objeto->pessoa->email = $_POST['txtEmail'];
+                $objeto->pessoa->telefone = $_POST['txtTelefone'];   
+                $objeto->pessoafisica->cpf = $_POST['txtCpf'];
+                $objeto->pessoafisica->rg = $_POST['txtRg'];   
+                
+                $objeto->endereco->bairro = $_POST['txtBairro'];
+                $objeto->endereco->rua = $_POST['txtRua'];
+                $objeto->endereco->numero = $_POST['txtNumero'];
+                $objeto->endereco->complemento = $_POST['txtComplemento'];
+                                
+                
+                $objeto->idDoacao = $_POST['txtId'];                                                                         
+                var_dump($objeto);
                     if($dao->update($objeto)){
                     ?>
                         <script type="text/javascript">
-                            alert('Iteme alterado com sucesso.');
-                            location.href = '../view/listaitens.php';
+                            alert('Dados alterados com sucesso.');
+                            location.href = '../view/pages/conDoacao.php';
                         </script>
                     <?php
                     }else{
                     ?>
                         <script type="text/javascript">
-                            alert('Problema ao alterar o ingrediente');
+                            alert('Problema ao alterar os dados');
                             history.go(-1);
                         </script>    
                     <?php
@@ -209,27 +228,46 @@ $acao = $_REQUEST['acao'];
                 <?php
                 }
             break;
+            
          case 'alterarPJ':
-            if (isset($_POST['combo']) && isset($_POST['txtnome']) && !empty($_POST['txtnome'])
-                && isset($_POST['data']) && isset($_POST['valor']) && isset($_POST['iditem'])){
-                    $dao = new ItemDAO();
-                    $objeto = new Item();
-                    $objeto->nome = $_POST['txtnome'];
-                    $objeto->validade = $_POST['data'];
-                    $objeto->valor = $_POST['valor'];
-                    $objeto->idingredientes = $_POST['combo']; 
-                    $objeto->iditem = $_POST['iditem']; 
+                 if (isset($_POST['txtId']) && !empty($_POST['txtId']) && isset($_POST['txtTitulo']) && !empty($_POST['txtTitulo']) && isset($_POST['txtDescricao']) && !empty($_POST['txtDescricao']) 
+                && isset($_POST['destino']) && !empty($_POST['destino']) && isset($_POST['txtData']) && !empty($_POST['txtData'])                              
+                && isset($_POST['txtCnpj']) && !empty($_POST['txtCnpj']) && isset($_POST['ResponsavelPj']) && isset($_POST['txtBairro']) 
+                && isset($_POST['txtRua']) && isset($_POST['txtNumero']) && isset($_POST['txtComplemento'])){
+                $dao = new DoacaoDAO();
+                $objeto = new DoacaoUpdate();
+                $objeto->Doacao->titulo = $_POST['txtTitulo']; 
+                $objeto->Doacao->descricao = $_POST['txtDescricao'];   
+                $objeto->Doacao->destino = $_POST['destino'];
+                $objeto->Doacao->data_entrada = $_POST['txtData'];
+                $objeto->Doacao->baixa = $_POST['boxBaixa'];
+                
+                
+                $objeto->Pessoa->nome = $_POST['txtNome'];
+                $objeto->Pessoa->email = $_POST['txtEmail'];
+                $objeto->Pessoa->telefone = $_POST['txtTelefone'];   
+                $objeto->Pessoajuridica->cnpj = $_POST['txtCnpj'];
+                $objeto->Pessoajuridica->responsavel_pj = $_POST['ResponsavelPj'];   
+                
+                $objeto->Endereco->bairro = $_POST['txtBairro'];
+                $objeto->Endereco->rua = $_POST['txtRua'];
+                $objeto->Endereco->numero = $_POST['txtNumero'];
+                $objeto->Endereco->complemento = $_POST['txtComplemento'];
+                                
+                
+                $objeto->idDoacao = $_POST['txtId'];                                                                         
+                    
                     if($dao->update($objeto)){
                     ?>
                         <script type="text/javascript">
-                            alert('Iteme alterado com sucesso.');
-                            location.href = '../view/listaitens.php';
+                            alert('Dados alterados com sucesso.');
+                            location.href = '../view/pages/conDoacao.php';
                         </script>
                     <?php
                     }else{
                     ?>
                         <script type="text/javascript">
-                            alert('Problema ao alterar o ingrediente');
+                            alert('Problema ao alterar os dados');
                             history.go(-1);
                         </script>    
                     <?php
@@ -242,7 +280,7 @@ $acao = $_REQUEST['acao'];
                     </script>
                 <?php
                 }
-            break;    
+            break;
             
         case 'deletar':
             if (isset($_GET['iditem'])){

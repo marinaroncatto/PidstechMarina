@@ -89,6 +89,7 @@
                                         $id = $_GET['txtId'];
                                         $lista = $dao->listAll($id);
                                         if (!empty($lista)) {
+                                             foreach ($lista as $value) {
                                             ?>
 				<div class="divCon1">
 				<h3 class="TformAdmCenter">Dados da Doação</h3>
@@ -104,9 +105,7 @@
                                                 <th>Data</th>
                                                 <th>Disponível</th>
                                             </tr>
-                                            <?php
-                                            foreach ($lista as $value) {
-                                                ?>
+                                           
                                                 <tr>
                                                     <td><?php echo $value->titulo; ?></td>
                                                     <td><?php echo $value->descricao; ?></td>

@@ -50,7 +50,7 @@ class DoacaoDAO {
         return $conn->rowCount()>0;
     }
     
-    public function update(Doacao $obj) {
+    public function update(DoacaoUpdate $obj) {
         $query = "  UPDATE doacao as doa
                     INNER JOIN pessoa as pe on doa.idPessoa = pe.idPessoa
                     LEFT JOIN pessoafisica as pf on doa.idPessoa = pf.idPessoa
@@ -83,7 +83,17 @@ class DoacaoDAO {
                               ':pdata_entrada'=>$obj->data_entrada,
                               ':pdestino'=>$obj->destino,            
                               ':pbaixa'=>$obj->baixa,
-                                
+                              ':pnome'=>$obj->nome,
+                              ':pemail'=>$obj->email,
+                              ':ptelefone'=>$obj->telefone,
+                              ':pcpf'=>$obj->cpf,
+                              ':prg'=>$obj->rg,
+                              ':pcnpj'=>$obj->cnpj,
+                              ':presponsavel_pj'=>$obj->responsavel_pj,
+                              ':pbairro'=>$obj->bairro,
+                              ':prua'=>$obj->rua,
+                              ':pnumero'=>$obj->numero,
+                              ':pcomplemento'=>$obj->complemento,
                               ':pidDoacao'=>$obj->idDoacao));
         return $conn->rowCount()>0;
     }

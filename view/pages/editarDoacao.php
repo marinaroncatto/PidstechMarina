@@ -93,12 +93,12 @@
 						</p>
 					<h3 class="TformAdm">*Descrição:</h3>
 						<p class="center">
-							<textarea id="boxTxtDescricao" cols="30" rows="10" name="txtMensagem" value="<?php echo $value->descricao;?>" required></textarea>			
+							<textarea id="boxTxtDescricao" cols="30" rows="10" name="txtDescricao" value="<?php echo $value->descricao ;?>" required></textarea>			
 						</p>
 					<h3 class="TformAdmCenter">Destino:</h3>
 						<p class="center">
 								<select id="boxTxtDestino" name="destino" required>
-								<option name="" value="<?php echo $value->destino;?>"></option>
+								<option name="" value="<?php echo $value->destino ;?>"></option>
 								<option name="optTriagem" value="triagem">Triagem</option>
 								<option name="optDescarte" value="descarte">Descarte</option>
                                                                 //o que entra no banco é o valor do value
@@ -177,7 +177,8 @@
                                                 <?PHP
                                              }
                                                     ?>
-				<div id="DivDados1">	
+                        
+                                    <div id="DivDados1">	
 					<h1 class="TCategorias">Endereço</h1>
 					
 					<h3 class="TformAdm">Bairro:</h3>
