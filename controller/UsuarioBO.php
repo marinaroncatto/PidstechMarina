@@ -1,15 +1,6 @@
 <?php
-include_once '../model/Doacaofinal.php';
-include_once '../model/Pessoa.php';
-include_once '../model/Pessoafisica.php';
-include_once '../model/Pessoajuridica.php';
-include_once '../model/Endereco.php';
-include_once '../model/DoacaoUpdate.php';
-include_once '../model/database/PessoafisicaDAO.php';
-include_once '../model/database/PessoajuridicaDAO.php';
-include_once '../model/database/PessoaDAO.php';
-include_once '../model/database/DoacaofinalDAO.php';
-include_once '../model/database/EnderecoDAO.php';
+include_once '../model/Usuario.php';
+include_once '../model/database/UsuarioDAO.php';
 include_once '../model/database/DB.php';
 
 if (isset($_REQUEST['acao'])){ //verifica se o hidden chegou
@@ -18,22 +9,24 @@ $acao = $_REQUEST['acao'];
     
     switch ($acao) {       
         
-        case 'inserirDoacao':            
-               if (isset($_POST['txtTitulo']) && !empty($_POST['txtTitulo'])
-                && isset($_POST['beneficiario']) && !empty($_POST['beneficiario'])
-                && isset($_POST['situacao']) && !empty($_POST['situacao'])){
-                $dao = new DoacaofinalDAO();
-                $objeto = new Doacaofinal();
-                $objeto->titulo = $_POST['txtTitulo'];
-                $objeto->descricao = isset($_POST['txtDescricao']) ? $_POST['txtDescricao'] : null; 
-                $objeto->data_saida = isset($_POST['txtData']) ? $_POST['txtData'] : null;
-                $objeto->situacao = $_POST['situacao'];              
-                $objeto->idPessoa = $_POST['beneficiario'];                           
+        case 'inserirUsuario':            
+               if (isset($_POST['txtLogin']) && !empty($_POST['txtLogin'])
+                && isset($_POST['txtSenha']) && !empty($_POST['txtSenha'])
+                && isset($_POST['pessoa']) && !empty($_POST['pessoa'])
+                ){
+                $dao = new UsuarioDAO();
+                $objeto = new Usuario();
+                $objeto->login = $_POST['txtLogin'];
+                $objeto->senha = $_POST['txtSenha'];               
+                $objeto->perfil_acesso = isset($_POST['perfil']) ? $_POST['perfil'] : null;              
+                $objeto->idPessoa = $_POST['pessoa'];                           
+               
+               
                 
-                if($dao->insert($objeto)){
+              if($dao->insert($objeto)){
                      ?>
                         <script type="text/javascript">
-                            alert('Doação Final Cadastrada com Sucesso!');
+                            alert('Usuário Cadastrado com Sucesso!');
                             location.href = '../view/pages/cadDoacaofinal.php';
                         </script>
                     <?php
@@ -41,7 +34,7 @@ $acao = $_REQUEST['acao'];
                 }else{
                     ?>
                     <script type="text/javascript">
-                        alert('Problema ao cadastrar Doação Final');
+                        alert('Problema ao cadastrar Usuário');
                         history.go(-1);
                     </script>
                     <?php
@@ -52,7 +45,7 @@ $acao = $_REQUEST['acao'];
                         alert('Prencha os campos adequadamente.');
                         history.go(-1);
                     </script>
-                <?php
+                <?php 
             }
             break; 
             

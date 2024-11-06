@@ -36,7 +36,8 @@
 					<li>
 						<a href="#">Cadastrar</a>
 						<ul>
-							<li><a href="./doacao.php">Doação ao Projeto</a></li>
+                                                        <li><a href="./pessoa.php">Pessoa</a></li>
+							<li><a href="./doacao.php">Doação ao Projeto</a></li>                                                       
 							<li><a href="./cadDoacaofinal.php">Doação Final</a></li>						
 							<li><a href="./cadUsuario.php">Novo Usuário</a></li>						
 						</ul>
@@ -44,7 +45,8 @@
 					<li>
 						<a href="#">Consultar ou Editar</a>
 						<ul>
-							<li><a href="./conDoacao.php">Doações ao Projeto</a></li>
+							<li><a href="./conPessoa.php">Pessoas Cadastradas</a></li>
+                                                        <li><a href="./conDoacao.php">Doações ao Projeto</a></li>
 							<li><a href="./conDoacaofinal.php">Doações Finais</a></li>						
 							<li><a href="./conUsuario.php">Usuários</a></li>						
 						</ul>

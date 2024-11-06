@@ -66,50 +66,53 @@
 		<div id="divPagina">
 			
 			<div id="divContorno">
-				<h1 id="Tpagina">Cadastro de Doações</h1>
+				<h1 id="Tpagina">Cadastro de Pessoa</h1>
 			</div>
 		
 		</div>
 		
 		<div id="divForm">
-			<form name="frmDoacao" action="../../controller/DoacaoBO.php" method="post">
+                    <form name="frmDoacao" action="../../controller/PessoaBO.php" method="post">
 				
 				<div id="divDados1">	
-					<h1 class="TCategorias">Dados da Doação</h1>	
+                                    <h1 class="TCategorias">Dados da Pessoa Física</h1>	
 					
-					<h3 class="TformAdm">*Título:</h3>
-						<p class="center">
-							<input class="boxTxtAdm" type="text" name="txtTitulo" value="" required />
+					<h3 class="TformAdm">CPF:</h3>
+						<p class="center">	
+                                                    <input class="boxTxtAdm" type="number" name="txtCpf" value="" required/>
 						</p>
-					<h3 class="TformAdm">*Descrição:</h3>
+					<h3 class="TformAdm">RG:</h3>
 						<p class="center">
-							<textarea id="boxTxtDescricao" cols="30" rows="10" name="txtDescricao" value="" required></textarea>			
-						</p>
-					<h3 class="TformAdmCenter">Destino:</h3>
+							<input  class="boxTxtAdm" type="number" name="txtRg" value="" />
+						</p>					
+                                    
+				</div>
+																
+				<div id="DivDados2">	
+					<h1 class="TCategorias">Endereço</h1>
+					
+					<h3 class="TformAdm">Bairro:</h3>
 						<p class="center">
-								<select id="boxTxtDestino" name="destino" required>
-								<option name="" value=""></option>
-								<option name="optTriagem" value="triagem">Triagem</option>
-								<option name="optDescarte" value="descarte">Descarte</option>
-                                                                //o que entra no banco é o valor do value
-								
-						</select>
-							
+							<input class="boxTxtAdm" type="text" name="txtBairro" value="" />
 						</p>
-					<h3 class="TformAdmCenter">*Data de entrada:</h3>
+					<h3 class="TformAdm">Rua:</h3>
 						<p class="center">
-							<input id="boxData" type="date" name="txtData" value="" required />
+							<input class="boxTxtAdm" type="text" name="txtRua" value="" />
 						</p>
-					<h3 class="TformAdmCenter">Dar baixa</h3>
-						<p class="center">
-							<input id="checkbox" type="checkbox" name="boxBaixa" value="" />
+					<h3 class="TformAdm">Número:</h3>
+						<p class="center">	
+							<input class="boxTxtAdm" type="text" name="txtNumero" value="" />
 						</p>
-				</div>							
+					<h3 class="TformAdm">Complemento:</h3>
+						<p class="center">	
+							<input class="boxTxtAdm" type="text" name="txtComplemento" value="" />
+						</p>
+				</div>
 				
 				<div id="divBotoes">
 					<p class="center">
-                                                <input type="hidden" name="acao" value="inserirDoacao"/>
-						<input class="btnAdms" type="submit" name="btnSalvar" value="Salvar" />
+                                                <input type="hidden" name="acao" value="inserirPF"/>
+						<input class="btnAdms" type="submit" name="btnAvancar" value="Avançar" />
 						<input class="btnAdms" type="reset" name="btnCancelar" value="Cancelar" />
 					</p>
 				</div>

@@ -36,7 +36,8 @@
 					<li>
 						<a href="#">Cadastrar</a>
 						<ul>
-							<li><a href="./doacao.php">Doação ao Projeto</a></li>
+                                                        <li><a href="./pessoa.php">Pessoa</a></li>
+							<li><a href="./doacao.php">Doação ao Projeto</a></li>                                                       
 							<li><a href="./cadDoacaofinal.php">Doação Final</a></li>						
 							<li><a href="./cadUsuario.php">Novo Usuário</a></li>						
 						</ul>
@@ -44,7 +45,8 @@
 					<li>
 						<a href="#">Consultar ou Editar</a>
 						<ul>
-							<li><a href="./conDoacao.php">Doações ao Projeto</a></li>
+							<li><a href="./conPessoa.php">Pessoas Cadastradas</a></li>
+                                                        <li><a href="./conDoacao.php">Doações ao Projeto</a></li>
 							<li><a href="./conDoacaofinal.php">Doações Finais</a></li>						
 							<li><a href="./conUsuario.php">Usuários</a></li>						
 						</ul>
@@ -72,42 +74,59 @@
 		</div>
 		
 		<div id="divForm">
-                    <form name="frmDoacao" action="../../controller/DoacaoBO.php" method="post">
+			<form name="frmDoacao" action="../../controller/DoacaoBO.php" method="post">
 				
 				<div id="divDados1">	
-					<h1 class="TCategorias">Dados do(a) Doador(a) </h1>	
+					<h1 class="TCategorias">Dados da Doação</h1>	
 					
-					<h3 class="TformAdm">*Nome Completo:</h3>
+					<h3 class="TformAdm">*Título:</h3>
 						<p class="center">
-							<input class="boxTxtAdm" type="text" name="txtNome" value="" required/>
+							<input class="boxTxtAdm" type="text" name="txtTitulo" value="" required />
 						</p>
-					
-					<h3 class="TformAdm">Telefone:</h3>
-						<p class="center">	
-							<input class="boxTxtAdm" type="tel" name="txtTelefone" value="" />
-						</p>
-					<h3 class="TformAdm">E-mail:</h3>
+					<h3 class="TformAdm">Descrição:</h3>
 						<p class="center">
-							<input class="boxTxtAdm" type="email" name="txtEmail" value="" />
+							<textarea id="boxTxtDescricao" cols="30" rows="10" name="txtDescricao" value="" ></textarea>			
 						</p>
-                                        
-                                        <h3 class="TformAdmCenter">*Categoria:</h3>
-                                        <p class="center">
-                                                        <select id="boxTxtDestino" name="CatPessoa" required>
-                                                        <option name="" value=""></option>
-                                                        <option name="optPF" value="PF">Pessoa Física</option>
-                                                        <option name="optPJ" value="PJ">Pessoa Jurídica</option>
-                                                        //o que entra no banco é o valor do value
-
-                                        </select>
-
-                                        </p>        
-				</div>																
+					<h3 class="TformAdmCenter">Destino:</h3>
+						<p class="center">
+								<select id="boxTxtDestino" name="destino" required>
+								<option name="" value=""></option>
+								<option name="optTriagem" value="triagem">Triagem</option>
+								<option name="optDescarte" value="descarte">Descarte</option>
+                                                                //o que entra no banco é o valor do value
+								
+						</select>
+							
+						</p>
+					<h3 class="TformAdmCenter">*Data de entrada:</h3>
+						<p class="center">
+							<input id="boxData" type="date" name="txtData" value="" required />
+						</p>
+					<h3 class="TformAdmCenter">Doador(a):</h3>
+						<p class="center">
+								<select id="boxTxtDestino" name="doador" required>
+                                                                 <?php
+                                                                    include_once '../../model/database/PessoaDAO.php';
+                                                                    $dao = new PessoaDAO();
+                                                                    $lista = $dao->list();
+                                                                    foreach ($lista as $value) {
+                                                                ?>    
+								<option name="" value=""></option>
+								<option name="optTriagem" value="<?php echo $value->idPessoa;?>"><?php echo $value->nome;?></option>
+							
+                                                                //o que entra no banco é o valor do value
+								 <?php
+                                                                    }
+                                                                ?>
+						</select>
+							
+						</p>
+				</div>														
 				
 				<div id="divBotoes">
 					<p class="center">
-                                                <input type="hidden" name="acao" value="inserirPessoa"/>
-						<input class="btnAdms" type="submit" name="btnAvancar" value="Avançar" />
+                                                <input type="hidden" name="acao" value="inserirDoacao"/>
+						<input class="btnAdms" type="submit" name="btnSalvar" value="Salvar" />
 						<input class="btnAdms" type="reset" name="btnCancelar" value="Cancelar" />
 					</p>
 				</div>

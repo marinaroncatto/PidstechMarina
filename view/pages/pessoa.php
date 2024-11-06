@@ -36,7 +36,8 @@
 					<li>
 						<a href="#">Cadastrar</a>
 						<ul>
-							<li><a href="./doacao.php">Doação ao Projeto</a></li>
+                                                        <li><a href="./pessoa.php">Pessoa</a></li>
+							<li><a href="./doacao.php">Doação ao Projeto</a></li>                                                       
 							<li><a href="./cadDoacaofinal.php">Doação Final</a></li>						
 							<li><a href="./cadUsuario.php">Novo Usuário</a></li>						
 						</ul>
@@ -44,7 +45,8 @@
 					<li>
 						<a href="#">Consultar ou Editar</a>
 						<ul>
-							<li><a href="./conDoacao.php">Doações ao Projeto</a></li>
+							<li><a href="./conPessoa.php">Pessoas Cadastradas</a></li>
+                                                        <li><a href="./conDoacao.php">Doações ao Projeto</a></li>
 							<li><a href="./conDoacaofinal.php">Doações Finais</a></li>						
 							<li><a href="./conUsuario.php">Usuários</a></li>						
 						</ul>
@@ -66,51 +68,47 @@
 		<div id="divPagina">
 			
 			<div id="divContorno">
-				<h1 id="Tpagina">Cadastro de Doações</h1>
+				<h1 id="Tpagina">Cadastro de Pessoa</h1>
 			</div>
 		
 		</div>
 		
 		<div id="divForm">
-			<form name="frmDoacao" action="../../controller/DoacaoBO.php" method="post">
-								
-				<div id="divDados1">	
-					<h1 class="TCategorias">Dados da Pessoa Jurídica</h1>
-										
-					<h3 class="TformAdm">CNPJ:</h3>
-						<p class="center">	
-							<input  class="boxTxtAdm" type="number" name="txtCnpj" value="" />
-						</p>
-					<h3 class="TformAdm">Responsável PJ:</h3>
-						<p class="center">	
-							<input class="boxTxtAdm" type="text" name="ResponsavelPj" value="" />
-						</p>					
-				</div>
+                    <form name="frmDoacao" action="../../controller/PessoaBO.php" method="post">
 				
-				<div id="DivDados2">	
-					<h1 class="TCategorias">Endereço</h1>
+				<div id="divDados1">	
+					<h1 class="TCategorias">Dados do(a) Doador(a) </h1>	
 					
-					<h3 class="TformAdm">Bairro:</h3>
+					<h3 class="TformAdm">*Nome Completo:</h3>
 						<p class="center">
-							<input class="boxTxtAdm" type="text" name="txtBairro" value="" />
+							<input class="boxTxtAdm" type="text" name="txtNome" value="" required/>
 						</p>
-					<h3 class="TformAdm">Rua:</h3>
+					
+					<h3 class="TformAdm">Telefone:</h3>
+						<p class="center">	
+							<input class="boxTxtAdm" type="tel" name="txtTelefone" value="" />
+						</p>
+					<h3 class="TformAdm">E-mail:</h3>
 						<p class="center">
-							<input class="boxTxtAdm" type="text" name="txtRua" value="" />
+							<input class="boxTxtAdm" type="email" name="txtEmail" value="" />
 						</p>
-					<h3 class="TformAdm">Número:</h3>
-						<p class="center">	
-							<input class="boxTxtAdm" type="text" name="txtNumero" value="" />
-						</p>
-					<h3 class="TformAdm">Complemento:</h3>
-						<p class="center">	
-							<input class="boxTxtAdm" type="text" name="txtComplemento" value="" />
-						</p>
-				</div>
+                                        
+                                        <h3 class="TformAdmCenter">*Categoria:</h3>
+                                        <p class="center">
+                                                        <select id="boxTxtDestino" name="CatPessoa" required>
+                                                        <option name="" value=""></option>
+                                                        <option name="optPF" value="PF">Pessoa Física</option>
+                                                        <option name="optPJ" value="PJ">Pessoa Jurídica</option>
+                                                        //o que entra no banco é o valor do value
+
+                                        </select>
+
+                                        </p>        
+				</div>																
 				
 				<div id="divBotoes">
 					<p class="center">
-                                                <input type="hidden" name="acao" value="inserirPJ"/>
+                                                <input type="hidden" name="acao" value="inserirPessoa"/>
 						<input class="btnAdms" type="submit" name="btnAvancar" value="Avançar" />
 						<input class="btnAdms" type="reset" name="btnCancelar" value="Cancelar" />
 					</p>
@@ -131,3 +129,4 @@
 </main>
 </body>
 </html>
+

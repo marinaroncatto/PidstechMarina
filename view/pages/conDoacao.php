@@ -37,7 +37,8 @@
 					<li>
 						<a href="#">Cadastrar</a>
 						<ul>
-							<li><a href="./doacao.php">Doação ao Projeto</a></li>
+                                                        <li><a href="./pessoa.php">Pessoa</a></li>
+							<li><a href="./doacao.php">Doação ao Projeto</a></li>                                                       
 							<li><a href="./cadDoacaofinal.php">Doação Final</a></li>						
 							<li><a href="./cadUsuario.php">Novo Usuário</a></li>						
 						</ul>
@@ -45,7 +46,8 @@
 					<li>
 						<a href="#">Consultar ou Editar</a>
 						<ul>
-							<li><a href="./conDoacao.php">Doações ao Projeto</a></li>
+							<li><a href="./conPessoa.php">Pessoas Cadastradas</a></li>
+                                                        <li><a href="./conDoacao.php">Doações ao Projeto</a></li>
 							<li><a href="./conDoacaofinal.php">Doações Finais</a></li>						
 							<li><a href="./conUsuario.php">Usuários</a></li>						
 						</ul>
@@ -110,14 +112,14 @@
 							<th>Título</th>
 							<th>Data</th>
 							<th>Doador(a)</th>
-							<th>Disponível</th>
+							<th>Destino</th>
 						  </tr>
 						  <tr>
 							<td><?php echo $value->idDoacao;?></td>
 							<td><?php echo $value->titulo;?></td>
 							<td><?php echo $value->data_entrada;?></td>
 							<td><?php echo $value->nome;?></td>
-							<td><?php echo $value->baixa;?></td>
+							<td><?php echo $value->destino;?></td>
 						  </tr>
 						  <?php
                                                     }

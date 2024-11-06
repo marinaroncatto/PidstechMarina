@@ -66,13 +66,13 @@
 		<div id="divPagina">
 			
 			<div id="divContorno">
-				<h1 id="Tpagina">Cad. de Doação Final</h1>
+				<h1 id="Tpagina">Cadastro de Pessoa</h1>
 			</div>
 		
 		</div>
 		
 		<div id="divForm">
-                    <form name="frmDoacao" action="../../controller/DoacaoFinalBO.php.php" method="post">
+                    <form name="frmDoacao" action="../../controller/PessoaBO.php" method="post">
 								
 				<div id="divDados1">	
 					<h1 class="TCategorias">Dados da Pessoa Jurídica</h1>
@@ -131,3 +131,4 @@
 </main>
 </body>
 </html>
+

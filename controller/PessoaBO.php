@@ -1,5 +1,5 @@
 <?php
-include_once '../model/Doacaofinal.php';
+include_once '../model/Doacao.php';
 include_once '../model/Pessoa.php';
 include_once '../model/Pessoafisica.php';
 include_once '../model/Pessoajuridica.php';
@@ -8,7 +8,7 @@ include_once '../model/DoacaoUpdate.php';
 include_once '../model/database/PessoafisicaDAO.php';
 include_once '../model/database/PessoajuridicaDAO.php';
 include_once '../model/database/PessoaDAO.php';
-include_once '../model/database/DoacaofinalDAO.php';
+include_once '../model/database/DoacaoDAO.php';
 include_once '../model/database/EnderecoDAO.php';
 include_once '../model/database/DB.php';
 
@@ -16,32 +16,30 @@ if (isset($_REQUEST['acao'])){ //verifica se o hidden chegou
 
 $acao = $_REQUEST['acao'];
     
-    switch ($acao) {       
-        
-        case 'inserirDoacao':            
-               if (isset($_POST['txtTitulo']) && !empty($_POST['txtTitulo'])
-                && isset($_POST['beneficiario']) && !empty($_POST['beneficiario'])
-                && isset($_POST['situacao']) && !empty($_POST['situacao'])){
-                $dao = new DoacaofinalDAO();
-                $objeto = new Doacaofinal();
-                $objeto->titulo = $_POST['txtTitulo'];
-                $objeto->descricao = isset($_POST['txtDescricao']) ? $_POST['txtDescricao'] : null; 
-                $objeto->data_saida = isset($_POST['txtData']) ? $_POST['txtData'] : null;
-                $objeto->situacao = $_POST['situacao'];              
-                $objeto->idPessoa = $_POST['beneficiario'];                           
+    switch ($acao) {
+        case 'inserirPessoa':            
+            if (isset($_POST['txtNome']) && isset($_POST['txtTelefone']) 
+                && isset($_POST['txtEmail']) && isset($_POST['CatPessoa']) && !empty($_POST['CatPessoa']) ){
+                $dao = new PessoaDAO();
+                $objeto = new Pessoa();
+                $objeto->nome = $_POST['txtNome'];
+                $objeto->email = $_POST['txtEmail'];
+                $objeto->telefone = $_POST['txtTelefone'];                            
                 
                 if($dao->insert($objeto)){
-                     ?>
-                        <script type="text/javascript">
-                            alert('Doação Final Cadastrada com Sucesso!');
-                            location.href = '../view/pages/cadDoacaofinal.php';
-                        </script>
-                    <?php
+                   session_start();//Lançar o idPessoa na sessão                   
+                   $_SESSION['idPessoa'] = DB::getInstancia()->lastInsertId('pessoa');
+                   
+                        if($_POST['CatPessoa'] == 'PF'){
+                             header('location: ../view/pages/pessoa2PF.php');
+                        }else{
+                            header('location: ../view/pages/pessoa2PJ.php');
+                        }
                     
                 }else{
                     ?>
                     <script type="text/javascript">
-                        alert('Problema ao cadastrar Doação Final');
+                        alert('Problema ao cadastrar pessoa');
                         history.go(-1);
                     </script>
                     <?php
@@ -54,22 +52,115 @@ $acao = $_REQUEST['acao'];
                     </script>
                 <?php
             }
-            break; 
+            break;
+            
+        case 'inserirPF':            
+            if (isset($_POST['txtCpf']) && !empty($_POST['txtCpf']) && isset($_POST['txtRg']) 
+                && isset($_POST['txtBairro']) && isset($_POST['txtRua']) && isset($_POST['txtNumero']) && isset($_POST['txtComplemento'])){
+                $dao = new PessoafisicaDAO();
+                $objeto = new Pessoafisica();
+                $objeto->cpf = $_POST['txtCpf'];
+                $objeto->rg = $_POST['txtRg'];
+                session_start();
+                $objeto->idPessoa = $_SESSION['idPessoa'];
+                
+                $daoE = new EnderecoDAO();
+                $objE = new Endereco();
+                $objE->bairro = $_POST['txtBairro'];
+                $objE->rua = $_POST['txtRua']; 
+                $objE->numero = $_POST['txtNumero'];
+                $objE->complemento = $_POST['txtComplemento'];
+                session_start();
+                $objE->idPessoa = $_SESSION['idPessoa'];
+                
+                if($dao->insert($objeto) && $daoE->insert($objE)){
+                    
+                    ?>
+                        <script type="text/javascript">
+                            alert('Pessoa Física Cadastrada com Sucesso!');
+                            location.href = '../view/pages/pessoa.php';
+                        </script>
+                    <?php
+                    
+                }else{
+                    ?>
+                    <script type="text/javascript">
+                        alert('Problema ao cadastrar pessoa física');
+                        history.go(-1);
+                    </script>
+                    <?php
+                }
+            }else{
+                ?>
+                    <script type="text/javascript">
+                        alert('Prencha os campos adequadamente.');
+                        history.go(-1);
+                    </script>
+                <?php
+            }
+            break;
+        
+        case 'inserirPJ':            
+             if (isset($_POST['txtCnpj']) && !empty($_POST['txtCnpj']) && isset($_POST['ResponsavelPj']) 
+                && isset($_POST['txtBairro']) && isset($_POST['txtRua']) && isset($_POST['txtNumero']) && isset($_POST['txtComplemento'])){
+                $dao = new PessoajuridicaDAO();
+                $objeto = new Pessoajuridica();
+                $objeto->cnpj = $_POST['txtCnpj'];
+                $objeto->responsavel_pj = $_POST['ResponsavelPj'];
+                session_start();
+                $objeto->idPessoa = $_SESSION['idPessoa'];
+                
+                $daoE = new EnderecoDAO();
+                $objE = new Endereco();
+                $objE->bairro = $_POST['txtBairro'];
+                $objE->rua = $_POST['txtRua']; 
+                $objE->numero = $_POST['txtNumero'];
+                $objE->complemento = $_POST['txtComplemento'];
+                session_start();
+                $objE->idPessoa = $_SESSION['idPessoa'];
+                
+                if($dao->insert($objeto) && $daoE->insert($objE)){
+                    
+                       ?>
+                        <script type="text/javascript">
+                            alert('Pessoa Jurídica Cadastrada com Sucesso!');
+                            location.href = '../view/pages/pessoa.php';
+                        </script>
+                    <?php
+                    
+                }else{
+                    ?>
+                    <script type="text/javascript">
+                        alert('Problema ao cadastrar pessoa jurídica');
+                        history.go(-1);
+                    </script>
+                    <?php
+                }
+            }else{
+                ?>
+                    <script type="text/javascript">
+                        alert('Prencha os campos adequadamente.');
+                        history.go(-1);
+                    </script>
+                <?php
+            }
+            break;                
             
         case 'alterarPF':
-            if (isset($_POST['txtId']) && !empty($_POST['txtId']) && isset($_POST['txtTitulo']) && !empty($_POST['txtTitulo']) && isset($_POST['txtDescricao']) && !empty($_POST['txtDescricao']) 
+            if (isset($_POST['txtId']) && !empty($_POST['txtId']) && isset($_POST['txtTitulo']) && !empty($_POST['txtTitulo']) 
                 && isset($_POST['destino']) && !empty($_POST['destino']) && isset($_POST['txtData']) && !empty($_POST['txtData'])                              
                 && isset($_POST['txtCpf']) && !empty($_POST['txtCpf']) && isset($_POST['txtRg']) && isset($_POST['txtBairro']) 
                 && isset($_POST['txtRua']) && isset($_POST['txtNumero']) && isset($_POST['txtComplemento'])){
                 $dao = new DoacaoDAO();                                               
                 $doacao = new Doacao();
                 $doacao->titulo = $_POST['txtTitulo']; 
-                $doacao->descricao = $_POST['txtDescricao'];   
+                $doacao->descricao = isset($_POST['txtDescricao']) ? $_POST['txtDescricao'] : null; 
                 $doacao->destino = $_POST['destino'];
                 $doacao->data_entrada = $_POST['txtData'];
                 $doacao->baixa = isset($_POST['boxBaixa']) ? $_POST['boxBaixa'] : null;
                 $doacao->idDoacao = $_POST['txtId'];
                 
+                var_dump($doacao);
                 $objetoUp->doacao= $doacao;
                 
                 $pessoa = new Pessoa();
@@ -99,7 +190,8 @@ $acao = $_REQUEST['acao'];
               $objetoUp = new DoacaoUpdate();
               $objetoUp->__constructPF( $objetoUp->doacao,  $objetoUp->pessoa,  $objetoUp->pessoafisica,  $objetoUp->endereco);
               
-                    if($dao->updatePF($objetoUp)){
+              
+                /*    if($dao->updatePF($objetoUp)){
                     ?>
                         <script type="text/javascript">
                             alert('Dados alterados com sucesso.');
@@ -120,8 +212,8 @@ $acao = $_REQUEST['acao'];
                         alert('Prencha o campo adequadamente.');
                         history.go(-1);
                     </script>
-                <?php
-                }
+                <?php */
+                } 
             break;
             
          case 'alterarPJ':

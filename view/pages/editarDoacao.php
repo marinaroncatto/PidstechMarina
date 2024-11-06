@@ -34,9 +34,10 @@
 						<a href="./homeAdm.php">Início</a>
 					</li>
 					<li>
-						<a href="#">Cadastrar</a>
+											<a href="#">Cadastrar</a>
 						<ul>
-							<li><a href="./doacao.php">Doação ao Projeto</a></li>
+                                                        <li><a href="./pessoa.php">Pessoa</a></li>
+							<li><a href="./doacao.php">Doação ao Projeto</a></li>                                                       
 							<li><a href="./cadDoacaofinal.php">Doação Final</a></li>						
 							<li><a href="./cadUsuario.php">Novo Usuário</a></li>						
 						</ul>
@@ -44,7 +45,8 @@
 					<li>
 						<a href="#">Consultar ou Editar</a>
 						<ul>
-							<li><a href="./conDoacao.php">Doações ao Projeto</a></li>
+							<li><a href="./conPessoa.php">Pessoas Cadastradas</a></li>
+                                                        <li><a href="./conDoacao.php">Doações ao Projeto</a></li>
 							<li><a href="./conDoacaofinal.php">Doações Finais</a></li>						
 							<li><a href="./conUsuario.php">Usuários</a></li>						
 						</ul>
@@ -77,8 +79,9 @@
                                 include_once '../../model/database/DoacaoDAO.php';
                                 $dao = new DoacaoDAO();
                                 $id = $_GET['idDoacao'];
-                                $lista = $dao->listAll($id);
+                                $lista = $dao->list($id);
                                 foreach ($lista as $value) {
+                                    var_dump($value);
                               ?>
 				<div id="divDados1">	
 					<h1 class="TCategorias">Dados da Doação</h1>	
@@ -93,14 +96,14 @@
 						</p>
 					<h3 class="TformAdm">Descrição:</h3>
 						<p class="center">
-							<textarea id="boxTxtDescricao" cols="30" rows="10" name="txtDescricao" value="<?php echo $value->descricao ;?>" ></textarea>			
+							<textarea id="boxTxtDescricao" cols="30" rows="10" name="txtDescricao" value="<?php echo $value->descricao ;?>" ><?php echo $value->descricao ;?></textarea>			
 						</p>
 					<h3 class="TformAdmCenter">Destino:</h3>
 						<p class="center">
 								<select id="boxTxtDestino" name="destino" required>
 								<option name="" value="<?php echo $value->destino ;?>"><?php echo $value->destino ;?></option>
-								<option name="optTriagem" value="triagem">Triagem</option>
-								<option name="optDescarte" value="descarte">Descarte</option>
+								<option name="optTriagem" value="Triagem">Triagem</option>
+								<option name="optDescarte" value="Descarte">Descarte</option>
                                                                 //o que entra no banco é o valor do value
 								
 						</select>
@@ -110,99 +113,15 @@
 						<p class="center">
 							<input id="boxData" type="date" name="txtData" value="<?php echo $value->data_entrada;?>" required />
 						</p>
-					<h3 class="TformAdmCenter">Dar baixa</h3>
-						<p class="center">
-							<input id="checkbox" type="checkbox" name="boxBaixa" value="<?php echo $value->baixa;?>" />
-						</p>
-				</div>
-				
-                                        <?php
-                                             if(!empty($value->cpf)){
-                                            ?>
-                        
-                                                <div id="DivDados2">	
-                                                        <h1 class="TCategorias">Dados do(a) Doador(a) PF</h1>	
-                                                        <input type="hidden" name="acao" value="alterarPF"/>
-                                                        <h3 class="TformAdm">Nome Completo:</h3>
-                                                                <p class="center">
-                                                                        <input class="boxTxtAdm" type="text" name="txtNome" value="<?php echo $value->nome;?>" />
-                                                                </p>
-                                                        <h3 class="TformAdm">CPF:</h3>
-                                                                <p class="center">	
-                                                                        <input class="boxTxtAdm" type="number" name="txtCpf" value="<?php echo $value->cpf;?>" />
-                                                                </p>
-                                                        <h3 class="TformAdm">RG:</h3>
-                                                                <p class="center">
-                                                                        <input  class="boxTxtAdm" type="number" name="txtRg" value="<?php echo $value->rg;?>" />
-                                                                </p>
-                                                        <h3 class="TformAdm">Telefone:</h3>
-                                                                <p class="center">	
-                                                                        <input class="boxTxtAdm" type="tel" name="txtTelefone" value="<?php echo $value->telefone;?>" />
-                                                                </p>
-                                                        <h3 class="TformAdm">E-mail:</h3>
-                                                                <p class="center">
-                                                                        <input class="boxTxtAdm" type="email" name="txtEmail" value="<?php echo $value->email;?>" />
-                                                                </p>
-                                                </div>
-                                                    
-                                                <?php
-                                             }else{ //mostrar PJ
-                                                    ?>
-                        
-                                                <div id="divDados2">	
-                                                        <h1 class="TCategorias">Dados do(a) Doador(a) PJ</h1>
-                                                        <input type="hidden" name="acao" value="alterarPJ"/>
-                                                        <h3 class="TformAdm">Nome Completo:</h3>
-                                                                <p class="center">
-                                                                        <input class="boxTxtAdm" type="text" name="txtNome" value="<?php echo $value->nome;?>" />
-                                                                </p>
-                                                        <h3 class="TformAdm">CNPJ:</h3>
-                                                                <p class="center">	
-                                                                        <input  class="boxTxtAdm" type="number" name="txtCnpj" value="<?php echo $value->cnpj;?>" />
-                                                                </p>
-                                                        <h3 class="TformAdm">Responsável PJ:</h3>
-                                                                <p class="center">	
-                                                                        <input class="boxTxtAdm" type="text" name="ResponsavelPj" value="<?php echo $value->responsavel_pj;?>" />
-                                                                </p>
-                                                        <h3 class="TformAdm">Telefone:</h3>
-                                                                <p class="center">	
-                                                                        <input class="boxTxtAdm" type="tel" name="txtTelefone" value="<?php echo $value->telefone;?>" />
-                                                                </p>
-                                                        <h3 class="TformAdm">E-mail:</h3>
-                                                                <p class="center">
-                                                                        <input class="boxTxtAdm" type="email" name="txtEmail" value="<?php echo $value->email;?>" />
-                                                                </p>	
-                                                </div>
-				
-                                                <?PHP
-                                             }
-                                                    ?>
-                        
-                                    <div id="DivDados1">	
-					<h1 class="TCategorias">Endereço</h1>
 					
-					<h3 class="TformAdm">Bairro:</h3>
-						<p class="center">
-							<input class="boxTxtAdm" type="text" name="txtBairro" value="<?php echo $value->bairro;?>" />
-						</p>
-					<h3 class="TformAdm">Rua:</h3>
-						<p class="center">
-							<input class="boxTxtAdm" type="text" name="txtRua" value="<?php echo $value->rua;?>" />
-						</p>
-					<h3 class="TformAdm">Número:</h3>
-						<p class="center">	
-							<input class="boxTxtAdm" type="text" name="txtNumero" value="<?php echo $value->numero;?>" />
-						</p>
-					<h3 class="TformAdm">Complemento:</h3>
-						<p class="center">	
-							<input class="boxTxtAdm" type="text" name="txtComplemento" value="<?php echo $value->complemento;?>" />
-						</p>
 				</div>
-				
+				                                        				
 				<div id="divBotoes">
 					<p class="center">
                                                 
+                                            <input type="hidden" name="idPessoa" value="<?php echo $value->idPessoa;?>"/>
                                                 <input type="hidden" name="idDoacao" value="<?php echo $value->idDoacao;?>"/>
+                                                <input type="hidden" name="acao" value="alterar"/>
 						<input class="btnAdms" type="submit" name="btnAtualizar" value="Atualizar" />
 						<input class="btnAdms" type="reset" name="btnCancelar" value="Cancelar" />
 					</p>

@@ -13,7 +13,7 @@ class UsuarioDAO {
     
     public function insert(Usuario $obj) {
         $query = "INSERT INTO usuario (idUsuario, login, senha, perfil_acesso, idPessoa) "
-                . "VALUES (null,:login, :senha, :perfil_acesso, :idPessoa)";
+                . "VALUES (null,:login, password(:senha), :perfil_acesso, :idPessoa)";
         $conn = DB::getInstancia()->prepare($query);
         $conn->execute(array( ':login'=>$obj->login,
                               ':senha'=>$obj->senha,

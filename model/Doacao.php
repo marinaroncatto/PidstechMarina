@@ -7,7 +7,6 @@ class Doacao {
     private $descricao;
     private $data_entrada;
     private $destino;
-    private $baixa;
     private $idPessoa;
     
     public function __construct() {
