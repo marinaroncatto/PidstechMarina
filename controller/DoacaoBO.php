@@ -96,9 +96,9 @@ $acao = $_REQUEST['acao'];
         break;
                               
         case 'deletar':
-            if (isset($_GET['txtId'])){
+            if (isset($_GET['idDoacao'])){
                 $dao = new DoacaoDAO();
-                $id = $_GET['txtId'];
+                $id = $_GET['idDoacao'];
                 if($dao->delete($id)){
                     ?>
                     <script type="text/javascript">
