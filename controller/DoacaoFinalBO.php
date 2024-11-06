@@ -139,12 +139,12 @@ $acao = $_REQUEST['acao'];
         
         case 'inserirDoacao':            
                if (isset($_POST['txtTitulo']) && !empty($_POST['txtTitulo'])  
-                && isset($_POST['situacao']) && !empty($_POST['situacao']) && isset($_POST['txtData']) && !empty($_POST['txtData'])){
+                && isset($_POST['situacao']) && !empty($_POST['situacao'])){
                 $dao = new DoacaofinalDAO();
                 $objeto = new Doacaofinal();
                 $objeto->titulo = $_POST['txtTitulo'];
                 $objeto->descricao = isset($_POST['txtDescricao']) ? $_POST['txtDescricao'] : null; 
-                $objeto->data_saida = $_POST['txtData'];
+                $objeto->data_saida = isset($_POST['txtData']) ? $_POST['txtData'] : null;
                 $objeto->situacao = $_POST['situacao'];
                 session_start();
                 $objeto->idPessoa = $_SESSION['idPessoa'];                             

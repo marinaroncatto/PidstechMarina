@@ -8,9 +8,9 @@ class DoacaoDAO {
         $where = ($id ? "where doa.idDoacao = $id ":'');
         $query = "SELECT
                     doa.idDoacao, doa.titulo, doa.descricao, doa.destino, doa.data_entrada, doa.baixa,
-                    pe.nome, pe.email, pe.telefone,
-                    pf.cpf, pf.rg, pj.cnpj, pj.responsavel_pj,
-                    en.bairro, en.rua, en.numero, en.complemento
+                    pe.idPessoa, pe.nome, pe.email, pe.telefone,
+                    pf.idPessoaFisica, pf.cpf, pf.rg, pj.idPessoaJuridica, pj.cnpj, pj.responsavel_pj,
+                    en.idEndereco, en.bairro, en.rua, en.numero, en.complemento
                  FROM
                     doacao doa
                 INNER JOIN pessoa pe on doa.idPessoa = pe.idPessoa

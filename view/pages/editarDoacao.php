@@ -91,14 +91,14 @@
 						<p class="center">
 							<input class="boxTxtAdm" type="text" name="txtTitulo" value="<?php echo $value->titulo;?>" required />
 						</p>
-					<h3 class="TformAdm">*Descrição:</h3>
+					<h3 class="TformAdm">Descrição:</h3>
 						<p class="center">
-							<textarea id="boxTxtDescricao" cols="30" rows="10" name="txtDescricao" value="<?php echo $value->descricao ;?>" required></textarea>			
+							<textarea id="boxTxtDescricao" cols="30" rows="10" name="txtDescricao" value="<?php echo $value->descricao ;?>" ></textarea>			
 						</p>
 					<h3 class="TformAdmCenter">Destino:</h3>
 						<p class="center">
 								<select id="boxTxtDestino" name="destino" required>
-								<option name="" value="<?php echo $value->destino ;?>"></option>
+								<option name="" value="<?php echo $value->destino ;?>"><?php echo $value->destino ;?></option>
 								<option name="optTriagem" value="triagem">Triagem</option>
 								<option name="optDescarte" value="descarte">Descarte</option>
                                                                 //o que entra no banco é o valor do value

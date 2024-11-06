@@ -177,19 +177,20 @@ $acao = $_REQUEST['acao'];
             break; 
             
         case 'alterarPF':
-            if (isset($_POST['txtId']) && !empty($_POST['txtId']) && isset($_POST['txtTitulo']) && !empty($_POST['txtTitulo']) && isset($_POST['txtDescricao']) && !empty($_POST['txtDescricao']) 
+            if (isset($_POST['txtId']) && !empty($_POST['txtId']) && isset($_POST['txtTitulo']) && !empty($_POST['txtTitulo']) 
                 && isset($_POST['destino']) && !empty($_POST['destino']) && isset($_POST['txtData']) && !empty($_POST['txtData'])                              
                 && isset($_POST['txtCpf']) && !empty($_POST['txtCpf']) && isset($_POST['txtRg']) && isset($_POST['txtBairro']) 
                 && isset($_POST['txtRua']) && isset($_POST['txtNumero']) && isset($_POST['txtComplemento'])){
                 $dao = new DoacaoDAO();                                               
                 $doacao = new Doacao();
                 $doacao->titulo = $_POST['txtTitulo']; 
-                $doacao->descricao = $_POST['txtDescricao'];   
+                $doacao->descricao = isset($_POST['txtDescricao']) ? $_POST['txtDescricao'] : null; 
                 $doacao->destino = $_POST['destino'];
                 $doacao->data_entrada = $_POST['txtData'];
                 $doacao->baixa = isset($_POST['boxBaixa']) ? $_POST['boxBaixa'] : null;
                 $doacao->idDoacao = $_POST['txtId'];
                 
+                var_dump($doacao);
                 $objetoUp->doacao= $doacao;
                 
                 $pessoa = new Pessoa();
@@ -219,7 +220,8 @@ $acao = $_REQUEST['acao'];
               $objetoUp = new DoacaoUpdate();
               $objetoUp->__constructPF( $objetoUp->doacao,  $objetoUp->pessoa,  $objetoUp->pessoafisica,  $objetoUp->endereco);
               
-                    if($dao->updatePF($objetoUp)){
+              
+                /*    if($dao->updatePF($objetoUp)){
                     ?>
                         <script type="text/javascript">
                             alert('Dados alterados com sucesso.');
@@ -240,8 +242,8 @@ $acao = $_REQUEST['acao'];
                         alert('Prencha o campo adequadamente.');
                         history.go(-1);
                     </script>
-                <?php
-                }
+                <?php */
+                } 
             break;
             
          case 'alterarPJ':
