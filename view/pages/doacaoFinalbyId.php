@@ -16,9 +16,9 @@
                     Login::verificaSessao();
                 ?>
                  <script type="text/javascript">
-                function deletar(idDoacao){
+                function deletar(idDoacao_final){
                     if(confirm('deseja excluir a Doação?')){
-                        document.location.href='../../controller/DoacaoBO.php?acao=deletar&idDoacao='+idDoacao;
+                        document.location.href='../../controller/DoacaoFinalBO.php?acao=deletar&idDoacao_final='+idDoacao_final;
                     }
                     }
                </script>
@@ -76,7 +76,7 @@
 		<div id="divPagina">
 			
 			<div id="divContorno">
-				<h1 id="Tpagina">Consulta de Doações</h1>
+				<h1 id="Tpagina">Doações Finais</h1>
 			</div>
 		
 		</div>
@@ -86,33 +86,35 @@
 				 <?php
                                  
                                      if (isset($_GET['txtId'])) {
-                                        include_once '../../model/database/DoacaoDAO.php';
-                                        $dao = new DoacaoDAO();
+                                        include_once '../../model/database/DoacaofinalDAO.php';
+                                        $dao = new DoacaofinalDAO();
                                         $id = $_GET['txtId'];
                                         $lista = $dao->listAll($id);
-                                        if (!empty($lista)) {
+                                      
+                                        
+                                       if (!empty($lista)) {
                                              foreach ($lista as $value) {
                                             ?>
 				<div class="divCon1">
-				<h3 class="TformAdmCenter">Dados da Doação</h3>
-                                <p class="right"> <button name="btnalterar" onclick="location.href='editarDoacao.php?idDoacao=<?php echo $value->idDoacao; ?>'" > Alterar</button></p>
-                                <p class="right"><button name="btnexcluir" onclick="javascript:deletar(<?php echo $value->idDoacao; ?>)" > Excluir</button></p>
+				<h3 class="TformAdmCenter">Dados da Doação ao Beneficiário</h3>
+                                <p class="right"> <button name="btnalterar" onclick="location.href='editarDoacaoFinal.php?idDoacao_final=<?php echo $value->idDoacao_final; ?>'" > Alterar</button></p>
+                                <p class="right"><button name="btnexcluir" onclick="javascript:deletar(<?php echo $value->idDoacao_final; ?>)" > Excluir</button></p>
 				<table class="tabela">
                                      
                                    
                                             <tr>
                                                 <th>Título</th>
                                                 <th>Descrição</th>
-                                                <th>Destino</th>
-                                                <th>Data</th>
+                                                <th>Situação</th>
+                                                <th>Data de Saída</th>
                                                 
                                             </tr>
                                            
                                                 <tr>
                                                     <td><?php echo $value->titulo; ?></td>
                                                     <td><?php echo $value->descricao; ?></td>
-                                                    <td><?php echo $value->destino; ?></td>
-                                                    <td><?php echo date("d/m/Y", strtotime($value->data_entrada));?></td>                                                    
+                                                    <td><?php echo $value->situacao; ?></td>
+                                                    <td><?php echo $value->data_saida; ?></td>                                                    
                                                 </tr>
                                                 
 				</table>
@@ -190,7 +192,7 @@
 						  </tr>
 						 <?php
                                             }
-                                        } else {
+                                        } else { 
                                             echo "<tr><td colspan='5'>Nenhuma doação encontrada.</td></tr>";
                                         }
                                     } else {
@@ -198,6 +200,8 @@
                                         . "location.href = './conDoacao.php';</script>";
                                     } ?>
 					</table>
+                                       
+                                       
 				</div>
 			</article> <!-- fim articleCrud -->
 		</section> <!--fim sectionTabelas -->

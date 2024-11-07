@@ -5,11 +5,27 @@ include_once 'DB.php';
 class DoacaofinalDAO {
     
     
+      public function list($id = null) {
+            $where = ($id ? "where df.idDoacao_final = $id ":'');
+        $query = "SELECT
+                    df.idDoacao_final, df.titulo, df.descricao, df.situacao, df.data_saida,
+                    pe.idPessoa
+                  
+                 FROM
+                    doacaofinal df
+                INNER JOIN pessoa pe on df.idPessoa = pe.idPessoa"                          
+                . " $where";
+        $conn = DB::getInstancia()->query($query);
+        $resultado = $conn->fetchAll();
+        return $resultado;
+    }
+    
+    
      public function listAll($id = null) {
         $where = ($id ? "where df.idDoacao_final = $id ":'');
         $query = "SELECT
                     df.idDoacao_final, df.titulo, df.descricao, df.situacao, df.data_saida,
-                    pe.nome, pe.email, pe.telefone,
+                    pe.idPessoa, pe.nome, pe.email, pe.telefone,
                     pf.cpf, pf.rg, pj.cnpj, pj.responsavel_pj,
                     en.bairro, en.rua, en.numero, en.complemento
                  FROM
@@ -50,16 +66,16 @@ class DoacaofinalDAO {
         return $conn->rowCount()>0;
     }
     
-    public function update(Doacao $obj) {
-        $query = "UPDATE doacaofinal set titulo = :ptitulo, descricao = :pdescricao, situacao = :situacao, data_saida = :data_saida, idPessoa = :pidPessoa "
+    public function update(Doacaofinal $obj) {
+        $query = "UPDATE doacaofinal set titulo = :ptitulo, descricao = :pdescricao, situacao = :psituacao, data_saida = :pdata_saida, idPessoa = :pidPessoa "
                 . "where idDoacao_final = :pidDoacao_final";
         $conn = DB::getInstancia()->prepare($query);
         $conn->execute(array(':ptitulo'=>$obj->titulo,
                               ':pdescricao'=>$obj->descricao,
-                              ':situacao'=>$obj->situacao,
-                              ':data_saida'=>$obj->data_saida,            
-                              ':idPessoa'=>$obj->idPessoa,
-                              ':idDoacao_final'=>$obj->idDoacao_final));
+                              ':psituacao'=>$obj->situacao,
+                              ':pdata_saida'=>$obj->data_saida,            
+                              ':pidPessoa'=>$obj->idPessoa,
+                              ':pidDoacao_final'=>$obj->idDoacao_final));
         return $conn->rowCount()>0;
     }
     

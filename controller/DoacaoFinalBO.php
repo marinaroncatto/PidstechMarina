@@ -56,136 +56,55 @@ $acao = $_REQUEST['acao'];
             }
             break; 
             
-        case 'alterarPF':
-            if (isset($_POST['txtId']) && !empty($_POST['txtId']) && isset($_POST['txtTitulo']) && !empty($_POST['txtTitulo']) && isset($_POST['txtDescricao']) && !empty($_POST['txtDescricao']) 
-                && isset($_POST['destino']) && !empty($_POST['destino']) && isset($_POST['txtData']) && !empty($_POST['txtData'])                              
-                && isset($_POST['txtCpf']) && !empty($_POST['txtCpf']) && isset($_POST['txtRg']) && isset($_POST['txtBairro']) 
-                && isset($_POST['txtRua']) && isset($_POST['txtNumero']) && isset($_POST['txtComplemento'])){
-                $dao = new DoacaoDAO();                                               
-                $doacao = new Doacao();
-                $doacao->titulo = $_POST['txtTitulo']; 
-                $doacao->descricao = $_POST['txtDescricao'];   
-                $doacao->destino = $_POST['destino'];
-                $doacao->data_entrada = $_POST['txtData'];
-                $doacao->baixa = isset($_POST['boxBaixa']) ? $_POST['boxBaixa'] : null;
-                $doacao->idDoacao = $_POST['txtId'];
-                
-                $objetoUp->doacao= $doacao;
-                
-                $pessoa = new Pessoa();
-                
-                $pessoa->nome = $_POST['txtNome'];
-                $pessoa->email = $_POST['txtEmail'];
-                $pessoa->telefone = $_POST['txtTelefone'];   
-                
-                $objetoUp->pessoa= $pessoa;
-                
-                $pessoafisica = new Pessoafisica();
-                
-                $pessoafisica->cpf = $_POST['txtCpf'];
-                $pessoafisica->rg = $_POST['txtRg']; 
-                
-               $objetoUp->pessoafisica= $pessoafisica;
-                
-                $endereco= new Endereco();
-                
-                $endereco->bairro = $_POST['txtBairro'];
-                $endereco->rua = $_POST['txtRua'];
-                $endereco->numero = $_POST['txtNumero'];
-                $endereco->complemento = $_POST['txtComplemento'];
+         case 'alterar':
+            if (isset($_POST['txtTitulo']) && !empty($_POST['txtTitulo']) && isset($_POST['txtId']) && !empty($_POST['txtId'])
+                && isset($_POST['idPessoa']) && !empty($_POST['idPessoa'])     
+                && isset($_POST['situacao']) && !empty($_POST['situacao'])){
+                $dao = new DoacaofinalDAO();
+                $objetoA = new Doacaofinal();
+                $objetoA->idDoacao_final = $_POST['txtId'];
+                $objetoA->titulo = $_POST['txtTitulo'];
+                $objetoA->descricao = isset($_POST['txtDescricao']) ? $_POST['txtDescricao'] : null; 
+                $objetoA->data_saida = isset($_POST['txtData']) ? $_POST['txtData'] : null;  
+                $objetoA->situacao = $_POST['situacao'];             
+                $objetoA->idPessoa = $_POST['idPessoa'];     
                                 
-               $objetoUp->endereco= $endereco;
-                
-              $objetoUp = new DoacaoUpdate();
-              $objetoUp->__constructPF( $objetoUp->doacao,  $objetoUp->pessoa,  $objetoUp->pessoafisica,  $objetoUp->endereco);
-              
-                    if($dao->updatePF($objetoUp)){
-                    ?>
-                        <script type="text/javascript">
-                            alert('Dados alterados com sucesso.');
-                            location.href = '../view/pages/conDoacao.php';
-                        </script>
-                    <?php
-                    }else{
-                    ?>
-                        <script type="text/javascript">
-                            alert('Problema ao alterar os dados');
-                            history.go(-1);
-                        </script>    
-                    <?php
-                    }
+               
+                if($dao->update($objetoA)){
+                ?>
+                    <script type="text/javascript">
+                        alert('Doação Final alterada com sucesso.');
+                         history.go(-2);
+                    </script>
+                <?php
                 }else{
                 ?>
                     <script type="text/javascript">
-                        alert('Prencha o campo adequadamente.');
+                        alert('Problema ao alterar Doação Final');
                         history.go(-1);
-                    </script>
+                    </script>    
                 <?php
                 }
-            break;
-            
-         case 'alterarPJ':
-                 if (isset($_POST['txtId']) && !empty($_POST['txtId']) && isset($_POST['txtTitulo']) && !empty($_POST['txtTitulo']) && isset($_POST['txtDescricao']) && !empty($_POST['txtDescricao']) 
-                && isset($_POST['destino']) && !empty($_POST['destino']) && isset($_POST['txtData']) && !empty($_POST['txtData'])                              
-                && isset($_POST['txtCnpj']) && !empty($_POST['txtCnpj']) && isset($_POST['ResponsavelPj']) && isset($_POST['txtBairro']) 
-                && isset($_POST['txtRua']) && isset($_POST['txtNumero']) && isset($_POST['txtComplemento'])){
-                $dao = new DoacaoDAO();
-                $objeto = new DoacaoUpdate();
-                $objeto->Doacao->titulo = $_POST['txtTitulo']; 
-                $objeto->Doacao->descricao = $_POST['txtDescricao'];   
-                $objeto->Doacao->destino = $_POST['destino'];
-                $objeto->Doacao->data_entrada = $_POST['txtData'];
-                $objeto->Doacao->baixa = $_POST['boxBaixa'];
-                
-                
-                $objeto->Pessoa->nome = $_POST['txtNome'];
-                $objeto->Pessoa->email = $_POST['txtEmail'];
-                $objeto->Pessoa->telefone = $_POST['txtTelefone'];   
-                $objeto->Pessoajuridica->cnpj = $_POST['txtCnpj'];
-                $objeto->Pessoajuridica->responsavel_pj = $_POST['ResponsavelPj'];   
-                
-                $objeto->Endereco->bairro = $_POST['txtBairro'];
-                $objeto->Endereco->rua = $_POST['txtRua'];
-                $objeto->Endereco->numero = $_POST['txtNumero'];
-                $objeto->Endereco->complemento = $_POST['txtComplemento'];
-                                
-                
-                $objeto->idDoacao = $_POST['txtId'];                                                                         
+            }else{
+            ?>
+                <script type="text/javascript">
+                    alert('Prencha o campo adequadamente.');
+                    history.go(-1);
+                </script>
+            <?php 
+            }
+        break;
                     
-                    if($dao->update($objeto)){
-                    ?>
-                        <script type="text/javascript">
-                            alert('Dados alterados com sucesso.');
-                            location.href = '../view/pages/conDoacao.php';
-                        </script>
-                    <?php
-                    }else{
-                    ?>
-                        <script type="text/javascript">
-                            alert('Problema ao alterar os dados');
-                            history.go(-1);
-                        </script>    
-                    <?php
-                    }
-                }else{
-                ?>
-                    <script type="text/javascript">
-                        alert('Prencha o campo adequadamente.');
-                        history.go(-1);
-                    </script>
-                <?php
-                }
-            break;
             
-        case 'deletar':
-            if (isset($_GET['txtId'])){
-                $dao = new DoacaoDAO();
-                $id = $_GET['txtId'];
+         case 'deletar':
+            if (isset($_GET['idDoacao_final'])){
+                $dao = new DoacaofinalDAO();
+                $id = $_GET['idDoacao_final'];
                 if($dao->delete($id)){
                     ?>
                     <script type="text/javascript">
-                        alert('Doação excluída com sucesso.');
-                        location.href = '../view/pages/conDoacao.php';
+                        alert('Doação Final excluída com sucesso.');
+                        location.href = '../view/pages/conDoacaofinal.php';
                     </script>
                     <?php
                 }else{

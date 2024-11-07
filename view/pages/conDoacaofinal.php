@@ -78,7 +78,7 @@
                     <article id="articleCrud">
 				<h1 class="TCategorias">Pesquisar/Editar Doação ao Beneficiário</h1>
 				<div id="divPesquisa">		
-                                    <form name="frmPesquisa" action="doacaobyId.php" method="get" >
+                                    <form name="frmPesquisa" action="doacaoFinalbyId.php" method="get" >
 						<h3 class="TformAdmCenter">Informe o Id: 
 							
                                                 <input type="number" name="txtId" value="" />
@@ -110,7 +110,7 @@
 						  <tr>
 							<th>Id</th>
 							<th>Título</th>
-							<th>Data</th>
+							<th>Data de Saída</th>
 							<th>Doador(a)</th>
 							<th>Situação</th>
 						  </tr>

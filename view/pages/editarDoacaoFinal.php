@@ -10,7 +10,7 @@
 		<link rel="stylesheet" type="text/css" href="../css/layout.css" />
 		<link rel="stylesheet" type="text/css" href="../css/imagens.css" />
 		<link rel="stylesheet" type="text/css" href="../css/navadm.css" />
-                 <?php
+                <?php
                     include_once '../../model/Login.php';
                     Login::verificaSessao();
                  ?>
@@ -68,71 +68,68 @@
 		<div id="divPagina">
 			
 			<div id="divContorno">
-				<h1 id="Tpagina">Cad. de Doação Final</h1>
+				<h1 id="Tpagina">Editar Doação</h1>
 			</div>
 		
 		</div>
 		
 		<div id="divForm">
                     <form name="frmDoacao" action="../../controller/DoacaoFinalBO.php" method="post">
-				
+				<?php
+                                include_once '../../model/database/DoacaofinalDAO.php';
+                                $dao = new DoacaofinalDAO();
+                                $id = $_GET['idDoacao_final'];
+                                $lista = $dao->list($id);
+                                foreach ($lista as $value) {
+                                    
+                                                                        
+                              ?>
 				<div id="divDados1">	
-					<h1 class="TCategorias">Dados da Doação</h1>	
+					<h1 class="TCategorias">Dados da Doação ao Beneficiário</h1>	
 					
+                                        <h3 class="TformAdm">ID:</h3>
+						<p class="center">	
+							<input class="boxTxtAdm" type="number" name="txtId" value="<?php echo $value->idDoacao_final;?>" />
+						</p>
 					<h3 class="TformAdm">*Título:</h3>
 						<p class="center">
-							<input class="boxTxtAdm" type="text" name="txtTitulo" value="" required />
+							<input class="boxTxtAdm" type="text" name="txtTitulo" value="<?php echo $value->titulo;?>" required />
 						</p>
 					<h3 class="TformAdm">Descrição:</h3>
 						<p class="center">
-							<textarea id="boxTxtDescricao" cols="30" rows="10" name="txtDescricao" value=""></textarea>			
+							<textarea id="boxTxtDescricao" cols="30" rows="10" name="txtDescricao" value="<?php echo $value->descricao ;?>" ><?php echo $value->descricao ;?></textarea>			
 						</p>
-                                                
-                                         <h3 class="TformAdmCenter">Beneficiário(a):</h3>
-						<p class="center">
-								<select id="boxTxtDestino" name="beneficiario" required>
-                                                                 <?php
-                                                                    include_once '../../model/database/PessoaDAO.php';
-                                                                    $dao = new PessoaDAO();
-                                                                    $lista = $dao->list();
-                                                                    foreach ($lista as $value) {
-                                                                ?>    
-								<option name="" value=""></option>
-								<option name="optTriagem" value="<?php echo $value->idPessoa;?>"><?php echo $value->nome;?></option>
-							
-                                                                //o que entra no banco é o valor do value
-								 <?php
-                                                                    }
-                                                                ?>
-						</select>
-							
-						</p>       
 					<h3 class="TformAdmCenter">Situação:</h3>
 						<p class="center">
 								<select id="boxTxtDestino" name="situacao" required>
-								<option name="" value=""></option>
-								<option name="optAguardando" value="Aguardando">Aguardando</option>
-								<option name="optEntregue" value="Entregue">Entregue</option>
+								<option name="" value="<?php echo $value->sitiacao ;?>"><?php echo $value->situacao ;?></option>
+								<option name="optTriagem" value="Aguardando">Aguardando</option>
+								<option name="optDescarte" value="Entregue">Entregue</option>
                                                                 //o que entra no banco é o valor do value
 								
 						</select>
 							
 						</p>
-					<h3 class="TformAdmCenter">*Data de Saída:</h3>
+					<h3 class="TformAdmCenter">Data de Saída:</h3>
 						<p class="center">
-							<input id="boxData" type="date" name="txtData" value="" />
+							<input id="boxData" type="date" name="txtData" value="<?php echo $value->data_saida;?>"  />
 						</p>
 					
-				</div>		
-                  													
-				
+				</div>
+				                                        				
 				<div id="divBotoes">
 					<p class="center">
-                                                <input type="hidden" name="acao" value="inserirDoacao"/>
-						<input class="btnAdms" type="submit" name="btnSalvar" value="Salvar" />
+                                                
+                                            <input type="hidden" name="idPessoa" value="<?php echo $value->idPessoa;?>"/>
+                                                <input type="hidden" name="idDoacao" value="<?php echo $value->idDoacao_final;?>"/>
+                                                <input type="hidden" name="acao" value="alterar"/>
+						<input class="btnAdms" type="submit" name="btnAtualizar" value="Atualizar" />
 						<input class="btnAdms" type="reset" name="btnCancelar" value="Cancelar" />
 					</p>
 				</div>
+                        <?php
+                                }
+                        ?>
 			</form>
 		
 		</div> <!--fim divForm -->

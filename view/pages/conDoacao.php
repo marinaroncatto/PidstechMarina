@@ -81,7 +81,9 @@
                                     <form name="frmPesquisa" action="doacaobyId.php" method="get" >
 						<h3 class="TformAdmCenter">Informe o Id: 
 							
-                                                <input type="number" name="txtId" value="" />
+                                                    <input type="number" name="txtId" value="" />
+                                                    <!-- <input type="number" name="txtId" value="" <?php // perfil de acesso: session_start(); if($_SESSION['perfil']=='Pad'){echo 'disabled'; }?>/> -->
+                                                    
                                                 <input  type="submit" name="btnPesquisarId" value=" Pesquisar" />														
                                                 </h3>
 					</form>		
@@ -116,8 +118,8 @@
 						  </tr>
 						  <tr>
 							<td><?php echo $value->idDoacao;?></td>
-							<td><?php echo $value->titulo;?></td>
-							<td><?php echo $value->data_entrada;?></td>
+							<td><?php echo $value->titulo;?></td>                                                     
+							<td> <?php echo date("d/m/Y", strtotime($value->data_entrada));?></td>
 							<td><?php echo $value->nome;?></td>
 							<td><?php echo $value->destino;?></td>
 						  </tr>

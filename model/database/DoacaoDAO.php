@@ -8,7 +8,7 @@ class DoacaoDAO {
             $where = ($id ? "where doa.idDoacao = $id ":'');
         $query = "SELECT
                     doa.idDoacao, doa.titulo, doa.descricao, doa.destino, doa.data_entrada,
-                    pe.idPessoa
+                    pe.idPessoa, pe.nome
                   
                  FROM
                     doacao doa

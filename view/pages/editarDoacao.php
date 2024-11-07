@@ -34,7 +34,7 @@
 						<a href="./homeAdm.php">Início</a>
 					</li>
 					<li>
-											<a href="#">Cadastrar</a>
+                                                <a href="#">Cadastrar</a>
 						<ul>
                                                         <li><a href="./pessoa.php">Pessoa</a></li>
 							<li><a href="./doacao.php">Doação ao Projeto</a></li>                                                       
@@ -82,6 +82,7 @@
                                 $lista = $dao->list($id);
                                 foreach ($lista as $value) {
                                     var_dump($value);
+                                                                        
                               ?>
 				<div id="divDados1">	
 					<h1 class="TCategorias">Dados da Doação</h1>	
@@ -98,6 +99,7 @@
 						<p class="center">
 							<textarea id="boxTxtDescricao" cols="30" rows="10" name="txtDescricao" value="<?php echo $value->descricao ;?>" ><?php echo $value->descricao ;?></textarea>			
 						</p>
+                                             
 					<h3 class="TformAdmCenter">Destino:</h3>
 						<p class="center">
 								<select id="boxTxtDestino" name="destino" required>
@@ -111,9 +113,31 @@
 						</p>
 					<h3 class="TformAdmCenter">*Data de entrada:</h3>
 						<p class="center">
-							<input id="boxData" type="date" name="txtData" value="<?php echo $value->data_entrada;?>" required />
+                                                    <input id="boxData" type="date" name="txtData" value="<?php echo date("d/m/Y", strtotime($value->data_entrada));?>" required />
 						</p>
 					
+                                           <h3 class="TformAdmCenter">Doador(a):</h3>
+						<p class="center">
+								<select id="boxTxtDestino" name="doador" required>
+                                                                 
+                                                                   <option name="" value="<?php echo $value->idPessoa;?>"><?php echo $value->nome;?></option> 
+                                                               
+                                                                 <?php
+                                                                    include_once '../../model/database/PessoaDAO.php';
+                                                                    $dao = new PessoaDAO();
+                                                                    $lista = $dao->list();
+                                                                    foreach ($lista as $value) {
+                                                                ?>    
+								
+								<option name="optTriagem" value="<?php echo $value->idPessoa;?>"><?php echo $value->nome;?></option>
+							
+                                                                //o que entra no banco é o valor do value
+								 <?php
+                                                                    }
+                                                                ?>
+						</select>        
+                                                
+                                                
 				</div>
 				                                        				
 				<div id="divBotoes">
