@@ -114,13 +114,33 @@
 						<p class="center">
 							<input id="boxData" type="date" name="txtData" value="<?php echo $value->data_saida;?>"  />
 						</p>
+                                                <h3 class="TformAdmCenter">Doador(a):</h3>
+						<p class="center">
+								<select id="boxTxtDestino" name="doador" required>
+                                                                 
+                                                                   <option name="" value="<?php echo $value->idPessoa;?>"><?php echo $value->nome;?></option> 
+                                                               
+                                                                 <?php
+                                                                    include_once '../../model/database/PessoaDAO.php';
+                                                                    $dao = new PessoaDAO();
+                                                                    $lista = $dao->list();
+                                                                    foreach ($lista as $value) {
+                                                                ?>    
+								
+								<option name="optTriagem" value="<?php echo $value->idPessoa;?>"><?php echo $value->nome;?></option>
+							
+                                                                //o que entra no banco é o valor do value
+								 <?php
+                                                                    }
+                                                                ?>
+						</select>        
 					
 				</div>
 				                                        				
 				<div id="divBotoes">
 					<p class="center">
                                                 
-                                            <input type="hidden" name="idPessoa" value="<?php echo $value->idPessoa;?>"/>
+                                            
                                                 <input type="hidden" name="idDoacao" value="<?php echo $value->idDoacao_final;?>"/>
                                                 <input type="hidden" name="acao" value="alterar"/>
 						<input class="btnAdms" type="submit" name="btnAtualizar" value="Atualizar" />

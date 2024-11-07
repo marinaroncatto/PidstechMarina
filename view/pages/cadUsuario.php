@@ -94,7 +94,7 @@
                                                  <?php
                                                     include_once '../../model/database/PessoaDAO.php';
                                                     $dao = new PessoaDAO();
-                                                    $lista = $dao->list();
+                                                    $lista = $dao->listPF();
                                                     foreach ($lista as $value) {
                                                 ?>    
                                                 <option name="" value=""></option>

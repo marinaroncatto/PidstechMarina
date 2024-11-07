@@ -58,7 +58,7 @@ $acao = $_REQUEST['acao'];
             
          case 'alterar':
             if (isset($_POST['txtTitulo']) && !empty($_POST['txtTitulo']) && isset($_POST['txtId']) && !empty($_POST['txtId'])
-                && isset($_POST['idPessoa']) && !empty($_POST['idPessoa'])     
+                && isset($_POST['doador']) && !empty($_POST['doador'])     
                 && isset($_POST['situacao']) && !empty($_POST['situacao'])){
                 $dao = new DoacaofinalDAO();
                 $objetoA = new Doacaofinal();
@@ -67,7 +67,7 @@ $acao = $_REQUEST['acao'];
                 $objetoA->descricao = isset($_POST['txtDescricao']) ? $_POST['txtDescricao'] : null; 
                 $objetoA->data_saida = isset($_POST['txtData']) ? $_POST['txtData'] : null;  
                 $objetoA->situacao = $_POST['situacao'];             
-                $objetoA->idPessoa = $_POST['idPessoa'];     
+                $objetoA->idPessoa = $_POST['doador'];     
                                 
                
                 if($dao->update($objetoA)){

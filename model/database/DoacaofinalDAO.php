@@ -9,7 +9,7 @@ class DoacaofinalDAO {
             $where = ($id ? "where df.idDoacao_final = $id ":'');
         $query = "SELECT
                     df.idDoacao_final, df.titulo, df.descricao, df.situacao, df.data_saida,
-                    pe.idPessoa
+                    pe.idPessoa, pe.nome
                   
                  FROM
                     doacaofinal df

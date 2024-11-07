@@ -114,7 +114,7 @@
                                                     <td><?php echo $value->titulo; ?></td>
                                                     <td><?php echo $value->descricao; ?></td>
                                                     <td><?php echo $value->situacao; ?></td>
-                                                    <td><?php echo $value->data_saida; ?></td>                                                    
+                                                    <td><?php echo date("d/m/Y", strtotime($value->data_saida));?></td>
                                                 </tr>
                                                 
 				</table>

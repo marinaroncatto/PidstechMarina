@@ -69,16 +69,16 @@
 		<div id="divPagina">
 			
 			<div id="divContorno">
-				<h1 id="Tpagina">Doações Finais</h1>
+				<h1 id="Tpagina">Pessoas Cadastradas</h1>
 			</div>
 		
 		</div>
 		<section id="sectionTabelas">
 			
                     <article id="articleCrud">
-				<h1 class="TCategorias">Pesquisar/Editar Doação ao Beneficiário</h1>
+				<h1 class="TCategorias">Pesquisar/Editar Pessoas Cadastradas</h1>
 				<div id="divPesquisa">		
-                                    <form name="frmPesquisa" action="doacaoFinalbyId.php" method="get" >
+                                    <form name="frmPesquisa" action="pessoabyId.php" method="get" >
 						<h3 class="TformAdmCenter">Informe o Id: 
 							
                                                 <input type="number" name="txtId" value="" />
@@ -94,39 +94,69 @@
                                                                                 
 			<article id="articleConsultaG">
 			
-			<h1 class="TCategorias">Doações Recebidas</h1>
+			<h1 class="TCategorias">Pessoas Físicas</h1>
 				<div id="divTabG">	
 								
 					<table class="tabela">
                                              <!-- Dados da listagem -->
                                                 <?php
-                                                    include_once '../../model/database/DoacaofinalDAO.php';
-                                                    $dao = new DoacaofinalDAO();
-                                                    $lista = $dao->listParc();
+                                                    include_once '../../model/database/PessoaDAO.php';
+                                                    $dao = new PessoaDAO();
+                                                    $lista = $dao->listPF();
                                                     foreach ($lista as $value) {
                                                         
                                                     
                                                 ?>
-						  <tr>
-							<th>Id</th>
-							<th>Título</th>
-							<th>Data de Saída</th>
-							<th>Doador(a)</th>
-							<th>Situação</th>
-						  </tr>
-						  <tr>
-							<td><?php echo $value->idDoacao_final;?></td>
-							<td><?php echo $value->titulo;?></td>                                                         
-							<td><?php echo date("d/m/Y", strtotime($value->data_saida));?></td>
-							<td><?php echo $value->nome;?></td>
-							<td><?php echo $value->situacao;?></td>
-						  </tr>
+                                                    <tr>
+                                                        <th>ID</th>
+                                                        <th>Nome</th>	                                                        	
+                                                        <th>Telefone</th>
+                                                        <th>E-mail</th>
+                                                  </tr>
+                                                  <tr>
+                                                        <td><?php echo $value->idPessoa;?></td>
+                                                        <td><?php echo $value->nome;?></td>                                                       
+                                                        <td><?php echo $value->telefone;?></td>
+                                                        <td><?php echo $value->email;?></td>
+                                                  </tr>
 						  <?php
                                                     }
                                                 ?>
       
 					</table>
 				</div> <!--divTabG-->	
+                                
+                                <h1 class="TCategorias">Pessoas Jurídicas</h1>
+				<div id="divTabG">	
+								
+					<table class="tabela">
+                                             <!-- Dados da listagem -->
+                                                <?php
+                                                    include_once '../../model/database/PessoaDAO.php';
+                                                    $dao = new PessoaDAO();
+                                                    $lista = $dao->listPJ();
+                                                    foreach ($lista as $value) {
+                                                        
+                                                    
+                                                ?>
+                                                   <tr>
+                                                        <th>ID</th>
+                                                        <th>Nome</th>	                                                        	
+                                                        <th>Telefone</th>
+                                                        <th>E-mail</th>
+                                                  </tr>
+                                                  <tr>
+                                                        <td><?php echo $value->idPessoa;?></td>
+                                                        <td><?php echo $value->nome;?></td>                                                        
+                                                        <td><?php echo $value->telefone;?></td>
+                                                        <td><?php echo $value->email;?></td>
+                                                  </tr>
+						  <?php
+                                                    }
+                                                ?>
+      
+					</table>
+				</div> <!--divTabG-->
 			</article> <!--fim articleConsultaG -->
 						
 		</section> <!--fim sectionTabelas -->

@@ -11,6 +11,72 @@ class PessoaDAO {
         return $resultado;
     }
     
+      public function listAllPessoas($id = null) {
+        $where = ($id ? "where pe.idPessoa = $id;":'');
+        $query = " SELECT
+                    pe.idPessoa, pe.nome, pe.email, pe.telefone,
+                    pf.idPessoaFisica, pf.cpf, pf.rg,
+                    pj.idPessoaJuridica, pj.cnpj, pj.responsavel_pj,
+                    en.idEndereco, en.bairro, en.rua, en.numero, en.complemento                  
+                 FROM
+                    pessoa as pe               
+                INNER JOIN pessoafisica as pf on pe.idPessoa = pf.idPessoa
+                INNER JOIN pessoajuridica as pj on pe.idPessoa = pj.idPessoa
+                INNER JOIN endereco as en on pe.idPessoa = en.idPessoa
+              	$where";
+        $conn = DB::getInstancia()->query($query);
+        $resultado = $conn->fetchAll();
+        return $resultado;
+    }
+    
+     public function listPF($id = null) {
+        $where = ($id ? "where pe.idPessoa = $id;":'');
+        $query = " SELECT
+                    pe.idPessoa, pe.nome, pe.email, pe.telefone,
+                    pf.idPessoaFisica, pf.cpf, pf.rg,
+                    en.idEndereco, en.bairro, en.rua, en.numero, en.complemento                  
+                 FROM
+                    pessoa as pe               
+                INNER JOIN pessoafisica as pf on pe.idPessoa = pf.idPessoa
+                INNER JOIN endereco as en on pe.idPessoa = en.idPessoa
+              	$where";
+        $conn = DB::getInstancia()->query($query);
+        $resultado = $conn->fetchAll();
+        return $resultado;
+    }
+    
+         public function listPJ($id = null) {
+        $where = ($id ? "where pe.idPessoa = $id":'');
+        $query = " SELECT
+                    pe.idPessoa, pe.nome, pe.email, pe.telefone,
+                    pj.idPessoaJuridica, pj.cnpj, pj.responsavel_pj,
+                    en.idEndereco, en.bairro, en.rua, en.numero, en.complemento                  
+                 FROM
+                    pessoa as pe               
+                INNER JOIN pessoajuridica as pj on pe.idPessoa = pj.idPessoa
+                INNER JOIN endereco as en on pe.idPessoa = en.idPessoa
+              	$where";
+        $conn = DB::getInstancia()->query($query);
+        $resultado = $conn->fetchAll();
+        return $resultado;
+    }
+    
+             public function listPessoaDoacoes($id = null) {
+        $where = ($id ? "where pe.idPessoa = $id":'');
+        $query = "SELECT
+                    pe.idPessoa, pe.nome, 
+                    doa.idDoacao, doa.titulo, doa.descricao, doa.destino, doa.data_entrada,
+                    df.idDoacao_final, df.titulo, df.descricao, df.situacao, df.data_saida                  
+                 FROM
+                    pessoa as pe               
+                LEFT JOIN  doacao as doa on pe.idPessoa = doa.idPessoa
+                LEFT JOIN  doacaofinal as df on pe.idPessoa = df.idPessoa              
+              	$where";
+        $conn = DB::getInstancia()->query($query);
+        $resultado = $conn->fetchAll();
+        return $resultado;
+    }
+    
     public function insert(Pessoa $obj) {
         $query = "INSERT INTO pessoa (idPessoa, nome, email, telefone) "
                 . "VALUES (null,:nome, :email, :telefone)";
