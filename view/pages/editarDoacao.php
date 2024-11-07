@@ -113,7 +113,8 @@
 						</p>
 					<h3 class="TformAdmCenter">*Data de entrada:</h3>
 						<p class="center">
-                                                    <input id="boxData" type="date" name="txtData" value="<?php echo date("d/m/Y", strtotime($value->data_entrada));?>" required />
+                                                    <input id="boxData" type="date" name="txtData" value="<?php echo date($value->data_entrada);?>" required />
+                                                    <!-- para ajustar a exibição não front, mudar o tipo da dado para date ao invés de datetyme -->
 						</p>
 					
                                            <h3 class="TformAdmCenter">Doador(a):</h3>
