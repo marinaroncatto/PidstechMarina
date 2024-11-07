@@ -1,15 +1,6 @@
 <?php
 include_once '../model/Doacao.php';
-include_once '../model/Pessoa.php';
-include_once '../model/Pessoafisica.php';
-include_once '../model/Pessoajuridica.php';
-include_once '../model/Endereco.php';
-include_once '../model/DoacaoUpdate.php';
-include_once '../model/database/PessoafisicaDAO.php';
-include_once '../model/database/PessoajuridicaDAO.php';
-include_once '../model/database/PessoaDAO.php';
 include_once '../model/database/DoacaoDAO.php';
-include_once '../model/database/EnderecoDAO.php';
 include_once '../model/database/DB.php';
 
 if (isset($_REQUEST['acao'])){ //verifica se o hidden chegou
