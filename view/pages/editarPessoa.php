@@ -88,15 +88,16 @@
                                             ?>
                         
                                                 <div id="DivDados1">	
-                                                        <h1 class="TCategorias">Dados do(a) Doador(a) PF</h1>	
+                                                        <h1 class="TCategorias">Dados do(a) Doador(a) PF</h1>
+                                                        <input type="hidden" name="idPessoaFisica" value="<?php echo $value->idPessoaFisica;?>"/>
                                                         <input type="hidden" name="acao" value="alterarPF"/>
-                                                        <h3 class="TformAdm">Nome Completo:</h3>
+                                                        <h3 class="TformAdm">*Nome Completo:</h3>
                                                                 <p class="center">
-                                                                        <input class="boxTxtAdm" type="text" name="txtNome" value="<?php echo $value->nome;?>" />
+                                                                        <input class="boxTxtAdm" type="text" name="txtNome" value="<?php echo $value->nome;?>" required/>
                                                                 </p>
-                                                        <h3 class="TformAdm">CPF:</h3>
+                                                        <h3 class="TformAdm">*CPF:</h3>
                                                                 <p class="center">	
-                                                                        <input class="boxTxtAdm" type="number" name="txtCpf" value="<?php echo $value->cpf;?>" />
+                                                                        <input class="boxTxtAdm" type="number" name="txtCpf" value="<?php echo $value->cpf;?>" required/>
                                                                 </p>
                                                         <h3 class="TformAdm">RG:</h3>
                                                                 <p class="center">
@@ -118,6 +119,7 @@
                         
                                                 <div id="divDados1">	
                                                         <h1 class="TCategorias">Dados do(a) Doador(a) PJ</h1>
+                                                        <input type="hidden" name="idPessoaJuridica" value="<?php echo $value->idPessoaJuridica;?>"/>
                                                         <input type="hidden" name="acao" value="alterarPJ"/>
                                                         <h3 class="TformAdm">Nome Completo:</h3>
                                                                 <p class="center">
@@ -148,7 +150,7 @@
 				<div id="divBotoes">
 					<p class="center">
                                                 
-                                                <input type="hidden" name="idDoacao" value="<?php echo $value->idDoacao;?>"/>
+                                                <input type="hidden" name="idPessoa" value="<?php echo $value->idPessoa;?>"/>
 						<input class="btnAdms" type="submit" name="btnAtualizar" value="Atualizar" />
 						<input class="btnAdms" type="reset" name="btnCancelar" value="Cancelar" />
 					</p>

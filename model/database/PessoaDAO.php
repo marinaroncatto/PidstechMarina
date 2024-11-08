@@ -68,8 +68,9 @@ class PessoaDAO {
                     doa.idDoacao, doa.titulo, doa.descricao, doa.destino, doa.data_entrada
                                      
                  FROM
-                    pessoa as pe               
-                LEFT JOIN  doacao as doa on pe.idPessoa = doa.idPessoa                              
+                    doacao as doa
+                                  
+                LEFT JOIN   pessoa as pe on doa.idPessoa = pe.idPessoa                              
               	$where";
         $conn = DB::getInstancia()->query($query);
         $resultado = $conn->fetchAll();
@@ -82,8 +83,8 @@ class PessoaDAO {
                     pe.idPessoa, pe.nome,                     
                     df.idDoacao_final, df.titulo, df.descricao, df.situacao, df.data_saida                  
                  FROM
-                    pessoa as pe                              
-                LEFT JOIN  doacaofinal as df on pe.idPessoa = df.idPessoa              
+                   doacaofinal as df                              
+                LEFT JOIN  pessoa as pe on df.idPessoa = pe.idPessoa              
               	$where";
         $conn = DB::getInstancia()->query($query);
         $resultado = $conn->fetchAll();

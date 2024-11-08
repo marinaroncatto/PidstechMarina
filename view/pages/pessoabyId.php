@@ -27,7 +27,7 @@
                <script type="text/javascript">
                 function deletarPJ(idPessoa, idEndereco, idPessoaJuridica){
                     if(confirm('Deseja excluir a Pessoa Jurídica? Certifique-se de que não há nenhuma doação vinculada antes de prosseguir!')){
-                        document.location.href='../../controller/PessoaBO.php?acao=deletar&idPessoa&idPessoaJuridica&idEndereco='+idPessoa+idPessoaJuridica+idEndereco;
+                       document.location.href='../../controller/PessoaBO.php?acao=deletarPJ&idPessoa='+idPessoa+'&idEndereco='+idEndereco+'&idPessoaJuridica='+idPessoaJuridica; 
                     }
                     }
                </script>                       
@@ -173,15 +173,15 @@
                                                                                        <td><?php echo $value->responsavel_pj;?></td>
                                                                                        <td><?php echo $value->telefone;?></td>
                                                                                        <td><?php echo $value->email;?></td>
-                                                                                       <td><button name="btnalterar" onclick="location.href='editarPessoa.php?idPessoa=<?php echo $value->idPessoa; ?>'" > Alterar</button></td>
-                                                                                       <td><button name="btnexcluir" onclick="javascript:deletarPJ(<?php echo $value->idPessoa, $value->idPessoaJuridica, $value->idEndereco; ?>)" > Excluir</button></td>
+                                                                                       <td><button name="btnalterar" onclick="location.href='editarPessoa.php?idPessoa=<?php echo $value->idPessoa; ?>'" > Alterar</button></td>                                                                                       
+                                                                                       <td><button name="btnexcluir" onclick="javascript:deletarPJ(<?php echo $value->idPessoa; ?>, <?php echo $value->idEndereco; ?>, <?php echo $value->idPessoaJuridica; ?>)" > Excluir</button></td>
                                                                                  </tr>
 
                                                                        </table>
                                                                </div>
 
                                                <?php
-                                                           }
+                                                           }                                                   
                                                ?>
 				<div class="divCon2">
 					<h3 class="TformAdmCenter">Endereço</h3>
@@ -207,9 +207,14 @@
                                        
                                        
 				</div>
-                            
+                            <?php
+                             $id = $value->idPessoa;
+                                        $listaD = $dao->listDoacoes($id);
+                                        
+                                        if (!empty($listaD)) {
+                                            ?>
                             <div class="divCon1">
-				<h3 class="TformAdmCenter">Doações feitas ao projeto</h3>                                
+				<h3 class="TformAdmCenter">Doador(a)</h3>                                
 				<table class="tabela">
                                      
                                    
@@ -225,10 +230,7 @@
                                             </tr>
                                             <tr>
                                         <?php                                                                                                                                                    
-                                        $id = $value->idPessoa;
-                                        $listaD = $dao->listDoacoes($id);
-                                        
-                                        if (!empty($listaD)) {
+                                       
                                              foreach ($listaD as $doacoes) {
                                             ?>
 				
@@ -250,9 +252,14 @@
 				</table>
 				</div>
                             
-                            	
+                                      <?php
+                                        $id = $value->idPessoa;
+                                        $listaDF = $dao->listDoacoesFinais($id);
+                                        
+                                        if (!empty($listaDF)) {
+                                            ?>
 				<div class="divCon1">
-				<h3 class="TformAdmCenter">Doações recebidas do Projeto</h3>                                
+				<h3 class="TformAdmCenter">Beneficiária</h3>                                
 				<table class="tabela">
                                      
                                    
@@ -294,7 +301,7 @@
                                                                                                                                         
                                         } else { 
                                             echo "<tr><td colspan='5'>Nenhuma doação encontrada.</td></tr>";
-                                       } } }
+                                     } } } }
                                     } else {
                                         echo "<script>alert('Preencha o campo adequadamente.'); "
                                         . "location.href = './conDoacao.php';</script>";
