@@ -74,55 +74,20 @@
 		</div>
 		
 		<div id="divForm">
-                    <form name="frmDoacao" action="../../controller/DoacaoBO.php" method="post">
+                    <form name="frmDoacao" action="../../controller/PessoaBO.php" method="post">
 				<?php
-                                include_once '../../model/database/DoacaoDAO.php';
-                                $dao = new DoacaoDAO();
-                                $id = $_GET['idDoacao'];
-                                $lista = $dao->listAll($id);
+                                include_once '../../model/database/PessoaDAO.php';
+                                $dao = new PessoaDAO();
+                                $id = $_GET['idPessoa'];
+                                $lista = $dao->listAllPessoas($id);
                                 foreach ($lista as $value) {
-                              ?>
-				<div id="divDados1">	
-					<h1 class="TCategorias">Dados da Doação</h1>	
-					
-                                        <h3 class="TformAdm">ID:</h3>
-						<p class="center">	
-							<input class="boxTxtAdm" type="number" name="txtId" value="<?php echo $value->idDoacao;?>" />
-						</p>
-					<h3 class="TformAdm">*Título:</h3>
-						<p class="center">
-							<input class="boxTxtAdm" type="text" name="txtTitulo" value="<?php echo $value->titulo;?>" required />
-						</p>
-					<h3 class="TformAdm">Descrição:</h3>
-						<p class="center">
-							<textarea id="boxTxtDescricao" cols="30" rows="10" name="txtDescricao" value="<?php echo $value->descricao ;?>" ></textarea>			
-						</p>
-					<h3 class="TformAdmCenter">Destino:</h3>
-						<p class="center">
-								<select id="boxTxtDestino" name="destino" required>
-								<option name="" value="<?php echo $value->destino ;?>"><?php echo $value->destino ;?></option>
-								<option name="optTriagem" value="triagem">Triagem</option>
-								<option name="optDescarte" value="descarte">Descarte</option>
-                                                                //o que entra no banco é o valor do value
-								
-						</select>
-							
-						</p>
-					<h3 class="TformAdmCenter">*Data de entrada:</h3>
-						<p class="center">
-							<input id="boxData" type="date" name="txtData" value="<?php echo $value->data_entrada;?>" required />
-						</p>
-					<h3 class="TformAdmCenter">Dar baixa</h3>
-						<p class="center">
-							<input id="checkbox" type="checkbox" name="boxBaixa" value="<?php echo $value->baixa;?>" />
-						</p>
-				</div>
+                              ?>				
 				
                                         <?php
                                              if(!empty($value->cpf)){
                                             ?>
                         
-                                                <div id="DivDados2">	
+                                                <div id="DivDados1">	
                                                         <h1 class="TCategorias">Dados do(a) Doador(a) PF</h1>	
                                                         <input type="hidden" name="acao" value="alterarPF"/>
                                                         <h3 class="TformAdm">Nome Completo:</h3>
@@ -151,7 +116,7 @@
                                              }else{ //mostrar PJ
                                                     ?>
                         
-                                                <div id="divDados2">	
+                                                <div id="divDados1">	
                                                         <h1 class="TCategorias">Dados do(a) Doador(a) PJ</h1>
                                                         <input type="hidden" name="acao" value="alterarPJ"/>
                                                         <h3 class="TformAdm">Nome Completo:</h3>
@@ -178,28 +143,7 @@
 				
                                                 <?PHP
                                              }
-                                                    ?>
-                        
-                                    <div id="DivDados1">	
-					<h1 class="TCategorias">Endereço</h1>
-					
-					<h3 class="TformAdm">Bairro:</h3>
-						<p class="center">
-							<input class="boxTxtAdm" type="text" name="txtBairro" value="<?php echo $value->bairro;?>" />
-						</p>
-					<h3 class="TformAdm">Rua:</h3>
-						<p class="center">
-							<input class="boxTxtAdm" type="text" name="txtRua" value="<?php echo $value->rua;?>" />
-						</p>
-					<h3 class="TformAdm">Número:</h3>
-						<p class="center">	
-							<input class="boxTxtAdm" type="text" name="txtNumero" value="<?php echo $value->numero;?>" />
-						</p>
-					<h3 class="TformAdm">Complemento:</h3>
-						<p class="center">	
-							<input class="boxTxtAdm" type="text" name="txtComplemento" value="<?php echo $value->complemento;?>" />
-						</p>
-				</div>
+                                                    ?>                                                           
 				
 				<div id="divBotoes">
 					<p class="center">

@@ -16,22 +16,40 @@
                     Login::verificaSessao();
                 ?>
                  <script type="text/javascript">
-                function deletar(idPessoa){
-                    if(confirm('deseja excluir a Pessoa?')){
-                        document.location.href='../../controller/PessoaBO.php?acao=deletar&idPessoa='+idPessoa;
+                function deletarPF(idPessoa, idEndereco, idPessoaFisica){
+                    if(confirm('Deseja excluir a Pessoa Física? Certifique-se de que não há nenhuma doação vinculada antes de prosseguir!')){
+                        document.location.href='../../controller/PessoaBO.php?acao=deletarPF&idPessoa='+idPessoa+'&idEndereco='+idEndereco+'&idPessoaFisica='+idPessoaFisica;                               
+        
                     }
                     }
                </script>
+               
                <script type="text/javascript">
-                function deletar(idDoacao){
+                function deletarPJ(idPessoa, idEndereco, idPessoaJuridica){
+                    if(confirm('Deseja excluir a Pessoa Jurídica? Certifique-se de que não há nenhuma doação vinculada antes de prosseguir!')){
+                        document.location.href='../../controller/PessoaBO.php?acao=deletar&idPessoa&idPessoaJuridica&idEndereco='+idPessoa+idPessoaJuridica+idEndereco;
+                    }
+                    }
+               </script>
+               
+               <script type="text/javascript">
+                function deletarE(idDoacao){
+                    if(confirm('deseja excluir o endereço?')){
+                        document.location.href='../../controller/DoacaoBO.php?acao=deletar&idDoacao='+idDoacao;
+                    }
+                    }
+               </script>
+             
+               <script type="text/javascript">
+                function deletarD(idDoacao){
                     if(confirm('deseja excluir a Doação?')){
                         document.location.href='../../controller/DoacaoBO.php?acao=deletar&idDoacao='+idDoacao;
                     }
                     }
                </script>
                <script type="text/javascript">
-              function deletar(idDoacao_final){
-                  if(confirm('deseja excluir a Doação?')){
+              function deletarDf(idDoacao_final){
+                  if(confirm('deseja excluir a Doação ao Beneficiário?')){
                       document.location.href='../../controller/DoacaoFinalBO.php?acao=deletar&idDoacao_final='+idDoacao_final;
                   }
                   }
@@ -105,7 +123,7 @@
                                         $id = $_GET['txtId'];
                                         $lista = $dao->listAllPessoas($id);
                                       
-                                        
+                                        var_dump($lista);
                                        if (!empty($lista)) {
                                              foreach ($lista as $value) {
                                        
@@ -115,8 +133,8 @@
                                                         ?>
                                                                 <div class="divCon1">
                                                                         <h3 class="TformAdmCenter">Dados do(a) Doadoar(a) PF</h3>
-                                                                        <p class="right"> <button name="btnalterar" onclick="location.href='editarPessoa.php?idPessoa=<?php echo $value->idPessoa; ?>'" > Alterar</button></p>
-                                                                        <p class="right"><button name="btnexcluir" onclick="javascript:deletar(<?php echo $value->idPessoa; ?>)" > Excluir</button></p>
+                                                                        
+                                                                        
                                                                         <table class="tabela">
                                                                                   <tr>
                                                                                         <th>Nome</th>	
@@ -124,6 +142,8 @@
                                                                                         <th>RG</th>	
                                                                                         <th>Telefone</th>
                                                                                         <th>E-mail</th>
+                                                                                        <th></th>
+                                                                                         <th></th>
                                                                                   </tr>
                                                                                   <tr>
                                                                                         <td><?php echo $value->nome;?></td>
@@ -131,6 +151,8 @@
                                                                                         <td><?php echo $value->rg;?></td>
                                                                                         <td><?php echo $value->telefone;?></td>
                                                                                         <td><?php echo $value->email;?></td>
+                                                                                        <td><button name="btnalterar" onclick="location.href='editarPessoa.php?idPessoa=<?php echo $value->idPessoa; ?>'" > Alterar</button></td>
+                                                                                        <td><button name="btnexcluir" onclick="javascript:deletarPF(<?php echo $value->idPessoa; ?>, <?php echo $value->idEndereco; ?>, <?php echo $value->idPessoaFisica; ?>)" > Excluir</button></td>
                                                                                   </tr>
 
                                                                         </table>
@@ -142,8 +164,7 @@
 
                                                               <div class="divCon1">
                                                                        <h3 class="TformAdmCenter">Dados do(a) Doadoar(a) PJ</h3>
-                                                                       <p class="right"> <button name="btnalterar" onclick="location.href='editarPessoa.php?idPessoa=<?php echo $value->idPessoa; ?>'" > Alterar</button></p>
-                                                                       <p class="right"><button name="btnexcluir" onclick="javascript:deletar(<?php echo $value->idPessoa; ?>)" > Excluir</button></p>
+                                                                      
                                                                        <table class="tabela">
                                                                                  <tr>
                                                                                        <th>Nome</th>	
@@ -151,6 +172,8 @@
                                                                                        <th>Responsável PJ</th>	
                                                                                        <th>Telefone</th>
                                                                                        <th>E-mail</th>
+                                                                                       <th></th>
+                                                                                       <th></th>
                                                                                  </tr>
                                                                                  <tr>
                                                                                        <td><?php echo $value->nome;?></td>
@@ -158,6 +181,8 @@
                                                                                        <td><?php echo $value->responsavel_pj;?></td>
                                                                                        <td><?php echo $value->telefone;?></td>
                                                                                        <td><?php echo $value->email;?></td>
+                                                                                       <td><button name="btnalterar" onclick="location.href='editarPessoa.php?idPessoa=<?php echo $value->idPessoa; ?>'" > Alterar</button></td>
+                                                                                       <td><button name="btnexcluir" onclick="javascript:deletarPJ(<?php echo $value->idPessoa, $value->idPessoaJuridica, $value->idEndereco; ?>)" > Excluir</button></td>
                                                                                  </tr>
 
                                                                        </table>
@@ -173,13 +198,17 @@
 							<th>Bairro</th>
 							<th>Rua</th>
 							<th>Número</th>
-							<th>Complemento</th>						
+							<th>Complemento</th>
+                                                        <th></th>
+                                                        <th></th>
 						  </tr>
 						  <tr>
 							<td><?php echo $value->bairro;?></td>
 							<td><?php echo $value->rua;?></td>
 							<td><?php echo $value->numero;?></td>
-							<td><?php echo $value->complemento;?></td>												
+							<td><?php echo $value->complemento;?></td>
+                                                        <td><button name="btnalterar" onclick="location.href='editarEndereco.php?idPessoa=<?php echo $value->idPessoa; ?>'" > Alterar</button></td>
+                                                        <td><button name="btnexcluir" onclick="javascript:deletarE(<?php echo $value->idPessoa; ?>)" > Excluir</button></td>
 						  </tr>
 						
 					</table>
@@ -188,9 +217,7 @@
 				</div>
                             
                             <div class="divCon1">
-				<h3 class="TformAdmCenter">Doações feitas ao projeto</h3>
-                                <p class="right"> <button name="btnalterar" onclick="location.href='editarDoacao.php?idDoacao=<?php echo $doacoes->idDoacao; ?>'" > Alterar</button></p>
-                                <p class="right"><button name="btnexcluir" onclick="javascript:deletar(<?php echo $doacoes->idDoacao; ?>)" > Excluir</button></p>
+				<h3 class="TformAdmCenter">Doações feitas ao projeto</h3>                                
 				<table class="tabela">
                                      
                                    
@@ -200,23 +227,29 @@
                                                 <th>Descrição</th>
                                                 <th>Destino</th>
                                                 <th>Data</th>
+                                                <th></th>
+                                                <th></th>
                                                 
                                             </tr>
                                             <tr>
                                         <?php                                                                                                                                                    
                                         $id = $value->idPessoa;
                                         $listaD = $dao->listDoacoes($id);
+                                        
                                         if (!empty($listaD)) {
                                              foreach ($listaD as $doacoes) {
                                             ?>
 				
                                            
+                                
                                                 
-                                                    <td><?php echo $doacoes->titulo; ?></td>
+                                                    <td><?php echo $doacoes->idDoacao; ?></td>
                                                     <td><?php echo $doacoes->titulo; ?></td>
                                                     <td><?php echo $doacoes->descricao; ?></td>
                                                     <td><?php echo $doacoes->destino; ?></td>
-                                                    <td><?php echo date("d/m/Y", strtotime($doacoes->data_entrada));?></td>                                                    
+                                                    <td><?php echo date("d/m/Y", strtotime($doacoes->data_entrada));?></td>
+                                                    <td><button name="btnalterar" onclick="location.href='editarDoacao.php?idDoacao=<?php echo $doacoes->idDoacao; ?>'" > Alterar</button></td>
+                                                    <td><button name="btnexcluir" onclick="javascript:deletarD(<?php echo $doacoes->idDoacao; ?>)" > Excluir</button></td>
                                                 </tr>
                                                 
                                                 <?php
@@ -227,39 +260,46 @@
                             
                             	
 				<div class="divCon1">
-				<h3 class="TformAdmCenter">Doações recebidas do Projeto</h3>
-                                <p class="right"> <button name="btnalterar" onclick="location.href='editarDoacaoFinal.php?idDoacao_final=<?php echo $doacoes->idDoacao_final; ?>'" > Alterar</button></p>
-                                <p class="right"><button name="btnexcluir" onclick="javascript:deletar(<?php echo $doacoes->idDoacao_final; ?>)" > Excluir</button></p>
+				<h3 class="TformAdmCenter">Doações recebidas do Projeto</h3>                                
 				<table class="tabela">
                                      
                                    
                                             <tr>
+                                                <th>ID</th>
                                                 <th>Título</th>
                                                 <th>Descrição</th>
                                                 <th>Situação</th>
                                                 <th>Data de Saída</th>
+                                                <th></th>
+                                                <th></th>
                                                 
                                             </tr>
                                            
                                                 <tr>
                                                     <?php                                                                                                                                                    
                                                     $id = $value->idPessoa;
-                                                    $listaD = $dao->listDoacoes($id);
-                                                    if (!empty($listaD)) {
-                                                         foreach ($listaD as $doacoes) {
+                                                    $listaDF = $dao->listDoacoesFinais($id);
+                                                   
+                                                    if (!empty($listaDF)) {
+                                                         foreach ($listaDF as $doacoesf) {
                                                         ?>
                                                     
-                                                    <td><?php echo $doacoes->titulo; ?></td>
-                                                    <td><?php echo $doacoes->descricao; ?></td>
-                                                    <td><?php echo $doacoes->situacao; ?></td>
-                                                    <td><?php echo date("d/m/Y", strtotime($doacoes->data_saida));?></td>
+                                                    <td><?php echo $doacoesf->idDoacao_final; ?></td>
+                                                    <td><?php echo $doacoesf->titulo; ?></td>
+                                                    <td><?php echo $doacoesf->descricao; ?></td>
+                                                    <td><?php echo $doacoesf->situacao; ?></td>
+                                                    <td><?php echo date("d/m/Y", strtotime($doacoesf->data_saida));?></td>
+                                                    <td><button name="btnalterar" onclick="location.href='editarDoacaoFinal.php?idDoacao_final=<?php echo $doacoesf->idDoacao_final; ?>'" > Alterar</button></td>
+                                                    <td><button name="btnexcluir" onclick="javascript:deletarDf(<?php echo $doacoesf->idDoacao_final; ?>)" > Excluir</button></td>
                                                 </tr>
-                                                
+                                                <?php
+                                                    } 
+                                                ?>
 				</table>
 				</div>
                             
                             <?php
-                                             }                                                                                            
+                                                                                                                                        
                                         } else { 
                                             echo "<tr><td colspan='5'>Nenhuma doação encontrada.</td></tr>";
                                        } } }

@@ -1,14 +1,11 @@
 <?php
-include_once '../model/Doacao.php';
 include_once '../model/Pessoa.php';
 include_once '../model/Pessoafisica.php';
 include_once '../model/Pessoajuridica.php';
 include_once '../model/Endereco.php';
-include_once '../model/DoacaoUpdate.php';
 include_once '../model/database/PessoafisicaDAO.php';
 include_once '../model/database/PessoajuridicaDAO.php';
 include_once '../model/database/PessoaDAO.php';
-include_once '../model/database/DoacaoDAO.php';
 include_once '../model/database/EnderecoDAO.php';
 include_once '../model/database/DB.php';
 
@@ -191,7 +188,7 @@ $acao = $_REQUEST['acao'];
               $objetoUp->__constructPF( $objetoUp->doacao,  $objetoUp->pessoa,  $objetoUp->pessoafisica,  $objetoUp->endereco);
               
               
-                /*    if($dao->updatePF($objetoUp)){
+                  if($dao->updatePF($objetoUp)){
                     ?>
                         <script type="text/javascript">
                             alert('Dados alterados com sucesso.');
@@ -212,7 +209,7 @@ $acao = $_REQUEST['acao'];
                         alert('Prencha o campo adequadamente.');
                         history.go(-1);
                     </script>
-                <?php */
+                <?php 
                 } 
             break;
             
@@ -269,27 +266,67 @@ $acao = $_REQUEST['acao'];
                 }
             break;
             
-        case 'deletar':
-            if (isset($_GET['txtId'])){
-                $dao = new DoacaoDAO();
-                $id = $_GET['txtId'];
-                if($dao->delete($id)){
+        case 'deletarPF':
+            if (isset($_GET['idPessoa'])&&isset($_GET['idPessoa'])
+                && isset($_GET['idEndereco'])&&isset($_GET['idEndereco'])
+                && isset($_GET['idPessoaFisica'])&&isset($_GET['idPessoaFisica'])        
+                    ){
+                $daoE = new EnderecoDAO();
+                $idE = $_GET['idEndereco'];
+                
+                $daoPF = new PessoafisicaDAO();
+                $idPF = $_GET['idPessoaFisica'];
+                
+                $daoPE = new PessoaDAO();
+                $idPE = $_GET['idPessoa'];
+                
+                try{
+                    if($daoE->delete($idE) && $daoPF->delete($idPF) && $daoPE->delete($idPE)){
+                        ?>
+                        <script type="text/javascript">
+                            alert('Pessoa Física excluída com sucesso');
+                            location.href = '../view/conPessoa.php';
+                        </script>
+                        <?php
+                    }    
+                }
+                catch (Exception $exc) {
                     ?>
                     <script type="text/javascript">
-                        alert('Doação excluída com sucesso.');
-                        location.href = '../view/pages/conDoacao.php';
-                    </script>
-                    <?php
-                }else{
-                    ?>
-                    <script type="text/javascript">
-                        alert('Problema ao excluir a doação.');
+                        alert('Erro ao exluir a Pessoa Física \nHá um registro filho localizado. \nVerifique se não há doações vinculadas!');
                         history.go(-1);
                     </script>
                     <?php
                 }
             }
             break;
+        
+         case 'deletarPJ':
+            if (isset($_GET['iditem'])&&isset($_GET['idreceita'])){
+                $dao = new ItemReceitaDAO();
+                $iditem = $_GET['iditem'];
+                $idreceita = $_GET['idreceita'];
+                try{
+                    if($dao->delete($iditem, $idreceita)){
+                        ?>
+                        <script type="text/javascript">
+                            alert('Item excluído com sucesso da receita.');
+                            location.href = '../view/listaitemreceita.php';
+                        </script>
+                        <?php
+                    }    
+                }
+                catch (Exception $exc) {
+                    ?>
+                    <script type="text/javascript">
+                        alert('Problema ao excluir o item.\nHá um registro filho localizado.');
+                        history.go(-1);
+                    </script>
+                    <?php
+                }
+            }
+            break;
+            
         default:
             break;
 
