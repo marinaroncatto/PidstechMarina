@@ -30,15 +30,7 @@
                         document.location.href='../../controller/PessoaBO.php?acao=deletar&idPessoa&idPessoaJuridica&idEndereco='+idPessoa+idPessoaJuridica+idEndereco;
                     }
                     }
-               </script>
-               
-               <script type="text/javascript">
-                function deletarE(idDoacao){
-                    if(confirm('deseja excluir o endereço?')){
-                        document.location.href='../../controller/DoacaoBO.php?acao=deletar&idDoacao='+idDoacao;
-                    }
-                    }
-               </script>
+               </script>                       
              
                <script type="text/javascript">
                 function deletarD(idDoacao){
@@ -200,7 +192,7 @@
 							<th>Número</th>
 							<th>Complemento</th>
                                                         <th></th>
-                                                        <th></th>
+                                                        
 						  </tr>
 						  <tr>
 							<td><?php echo $value->bairro;?></td>
@@ -208,7 +200,7 @@
 							<td><?php echo $value->numero;?></td>
 							<td><?php echo $value->complemento;?></td>
                                                         <td><button name="btnalterar" onclick="location.href='editarEndereco.php?idPessoa=<?php echo $value->idPessoa; ?>'" > Alterar</button></td>
-                                                        <td><button name="btnexcluir" onclick="javascript:deletarE(<?php echo $value->idPessoa; ?>)" > Excluir</button></td>
+                                                        
 						  </tr>
 						
 					</table>

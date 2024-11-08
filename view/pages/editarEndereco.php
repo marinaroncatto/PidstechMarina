@@ -34,7 +34,7 @@
 						<a href="./homeAdm.php">Início</a>
 					</li>
 					<li>
-											<a href="#">Cadastrar</a>
+						<a href="#">Cadastrar</a>
 						<ul>
                                                         <li><a href="./pessoa.php">Pessoa</a></li>
 							<li><a href="./doacao.php">Doação ao Projeto</a></li>                                                       
@@ -74,7 +74,7 @@
 		</div>
 		
 		<div id="divForm">
-                    <form name="frmDoacao" action="../../controller/PessoaBO.php" method="post">
+                    <form name="frmDoacao" action="../../controller/EnderecoBO.php" method="post">
 				<?php
                                 include_once '../../model/database/PessoaDAO.php';
                                 $dao = new PessoaDAO();
@@ -109,7 +109,9 @@
 				<div id="divBotoes">
 					<p class="center">
                                                 
-                                                <input type="hidden" name="idDoacao" value="<?php echo $value->idDoacao;?>"/>
+                                                <input type="hidden" name="idPessoa" value="<?php echo $value->idPessoa;?>"/>
+                                                <input type="hidden" name="idEndereco" value="<?php echo $value->idEndereco;?>"/>
+                                                <input type="hidden" name="acao" value="alterar"/>
 						<input class="btnAdms" type="submit" name="btnAtualizar" value="Atualizar" />
 						<input class="btnAdms" type="reset" name="btnCancelar" value="Cancelar" />
 					</p>

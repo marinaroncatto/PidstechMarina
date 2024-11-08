@@ -131,11 +131,9 @@
 								
 					<table class="tabela">
                                              <!-- Dados da listagem -->
-                                                <?php
-                                                    include_once '../../model/database/PessoaDAO.php';
-                                                    $dao = new PessoaDAO();
-                                                    $lista = $dao->listPJ();
-                                                    foreach ($lista as $value) {
+                                                <?php                                                  
+                                                    $listaPJ = $dao->listPJ();
+                                                    foreach ($listaPJ as $valuePJ) {
                                                         
                                                     
                                                 ?>
@@ -146,10 +144,10 @@
                                                         <th>E-mail</th>
                                                   </tr>
                                                   <tr>
-                                                        <td><?php echo $value->idPessoa;?></td>
-                                                        <td><?php echo $value->nome;?></td>                                                        
-                                                        <td><?php echo $value->telefone;?></td>
-                                                        <td><?php echo $value->email;?></td>
+                                                        <td><?php echo $valuePJ->idPessoa;?></td>
+                                                        <td><?php echo $valuePJ->nome;?></td>                                                        
+                                                        <td><?php echo $valuePJ->telefone;?></td>
+                                                        <td><?php echo $valuePJ->email;?></td>
                                                   </tr>
 						  <?php
                                                     }

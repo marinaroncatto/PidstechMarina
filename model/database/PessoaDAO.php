@@ -36,9 +36,9 @@ class PessoaDAO {
                     pf.idPessoaFisica, pf.cpf, pf.rg,
                     en.idEndereco, en.bairro, en.rua, en.numero, en.complemento                  
                  FROM
-                    pessoa as pe               
-                LEFT JOIN pessoafisica as pf on pe.idPessoa = pf.idPessoa
-                LEFT JOIN endereco as en on pe.idPessoa = en.idPessoa
+                    pessoafisica as pf               
+                INNER JOIN pessoa as pe on pf.idPessoa = pe.idPessoa
+                LEFT JOIN endereco as en on pf.idPessoa = en.idPessoa
               	$where";
         $conn = DB::getInstancia()->query($query);
         $resultado = $conn->fetchAll();
@@ -47,14 +47,14 @@ class PessoaDAO {
     
          public function listPJ($id = null) {
         $where = ($id ? "where pe.idPessoa = $id":'');
-        $query = " SELECT
+        $query = "SELECT
                     pe.idPessoa, pe.nome, pe.email, pe.telefone,
                     pj.idPessoaJuridica, pj.cnpj, pj.responsavel_pj,
                     en.idEndereco, en.bairro, en.rua, en.numero, en.complemento                  
                  FROM
-                    pessoa as pe               
-                LEFT JOIN pessoajuridica as pj on pe.idPessoa = pj.idPessoa
-                LEFT JOIN endereco as en on pe.idPessoa = en.idPessoa
+                   pessoajuridica as pj               
+                INNER JOIN pessoa as pe on pj.idPessoa = pe.idPessoa
+                LEFT JOIN endereco as en on pj.idPessoa = en.idPessoa;
               	$where";
         $conn = DB::getInstancia()->query($query);
         $resultado = $conn->fetchAll();

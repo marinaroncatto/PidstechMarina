@@ -280,7 +280,7 @@ $acao = $_REQUEST['acao'];
                 $daoPE = new PessoaDAO();
                 $idPE = $_GET['idPessoa'];
                 
-                try{
+                try{                                      
                     if($daoE->delete($idE) && $daoPF->delete($idPF) && $daoPE->delete($idPE)){
                         ?>
                         <script type="text/javascript">
@@ -293,7 +293,7 @@ $acao = $_REQUEST['acao'];
                 catch (Exception $exc) {
                     ?>
                     <script type="text/javascript">
-                        alert('Erro ao exluir a Pessoa Física \nHá um registro filho localizado. \nVerifique se não há doações vinculadas!');
+                        alert('Erro ao exluir a Pessoa Física \nHá um registro filho localizado. \nVerifique se não há doações ou usuário vinculado');
                         history.go(-1);
                     </script>
                     <?php
