@@ -13,7 +13,9 @@
                  <?php
                     include_once '../../model/Login.php';
                     Login::verificaSessao();
+                    Login::verificaPerfil();
                  ?>
+                
 	</head>	
 <body>
 <main>
@@ -111,8 +113,8 @@
 						<p class="center">
 								<select id="boxTxtDestino" name="perfil" required>
 								<option name="" value=""></option>
-								<option name="opt1" value="Adm">Administrador</option>
-								<option name="opt0" value="Pad">Padrão</option>
+								<option name="opt1" value="Administrador">Administrador</option>
+								<option name="opt0" value="Padrão">Padrão</option>
                                                                 //o que entra no banco é o valor do value
 								
 						</select>

@@ -16,10 +16,16 @@
                     Login::verificaSessao();
                 ?>
                  <script type="text/javascript">
-                function deletarPF(idPessoa, idEndereco, idPessoaFisica){
+                function deletarPF(idPessoa, idEndereco, idPessoaFisica, idUsuario=0 ){
                     if(confirm('Deseja excluir a Pessoa Física? Certifique-se de que não há nenhuma doação vinculada antes de prosseguir!')){
-                        document.location.href='../../controller/PessoaBO.php?acao=deletarPF&idPessoa='+idPessoa+'&idEndereco='+idEndereco+'&idPessoaFisica='+idPessoaFisica;                               
-        
+                        
+                        mensagem = '../../controller/PessoaBO.php?acao=deletarPF&idPessoa='+idPessoa+'&idEndereco='+idEndereco+'&idPessoaFisica='+idPessoaFisica;
+                        if(idUsuario >0 ){
+                            mensagem = mensagem+'&idUsuario='+idUsuario;                            
+                        }
+                        document.location.href=mensagem;
+                    //document.location.href='../../controller/PessoaBO.php?acao=deletarPF&idPessoa='+idPessoa+'&idEndereco='+idEndereco+'&idPessoaFisica='+idPessoaFisica;                               
+                        
                     }
                     }
                </script>
@@ -144,7 +150,7 @@
                                                                                         <td><?php echo $value->telefone;?></td>
                                                                                         <td><?php echo $value->email;?></td>
                                                                                         <td><button name="btnalterar" onclick="location.href='editarPessoa.php?idPessoa=<?php echo $value->idPessoa; ?>'" > Alterar</button></td>
-                                                                                        <td><button name="btnexcluir" onclick="javascript:deletarPF(<?php echo $value->idPessoa; ?>, <?php echo $value->idEndereco; ?>, <?php echo $value->idPessoaFisica; ?>)" > Excluir</button></td>
+                                                                                        <td><button name="btnexcluir" onclick="javascript:deletarPF(<?php echo $value->idPessoa; ?>, <?php echo $value->idEndereco; ?>, <?php echo $value->idPessoaFisica; ?>, <?php echo $value->idUsuario; ?>)" > Excluir</button></td>
                                                                                   </tr>
 
                                                                         </table>

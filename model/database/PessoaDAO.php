@@ -17,12 +17,14 @@ class PessoaDAO {
                     pe.idPessoa, pe.nome, pe.email, pe.telefone,
                     pf.idPessoaFisica, pf.cpf, pf.rg,
                     pj.idPessoaJuridica, pj.cnpj, pj.responsavel_pj,
-                    en.idEndereco, en.bairro, en.rua, en.numero, en.complemento                  
+                    en.idEndereco, en.bairro, en.rua, en.numero, en.complemento,
+                    us.idUsuario
                  FROM
                     pessoa as pe               
                 LEFT JOIN pessoafisica as pf on pe.idPessoa = pf.idPessoa
                 LEFT JOIN pessoajuridica as pj on pe.idPessoa = pj.idPessoa
                 LEFT JOIN endereco as en on pe.idPessoa = en.idPessoa
+                LEFT JOIN usuario as us on pe.idPessoa = us.idPessoa
               	$where";
         $conn = DB::getInstancia()->query($query);
         $resultado = $conn->fetchAll();

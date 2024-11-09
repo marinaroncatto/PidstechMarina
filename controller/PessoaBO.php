@@ -1,5 +1,6 @@
 <?php
 include_once '../model/Pessoa.php';
+include_once '../model/Usuario.php';
 include_once '../model/Pessoafisica.php';
 include_once '../model/Pessoajuridica.php';
 include_once '../model/Endereco.php';
@@ -7,6 +8,7 @@ include_once '../model/database/PessoafisicaDAO.php';
 include_once '../model/database/PessoajuridicaDAO.php';
 include_once '../model/database/PessoaDAO.php';
 include_once '../model/database/EnderecoDAO.php';
+include_once '../model/database/UsuarioDAO.php';
 include_once '../model/database/DB.php';
 
 if (isset($_REQUEST['acao'])){ //verifica se o hidden chegou
@@ -230,10 +232,14 @@ $acao = $_REQUEST['acao'];
             break;
             
         case 'deletarPF':
-            if (isset($_GET['idPessoa'])&&isset($_GET['idPessoa'])
-                && isset($_GET['idEndereco'])&&isset($_GET['idEndereco'])
-                && isset($_GET['idPessoaFisica'])&&isset($_GET['idPessoaFisica'])        
+            if (isset($_GET['idPessoa'])&& !empty($_POST['idPessoa'])
+                && isset($_GET['idEndereco'])&& !empty($_POST['idEndereco'])
+                && isset($_GET['idPessoaFisica'])&& !empty($_POST['idPessoaFisica'])
+                && isset($_GET['idUsuario'])
                     ){
+                $daoU = new UsuarioDAO();
+                $idU = $_GET['idUsuario'];
+                
                 $daoE = new EnderecoDAO();
                 $idE = $_GET['idEndereco'];
                 
@@ -243,7 +249,12 @@ $acao = $_REQUEST['acao'];
                 $daoPE = new PessoaDAO();
                 $idPE = $_GET['idPessoa'];
                 
-                try{                                      
+                try{   
+                    
+                    if(!empty($idU)){
+                        $daoU->delete($idU);
+                    }
+                    
                     if($daoE->delete($idE) && $daoPF->delete($idPF) && $daoPE->delete($idPE)){
                         ?>
                         <script type="text/javascript">

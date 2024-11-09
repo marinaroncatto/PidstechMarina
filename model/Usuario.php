@@ -20,13 +20,12 @@ class Usuario {
     }
     
     public function autenticaUsuario($login, $senha) {
-      $query = "select * from usuario where login = '$login' and senha = password('$senha')";
-      $conn = DB::getInstancia()->query($query);
-      $resultado = $conn->fetchAll();
-      return $resultado === 1;
-
-      if(count($resultado)===1){
-          return $resultado;
+    $query = "select * from usuario where login = '$login' "
+            . "and senha = PASSWORD('$senha')";
+    $conn = DB::getInstancia()->query($query);
+    $resultado = $conn->fetchAll();
+        if (count($resultado) == 1) { // alterado para apenas usar "=="
+            return $resultado;
       }else{
           ?>
             <script type="text/javascript">

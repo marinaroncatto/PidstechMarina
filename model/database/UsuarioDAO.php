@@ -42,7 +42,7 @@ class UsuarioDAO {
     
     public function insert(Usuario $obj) {
         $query = "INSERT INTO usuario (idUsuario, login, senha, perfil_acesso, idPessoa) "
-                . "VALUES (null,:login, password(:senha), :perfil_acesso, :idPessoa)";
+                . "VALUES (null,:login, PASSWORD(:senha), :perfil_acesso, :idPessoa)";
         $conn = DB::getInstancia()->prepare($query);
         $conn->execute(array( ':login'=>$obj->login,
                               ':senha'=>$obj->senha,
@@ -50,7 +50,7 @@ class UsuarioDAO {
                               ':idPessoa'=>$obj->idPessoa));
         return $conn->rowCount()>0;
     }
-    
+   
     public function update(Usuario $obj) {
         $query = "UPDATE usuario set login = :plogin, senha = password(:psenha), perfil_acesso = :pperfil_acesso, idPessoa = :pidPessoa "
                 . "where idUsuario = :pidUsuario";
