@@ -20,8 +20,12 @@
 			
 			<div id="DivDir">	
 				<section id="sectionForm">
-					<form name="frmLogin" action="../../controller/NovaSenha.php" method="post">
-					<h3 class="ussenha">Informe o seu E-mail:</h3>
+                                    <form name="frmLogin" action="../../controller/TrocaSenha.php" method="post">
+					
+                                        <h3 class="ussenha">Login:</h3>
+					<input class="txtBox" type="text" name="login" value="" required />
+                                            
+                                        <h3 class="ussenha">Informe o seu E-mail:</h3>
 					<input class="txtBox" type="text" name="email" value="" required />																						
 				
 					<input id="btnEntrar" type="submit" name="btnEntrar" value="Enviar" />

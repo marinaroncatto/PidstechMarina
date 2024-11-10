@@ -37,7 +37,55 @@ class Usuario {
       }
   }
     
+   public function geraChaveAcesso($login, $email) {
+    $query = "select 
+                us.idUsuario, us.login, us.senha, us.perfil_acesso, us.idPessoa, 
+                pe.email 
+                from usuario as us 
+                INNER JOIN pessoa AS pe ON us.idPessoa = pe.idPessoa 
+                where us.login = '$login' and pe.email = '$email'";
     
+    
+    $conn = DB::getInstancia()->query($query);
+    $resultado = $conn->fetchAll();
+        if (count($resultado) == 1) { // alterado para apenas usar "=="
+           
+            $chave = sha1($resultado[0]->idUsuario.$resultado[0]->senha);
+            return $chave;
+      }else{
+          ?>
+            <script type="text/javascript">
+                alert('Erro na autenticação');
+                history.go(-1);
+            </script>
+            <?php
+          return 0;
+      }
+   }
+      
+      public function checkChave($login, $chave) {
+        $query = "select 
+                us.idUsuario, us.login, us.senha, us.perfil_acesso, us.idPessoa, 
+                pe.email 
+                from usuario as us 
+                INNER JOIN pessoa AS pe ON us.idPessoa = pe.idPessoa 
+                where us.login = '$login'";
+    
+    
+    $conn = DB::getInstancia()->query($query);
+    $resultado = $conn->fetchAll();
+        if (count($resultado) == 1) { // alterado para apenas usar "=="
+           
+            $chaveCorreta = sha1($resultado[0]->idUsuario.$resultado[0]->senha);
+             if($chave == $chaveCorreta){
+                 return $resultado[0]->idUsuario;
+             }
+        }
+      
+  }
+  
+    
+
 }
 
 ?>

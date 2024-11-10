@@ -3,10 +3,8 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/xampp/htdocs/PidstechMarina/model/database/PessoaDAO.php</file>
-            <file>file:/C:/xampp/htdocs/PidstechMarina/view/pages/pessoabyId.php</file>
-            <file>file:/C:/xampp/htdocs/PidstechMarina/controller/PessoaBO.php</file>
-            <file>file:/C:/xampp/htdocs/PidstechMarina/view/pages/editarPessoa.php</file>
+            <file>file:/C:/xampp/htdocs/PidstechMarina/view/pages/login.php</file>
+            <file>file:/C:/xampp/htdocs/PidstechMarina/view/pages/trocasenha.php</file>
         </group>
     </open-files>
 </project-private>
