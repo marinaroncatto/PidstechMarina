@@ -58,7 +58,7 @@
 	
 	<h3 class="TlightMenor">Deseja fazer uma doação, ser um beneficiário ou se candidatar ao voluntariado? Entre em contato com a nossa equipe preenchendo os campos abaixo!</h3>
 	
-	<form name="frmFaleConosco" action="#" method="post">
+        <form name="frmFaleConosco" action="../../controller/Email.php" method="post">
 	
 	<h3 class="Tform">Nome:</h3>
 		<p class="center">
@@ -68,10 +68,7 @@
 		<p class="center">
 			<input class="boxText" type="email" name="txtEmail" value="" required />
 		</p>	
-	<h3 class="Tform">Assunto:</h3>
-		<p class="center">
-			<input class="boxText" type="text" name="txtAssunto" value=""  />
-		</p>
+	
 	<h3 class="Tform">Mensagem:</h3>
 		<p class="center">
 			<textarea id="boxMensagem" cols="30" rows="10" name="txtMensagem" value="" required></textarea>			
