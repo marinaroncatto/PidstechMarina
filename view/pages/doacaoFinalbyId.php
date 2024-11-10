@@ -127,7 +127,7 @@
                                 
                                         ?>
                                                 <div class="divCon1">
-                                                        <h3 class="TformAdmCenter">Dados do(a) Doadoar(a) PF</h3>
+                                                        <h3 class="TformAdmCenter">Beneficiário(a)</h3>
                                                         <table class="tabela">
                                                                   <tr>
                                                                         <th>Nome</th>	

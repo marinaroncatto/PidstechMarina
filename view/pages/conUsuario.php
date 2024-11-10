@@ -14,6 +14,7 @@
                 <?php
                     include_once '../../model/Login.php';
                     Login::verificaSessao();
+                    Login::verificaPerfil();
                 ?>
 	</head>	
 <body>

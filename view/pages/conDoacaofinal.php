@@ -111,7 +111,7 @@
 							<th>Id</th>
 							<th>Título</th>
 							<th>Data de Saída</th>
-							<th>Doador(a)</th>
+							<th>Beneficiário(a)</th>
 							<th>Situação</th>
 						  </tr>
 						  <tr>

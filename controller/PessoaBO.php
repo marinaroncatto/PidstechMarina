@@ -232,17 +232,16 @@ $acao = $_REQUEST['acao'];
             break;
             
         case 'deletarPF':
-            if (isset($_GET['idPessoa'])&& !empty($_POST['idPessoa'])
-                && isset($_GET['idEndereco'])&& !empty($_POST['idEndereco'])
-                && isset($_GET['idPessoaFisica'])&& !empty($_POST['idPessoaFisica'])
-                && isset($_GET['idUsuario'])
+            if (isset($_GET['idPessoa'])&& !empty($_GET['idPessoa'])
+                && isset($_GET['idEndereco'])&& !empty($_GET['idEndereco'])
+                && isset($_GET['idPessoaFisica'])&& !empty($_GET['idPessoaFisica'])                
                     ){
-                $daoU = new UsuarioDAO();
-                $idU = $_GET['idUsuario'];
+                // ids para testar se há registros filhos de usuario ou doações
+                $idU = isset($_GET['idUsuario']) ? $_GET['idUsuario'] : null;                                                  
                 
                 $daoE = new EnderecoDAO();
                 $idE = $_GET['idEndereco'];
-                
+               
                 $daoPF = new PessoafisicaDAO();
                 $idPF = $_GET['idPessoaFisica'];
                 
@@ -250,24 +249,40 @@ $acao = $_REQUEST['acao'];
                 $idPE = $_GET['idPessoa'];
                 
                 try{   
-                    
+                                       
                     if(!empty($idU)){
-                        $daoU->delete($idU);
-                    }
-                    
-                    if($daoE->delete($idE) && $daoPF->delete($idPF) && $daoPE->delete($idPE)){
-                        ?>
+                        
+                    ?>
                         <script type="text/javascript">
-                            alert('Pessoa Física excluída com sucesso');
-                            location.href = '../view/conPessoa.php';
-                        </script>
+                        alert('Erro: A pessoa possui um usuário vinculado');
+                        history.go(-1);
+                    </script>
                         <?php
-                    }    
+                    }else{
+                        if ($daoE->delete($idE)) {
+                            if ($daoPF->delete($idPF)) {
+                                if ($daoPE->delete($idPE)) {
+                                    // Sucesso
+                                    echo "<script>alert('Pessoa Física excluída com sucesso');</script>";
+                                    header("Location: ../view/pages/conPessoa.php");
+                                    exit;
+                                } else {
+                                    echo "<script>alert('Erro ao excluir a Pessoa');</script>";
+                                }
+                            } else {
+                                echo "<script>alert('Erro ao excluir o endereço');</script>";
+                            }
+                        } else {
+                            echo "<script>alert('Erro ao excluir o endereço');</script>";
+                        }
+                        
+                    }   
                 }
+                
                 catch (Exception $exc) {
                     ?>
                     <script type="text/javascript">
-                        alert('Erro ao exluir a Pessoa Física \nHá um registro filho localizado. \nVerifique se não há doações ou usuário vinculado');
+                        alert('Erro ao exluir a Pessoa Física');
                         history.go(-1);
                     </script>
                     <?php

@@ -114,7 +114,7 @@
 						<p class="center">
 							<input id="boxData" type="date" name="txtData" value="<?php echo $value->data_saida;?>"  />
 						</p>
-                                                <h3 class="TformAdmCenter">Doador(a):</h3>
+                                                <h3 class="TformAdmCenter">Beneficiário(a):</h3>
 						<p class="center">
 								<select id="boxTxtDestino" name="doador" required>
                                                                  

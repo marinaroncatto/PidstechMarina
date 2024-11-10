@@ -130,16 +130,18 @@
 
                                                         ?>
                                                                 <div class="divCon1">
-                                                                        <h3 class="TformAdmCenter">Dados do(a) Doadoar(a) PF</h3>
+                                                                        <h3 class="TformAdmCenter">Dados da Pessoa Física</h3>
                                                                         
                                                                         
                                                                         <table class="tabela">
                                                                                   <tr>
+                                                                                        
                                                                                         <th>Nome</th>	
                                                                                         <th>CPF</th>
                                                                                         <th>RG</th>	
                                                                                         <th>Telefone</th>
                                                                                         <th>E-mail</th>
+                                                                                        <th>ID Usuário</th>
                                                                                         <th></th>
                                                                                          <th></th>
                                                                                   </tr>
@@ -149,6 +151,7 @@
                                                                                         <td><?php echo $value->rg;?></td>
                                                                                         <td><?php echo $value->telefone;?></td>
                                                                                         <td><?php echo $value->email;?></td>
+                                                                                        <td><?php echo $value->idUsuario;?></td>
                                                                                         <td><button name="btnalterar" onclick="location.href='editarPessoa.php?idPessoa=<?php echo $value->idPessoa; ?>'" > Alterar</button></td>
                                                                                         <td><button name="btnexcluir" onclick="javascript:deletarPF(<?php echo $value->idPessoa; ?>, <?php echo $value->idEndereco; ?>, <?php echo $value->idPessoaFisica; ?>, <?php echo $value->idUsuario; ?>)" > Excluir</button></td>
                                                                                   </tr>
@@ -161,7 +164,7 @@
                                                            ?>
 
                                                               <div class="divCon1">
-                                                                       <h3 class="TformAdmCenter">Dados do(a) Doadoar(a) PJ</h3>
+                                                                       <h3 class="TformAdmCenter">Dados da Pessoa Jurídica</h3>
                                                                       
                                                                        <table class="tabela">
                                                                                  <tr>
@@ -211,10 +214,12 @@
 						
 					</table>
                                        
+                                        
+                                        
                                        
 				</div>
                             <?php
-                             $id = $value->idPessoa;
+                                        $id = $value->idPessoa;
                                         $listaD = $dao->listDoacoes($id);
                                         
                                         if (!empty($listaD)) {
@@ -257,8 +262,8 @@
                                                 ?>
 				</table>
 				</div>
-                            
-                                      <?php
+                                                     <?php
+                                      
                                         $id = $value->idPessoa;
                                         $listaDF = $dao->listDoacoesFinais($id);
                                         
@@ -303,11 +308,14 @@
 				</table>
 				</div>
                             
+
+                                                                                                                              
+                            
                             <?php
                                                                                                                                         
                                         } else { 
                                             echo "<tr><td colspan='5'>Nenhuma doação encontrada.</td></tr>";
-                                     } } } }
+                                       } } } } 
                                     } else {
                                         echo "<script>alert('Preencha o campo adequadamente.'); "
                                         . "location.href = './conDoacao.php';</script>";

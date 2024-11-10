@@ -93,6 +93,20 @@ class PessoaDAO {
         return $resultado;
     }
     
+     public function listUsuarios($id = null) {
+        $where = ($id ? "where pe.idPessoa = $id":'');
+        $query = "SELECT
+                    pe.idPessoa, pe.nome,                     
+                    us.idUsuario, us.login, us.perfil_acesso                  
+                 FROM
+                   usuario as us                              
+                INNER JOIN  pessoa as pe on us.idPessoa = pe.idPessoa              
+              	$where";
+        $conn = DB::getInstancia()->query($query);
+        $resultado = $conn->fetchAll();
+        return $resultado;
+    }
+    
     
     public function insert(Pessoa $obj) {
         $query = "INSERT INTO pessoa (idPessoa, nome, email, telefone) "
