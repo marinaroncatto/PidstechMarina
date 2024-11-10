@@ -27,7 +27,7 @@
 					<h3 class="ussenha">Senha</h3>
 					<input class="txtBox" type="password" name="senha" value="" required />
 					
-					<a href="./trocasenha.html"><h3 id="esqueciSenha">Esqueci a senha</h3></a>
+					<a href="./trocasenha.php"><h3 id="esqueciSenha">Esqueci a senha</h3></a>
 				
 					<input id="btnEntrar" type="submit" name="btnEntrar" value="Entrar" />
 				
