@@ -72,18 +72,28 @@ class Usuario {
                 where us.login = '$login'";
     
     
-    $conn = DB::getInstancia()->query($query);
-    $resultado = $conn->fetchAll();
-        if (count($resultado) == 1) { // alterado para apenas usar "=="
-           
-            $chaveCorreta = sha1($resultado[0]->idUsuario.$resultado[0]->senha);
-             if($chave == $chaveCorreta){
-                 return $resultado[0]->idUsuario;
-             }
-        }
-      
-  }
+        $conn = DB::getInstancia()->query($query);
+        $resultado = $conn->fetchAll();
+            if (count($resultado) == 1) { // alterado para apenas usar "=="
+
+                $chaveCorreta = sha1($resultado[0]->idUsuario.$resultado[0]->senha);
+                 if($chave == $chaveCorreta){
+                     return $resultado[0]->idUsuario;
+                 }
+            }
+
+      }
   
+        public function setNovaSenha($novasenha, $id) {
+        $query = "UPDATE usuario SET senha = PASSWORD(:pnovasenha) "
+                . "WHERE idUsuario = :pid";
+                   
+        $conn = DB::getInstancia()->prepare($query);
+        $conn->execute(array(':pnovasenha'=>$novasenha,
+                             ':pid'=>$id ));
+        return $conn->rowCount()>0;
+
+      }
     
 
 }
