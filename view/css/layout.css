@@ -56,9 +56,10 @@ header{
 	padding-bottom: 5%;
 }
 #Divlocaliza{
-    width: 500px;
+    width: 550px;
     height: auto;
     margin: 0 auto;
+ 
     
 }
 #articleMaps{
@@ -172,7 +173,13 @@ header{
 	margin-left: -4%;
 
 	}
+        #Divlocaliza{
+        width: 500px;
+        height: auto;
+        margin: 0 auto;
+       
 
+    }
 @media all and (max-width: 1300px){	
 #divBotoes{	
 	width: 50%;
