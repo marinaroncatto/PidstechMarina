@@ -92,7 +92,7 @@ header{
 	
 }
 #divContorno{
-	width: 300px;
+	width: 350px;
 	height: 55px;
 	background-color: #5674b9;
 	border-radius: 40px;
@@ -166,7 +166,7 @@ header{
 
 @media all and (max-width: 1366px){
 	#divContorno{
-	width: 300px;
+	width: 320px;
 	height: 55px;
 	background-color: #5674b9;
 	border-radius: 40px;

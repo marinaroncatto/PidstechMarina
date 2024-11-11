@@ -26,6 +26,7 @@
 	margin: 0 auto;
 	padding-top: 3%;
 	padding-bottom: 3%;
+        overflow-x: auto;
 }
 .divCon1, .divCon2{
 	width: 90%;
