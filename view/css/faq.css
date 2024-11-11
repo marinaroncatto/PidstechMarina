@@ -96,7 +96,25 @@
 	text-align: center;
 	padding-left:42%;
 }
-
+.TboldMenorFAQ{
+	font-family: arial;
+	font-size: 40px;
+	font-weight: bold;
+	color: #3f52c5;	
+	padding-bottom: 0.2%;
+	padding-top: 4%;
+	text-align: center;
+}
+.TlightMenorFAQ{
+	font-family: arial;
+	font-size: 28px;
+	color: #6f76a0;
+	text-align: center;
+	padding-top: 1%;
+	padding-left: 18%;
+	padding-right: 18%;
+	line-height: 1.5;
+}
 
 /*teste para por na mesma linha usando table */
 .faqTable{
@@ -113,4 +131,336 @@
 }
 .faqTable .linhaP{
 	padding-left: 8%;
+}
+@media all and (max-width:975px){
+    .faqTable .linhaN{
+	width: 8%;	
+	padding-left:10%;
+}
+.faqTable .linhaP{
+	padding-left: 8%;
+}
+.PergTipo1{
+	font-family: Calibri Light;
+	font-size: 30px;
+	text-align: left;
+	color: #ffffff;
+}
+.PergTipo2{
+	font-family: Calibri Light;
+	font-size: 30px;
+	text-align: left;
+	color: #13248e;
+}
+.NumTipo1{
+	font-family: Bradley Hand ITC;
+	font-size: 40px;
+	color: #e9ecfc;
+}
+.NumTipo2{
+	font-family: Bradley Hand ITC;
+	font-size: 40px;
+	color: #1f3695;
+}
+.textResposta{
+	font-family:arial narrow;
+	font-size: 19px;
+	color: #656a8b;
+	text-align: left;
+	line-height: 1.5;
+	padding-left: 15%;
+	padding-right: 10%;
+}
+.divP1{
+	width: 100%;
+	height: 68px;
+	background-color: #3f52c5;
+	margin-bottom: 2%;
+	margin-top: 2%;
+}
+.divP2{
+	width: 100%;
+	height: 68px;
+	background-color: #90d8e7;
+	margin-bottom: 2%;
+	margin-top: 2%;
+}
+#LinkSub1{
+	font-family:arial ;
+	font-size: 20px;
+	color: #3f52c5;
+	text-align: center;
+	padding-top:1%;
+	padding-bottom:1.5%;
+	padding-left:42%;
+}
+#LinkSub2{
+	font-family:arial ;
+	font-size: 18px;
+	color: #656a8b;
+	text-decoration: underline;
+	text-align: center;
+	padding-left:42%;
+}
+.TboldMenorFAQ{
+	font-family: arial;
+	font-size: 35px;
+	font-weight: bold;
+	color: #3f52c5;	
+	padding-bottom: 0.2%;
+	padding-top: 4%;
+	text-align: center;
+}
+.TlightMenorFAQ{
+	font-family: arial;
+	font-size: 26px;
+	color: #6f76a0;
+	text-align: center;
+	padding-top: 1%;
+	padding-left: 0%;
+	padding-right: 0%;
+	line-height: 1.5;
+}
+}
+@media all and (max-width:930px){
+    .faqTable .linhaN{
+	width: 6%;	
+	padding-left:6%;
+}
+.faqTable .linhaP{
+	padding-left: 8%;
+}
+    
+}
+@media all and (max-width:791px){
+    .PergTipo1{
+	font-family: Calibri Light;
+	font-size: 28px;
+	text-align: left;
+	color: #ffffff;
+}
+.PergTipo2{
+	font-family: Calibri Light;
+	font-size: 28px;
+	text-align: left;
+	color: #13248e;
+}
+.TboldMenorFAQ{
+	font-family: arial;
+	font-size: 30px;
+	font-weight: bold;
+	color: #3f52c5;	
+	padding-bottom: 0.2%;
+	padding-top: 4%;
+	text-align: center;
+}
+.TlightMenorFAQ{
+	font-family: arial;
+	font-size: 22px;
+	color: #6f76a0;
+	text-align: center;
+	padding-top: 1%;
+	padding-left: 0%;
+	padding-right: 0%;
+	line-height: 1.5;
+}
+}
+@media all and (max-width:728px){
+    .divP1{
+	width: 100%;
+	height: 80px;
+	background-color: #3f52c5;
+	margin-bottom: 2%;
+	margin-top: 2%;
+}
+.divP2{
+	width: 100%;
+	height: 80px;
+	background-color: #90d8e7;
+	margin-bottom: 2%;
+	margin-top: 2%;
+}
+    
+}
+@media all and (max-width:646px){
+.textResposta{
+	font-family:arial narrow;
+	font-size: 19px;
+	color: #656a8b;
+	text-align: left;
+	line-height: 1.5;
+	padding-left: 10%;
+	padding-right: 5%;
+}
+    .faqTable .linhaN{
+	width: 5%;	
+	padding-left:3%;
+}
+.faqTable .linhaP{
+	padding-left: 5%;
+}
+    
+}
+
+@media all and (max-width:620px){
+#articleLinkSub{
+	width: 100%;
+	height: auto;
+	display: block;
+}
+#slotsSubEsq{
+	width: 100%;
+	height: auto;
+	padding-bottom:0%;
+	padding-top:5%;	
+}
+#slotsSubDir{
+	width: 100%;
+	height: auto;
+	padding-bottom:1%;
+	padding-top:0%;
+}
+#LinkSub1{
+	font-family:arial ;
+	font-size: 20px;
+	color: #3f52c5;
+	text-align: center;
+	padding-top:1%;
+	padding-bottom:1.5%;
+	padding-left:0%;
+}
+#LinkSub2{
+	font-family:arial ;
+	font-size: 18px;
+	color: #656a8b;
+	text-decoration: underline;
+	text-align: center;
+	padding-left:0%;
+}
+}
+@media all and (max-width:565px){
+    .textResposta{
+	font-family:arial narrow;
+	font-size: 19px;
+	color: #656a8b;
+	text-align: left;
+	line-height: 1.5;
+	padding-left: 3%;
+	padding-right: 0%;
+}
+}
+@media all and (max-width:530px){
+    .TboldMenorFAQ{
+	font-family: arial;
+	font-size: 25px;
+	font-weight: bold;
+	color: #3f52c5;	
+	padding-bottom: 0.2%;
+	padding-top: 4%;
+	text-align: center;
+}
+.TlightMenorFAQ{
+	font-family: arial;
+	font-size: 18px;
+	color: #6f76a0;
+	text-align: center;
+	padding-top: 1%;
+	padding-left: 0%;
+	padding-right: 0%;
+	line-height: 1.5;
+}
+}
+@media all and (max-width:400px){
+    .TboldMenorFAQ{
+	font-family: arial;
+	font-size: 23px;
+	font-weight: bold;
+	color: #3f52c5;	
+	padding-bottom: 0.2%;
+	padding-top: 4%;
+	text-align: center;
+}
+.TlightMenorFAQ{
+	font-family: arial;
+	font-size: 16px;
+	color: #6f76a0;
+	text-align: center;
+	padding-top: 1%;
+	padding-left: 0%;
+	padding-right: 0%;
+	line-height: 1.5;
+}
+    
+}
+
+@media all and (max-width:384px){
+        .PergTipo1{
+	font-family: Calibri Light;
+	font-size: 26px;
+	text-align: left;
+	color: #ffffff;
+}
+.PergTipo2{
+	font-family: Calibri Light;
+	font-size: 26px;
+	text-align: left;
+	color: #13248e;
+}
+}
+@media all and (max-width:360px){
+      .divP1{
+	width: 100%;
+	height: 102px;
+	background-color: #3f52c5;
+	margin-bottom: 3%;
+	margin-top: 3%;
+}
+.divP2{
+	width: 100%;
+	height: 102px;
+	background-color: #90d8e7;
+	margin-bottom: 3%;
+	margin-top: 3%;
+}
+  #LinkSub1{
+	font-family:arial ;
+	font-size: 16px;
+	color: #3f52c5;
+	text-align: center;
+	padding-top:1%;
+	padding-bottom:1.5%;
+	padding-left:0%;
+}
+#LinkSub2{
+	font-family:arial ;
+	font-size: 14px;
+	color: #656a8b;
+	text-decoration: underline;
+	text-align: center;
+	padding-left:0%;
+}  
+}
+@media all and (max-width:340px){
+     .PergTipo1{
+	font-family: Calibri Light;
+	font-size: 24px;
+	text-align: left;
+	color: #ffffff;
+}
+.PergTipo2{
+	font-family: Calibri Light;
+	font-size: 24px;
+	text-align: left;
+	color: #13248e;
+}
+  .NumTipo1{
+	font-family: Bradley Hand ITC;
+	font-size: 35px;
+	color: #e9ecfc;
+}
+.NumTipo2{
+	font-family: Bradley Hand ITC;
+	font-size: 35px;
+	color: #1f3695;
+}  
 }

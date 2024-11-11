@@ -59,8 +59,8 @@
 				<img id="imagPergutasFAQ" src="../img/perguntas_imagem.jpg" alt="Imagem ilustrativa com uma interrogação escrita em uma placa de trânsito" title="Perguntas frequentes" />
 			</p>
 			
-			<h1 class="TboldMenor"> Perguntas Frequentes </h1>
-			<h1 class="TlightMenor"> Nesta sessão você encontrará respostas para dúvidas recorrentes </h1>
+			<h1 class="TboldMenorFAQ"> Perguntas Frequentes </h1>
+			<h1 class="TlightMenorFAQ"> Aqui você encontrará respostas para dúvidas recorrentes </h1>
 		</article>	
 		
 		<article class="articleP1">
@@ -134,7 +134,7 @@
 				<a href="./contato.html"><h1 id="LinkSub2">Mande mensagem por aqui!</h1></a>
 			</div>
 			<div id="slotsSubDir">
-				<img id="imgPerguntasSub" src="../img/perguntas-frequentes.png" alt="perguntas frequentes" title="perguntas frequentes" />
+                            <p class="center">	<img id="imgPerguntasSub" src="../img/perguntas-frequentes.png" alt="perguntas frequentes" title="perguntas frequentes" /></p>
 			</div>
 		</article>
 	</section> <!--fim sectionMeio -->
