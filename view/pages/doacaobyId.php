@@ -95,8 +95,7 @@
                                             ?>
 				<div class="divCon1">
 				<h3 class="TformAdmCenter">Dados da Doação</h3>
-                                <p class="right"> <button name="btnalterar" onclick="location.href='editarDoacao.php?idDoacao=<?php echo $value->idDoacao; ?>'" > Alterar</button></p>
-                                <p class="right"><button name="btnexcluir" onclick="javascript:deletar(<?php echo $value->idDoacao; ?>)" > Excluir</button></p>
+                                
 				<table class="tabela">
                                      
                                    
@@ -105,6 +104,8 @@
                                                 <th>Descrição</th>
                                                 <th>Destino</th>
                                                 <th>Data</th>
+                                                <th></th>
+                                                <th></th>
                                                 
                                             </tr>
                                            
@@ -112,7 +113,10 @@
                                                     <td><?php echo $value->titulo; ?></td>
                                                     <td><?php echo $value->descricao; ?></td>
                                                     <td><?php echo $value->destino; ?></td>
-                                                    <td><?php echo date("d/m/Y", strtotime($value->data_entrada));?></td>                                                    
+                                                    <td><?php echo date("d/m/Y", strtotime($value->data_entrada));?></td>   
+                                                    <td><button name="btnalterar" onclick="location.href='editarDoacao.php?idDoacao=<?php echo $value->idDoacao; ?>'" <?php  if( $_SESSION['perfil']!='Administrador'){echo 'disabled'; }?>> Alterar</button></td>
+                                                    <td><button name="btnexcluir" onclick="javascript:deletar(<?php echo $value->idDoacao; ?>)" <?php  if( $_SESSION['perfil']!='Administrador'){echo 'disabled'; }?>> Excluir</button></td>
+                                
                                                 </tr>
                                                 
 				</table>

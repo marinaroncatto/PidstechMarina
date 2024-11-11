@@ -152,11 +152,11 @@
                                                                                         <td><?php echo $value->telefone;?></td>
                                                                                         <td><?php echo $value->email;?></td>
                                                                                         <td><?php echo $value->idUsuario;?></td>
-                                                                                        <td><button name="btnalterar" onclick="location.href='editarPessoa.php?idPessoa=<?php echo $value->idPessoa; ?>'" > Alterar</button></td>
-                                                                                        <td><button name="btnexcluir" onclick="javascript:deletarPF(<?php echo $value->idPessoa; ?>, <?php echo $value->idEndereco; ?>, <?php echo $value->idPessoaFisica; ?>, <?php echo $value->idUsuario; ?>)" > Excluir</button></td>
+                                                                                        <td><button name="btnalterar" onclick="location.href='editarPessoa.php?idPessoa=<?php echo $value->idPessoa; ?>'" <?php if( $_SESSION['perfil']!='Administrador'){echo 'disabled'; }?>> Alterar</button></td>
+                                                                                        <td><button name="btnexcluir" onclick="javascript:deletarPF(<?php echo $value->idPessoa; ?>, <?php echo $value->idEndereco; ?>, <?php echo $value->idPessoaFisica; ?>, <?php echo $value->idUsuario; ?>)" <?php  if( $_SESSION['perfil']!='Administrador'){echo 'disabled'; }?> > Excluir</button></td>
                                                                                   </tr>
 
-                                                                        </table>
+                                                                        </table>                   
                                                                 </div>
                                                         <?php 
                                                            }else{
@@ -182,8 +182,8 @@
                                                                                        <td><?php echo $value->responsavel_pj;?></td>
                                                                                        <td><?php echo $value->telefone;?></td>
                                                                                        <td><?php echo $value->email;?></td>
-                                                                                       <td><button name="btnalterar" onclick="location.href='editarPessoa.php?idPessoa=<?php echo $value->idPessoa; ?>'" > Alterar</button></td>                                                                                       
-                                                                                       <td><button name="btnexcluir" onclick="javascript:deletarPJ(<?php echo $value->idPessoa; ?>, <?php echo $value->idEndereco; ?>, <?php echo $value->idPessoaJuridica; ?>)" > Excluir</button></td>
+                                                                                       <td><button name="btnalterar" onclick="location.href='editarPessoa.php?idPessoa=<?php echo $value->idPessoa; ?>'" <?php  if( $_SESSION['perfil']!='Administrador'){echo 'disabled'; }?>> Alterar</button></td>                                                                                       
+                                                                                       <td><button name="btnexcluir" onclick="javascript:deletarPJ(<?php echo $value->idPessoa; ?>, <?php echo $value->idEndereco; ?>, <?php echo $value->idPessoaJuridica; ?>)" <?php  if( $_SESSION['perfil']!='Administrador'){echo 'disabled'; }?> > Excluir</button></td>
                                                                                  </tr>
 
                                                                        </table>
@@ -208,7 +208,7 @@
 							<td><?php echo $value->rua;?></td>
 							<td><?php echo $value->numero;?></td>
 							<td><?php echo $value->complemento;?></td>
-                                                        <td><button name="btnalterar" onclick="location.href='editarEndereco.php?idPessoa=<?php echo $value->idPessoa; ?>'" > Alterar</button></td>
+                                                        <td><button name="btnalterar" onclick="location.href='editarEndereco.php?idPessoa=<?php echo $value->idPessoa; ?>'" <?php  if( $_SESSION['perfil']!='Administrador'){echo 'disabled'; }?>> Alterar</button></td>
                                                         
 						  </tr>
 						
@@ -253,8 +253,8 @@
                                                     <td><?php echo $doacoes->descricao; ?></td>
                                                     <td><?php echo $doacoes->destino; ?></td>
                                                     <td><?php echo date("d/m/Y", strtotime($doacoes->data_entrada));?></td>
-                                                    <td><button name="btnalterar" onclick="location.href='editarDoacao.php?idDoacao=<?php echo $doacoes->idDoacao; ?>'" > Alterar</button></td>
-                                                    <td><button name="btnexcluir" onclick="javascript:deletarD(<?php echo $doacoes->idDoacao; ?>)" > Excluir</button></td>
+                                                    <td><button name="btnalterar" onclick="location.href='editarDoacao.php?idDoacao=<?php echo $doacoes->idDoacao; ?>'" <?php  if( $_SESSION['perfil']!='Administrador'){echo 'disabled'; }?>> Alterar</button></td>
+                                                    <td><button name="btnexcluir" onclick="javascript:deletarD(<?php echo $doacoes->idDoacao; ?>)" <?php  if( $_SESSION['perfil']!='Administrador'){echo 'disabled'; }?> > Excluir</button></td>
                                                 </tr>
                                                 
                                                 <?php
@@ -299,8 +299,8 @@
                                                     <td><?php echo $doacoesf->descricao; ?></td>
                                                     <td><?php echo $doacoesf->situacao; ?></td>
                                                     <td><?php echo date("d/m/Y", strtotime($doacoesf->data_saida));?></td>
-                                                    <td><button name="btnalterar" onclick="location.href='editarDoacaoFinal.php?idDoacao_final=<?php echo $doacoesf->idDoacao_final; ?>'" > Alterar</button></td>
-                                                    <td><button name="btnexcluir" onclick="javascript:deletarDf(<?php echo $doacoesf->idDoacao_final; ?>)" > Excluir</button></td>
+                                                    <td><button name="btnalterar" onclick="location.href='editarDoacaoFinal.php?idDoacao_final=<?php echo $doacoesf->idDoacao_final; ?>'" <?php  if( $_SESSION['perfil']!='Administrador'){echo 'disabled'; }?>> Alterar</button></td>
+                                                    <td><button name="btnexcluir" onclick="javascript:deletarDf(<?php echo $doacoesf->idDoacao_final; ?>)" <?php  if( $_SESSION['perfil']!='Administrador'){echo 'disabled'; }?>> Excluir</button></td>
                                                 </tr>
                                                 <?php
                                                     } 

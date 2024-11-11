@@ -19,6 +19,28 @@ class DoacaoDAO {
         return $resultado;
     }
     
+        public function listTriagem() {            
+        $query = "SELECT doa.idDoacao, doa.titulo, doa.descricao, doa.destino, "
+                . "doa.data_entrada, pe.idPessoa, pe.nome "
+                . "FROM doacao doa "
+                . "INNER JOIN pessoa pe on doa.idPessoa = pe.idPessoa "
+                . "where destino = 'Triagem'";
+        $conn = DB::getInstancia()->query($query);
+        $resultado = $conn->fetchAll();
+        return $resultado;
+    }
+    
+    public function listDescarte() {            
+        $query = "SELECT doa.idDoacao, doa.titulo, doa.descricao, doa.destino, "
+                . "doa.data_entrada, pe.idPessoa, pe.nome "
+                . "FROM doacao doa "
+                . "INNER JOIN pessoa pe on doa.idPessoa = pe.idPessoa "
+                . "where destino = 'Descarte'";
+        $conn = DB::getInstancia()->query($query);
+        $resultado = $conn->fetchAll();
+        return $resultado;
+    }
+    
      public function listAll($id = null) {
         $where = ($id ? "where doa.idDoacao = $id ":'');
         $query = "SELECT

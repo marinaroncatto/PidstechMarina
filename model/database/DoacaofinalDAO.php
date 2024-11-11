@@ -20,6 +20,36 @@ class DoacaofinalDAO {
         return $resultado;
     }
     
+        public function listAguardando() {         
+        $query = "SELECT
+                    df.idDoacao_final, df.titulo, df.descricao, df.situacao, df.data_saida,
+                    pe.idPessoa, pe.nome
+                  
+                 FROM
+                    doacaofinal df
+                INNER JOIN pessoa pe on df.idPessoa = pe.idPessoa
+                WHERE situacao = 'Aguardando'";                          
+               
+        $conn = DB::getInstancia()->query($query);
+        $resultado = $conn->fetchAll();
+        return $resultado;
+    }
+    
+       public function listEntregue() {         
+        $query = "SELECT
+                    df.idDoacao_final, df.titulo, df.descricao, df.situacao, df.data_saida,
+                    pe.idPessoa, pe.nome
+                  
+                 FROM
+                    doacaofinal df
+                INNER JOIN pessoa pe on df.idPessoa = pe.idPessoa
+                WHERE situacao = 'Entregue'";                          
+               
+        $conn = DB::getInstancia()->query($query);
+        $resultado = $conn->fetchAll();
+        return $resultado;
+    }
+    
     
      public function listAll($id = null) {
         $where = ($id ? "where df.idDoacao_final = $id ":'');

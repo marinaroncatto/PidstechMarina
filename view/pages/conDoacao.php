@@ -98,13 +98,45 @@
 			
 			<h1 class="TCategorias">Doações Recebidas</h1>
 				<div id="divTabG">	
-								
+					<h1 class="TformAdmCenter">Em triagem</h1>			
 					<table class="tabela">
                                              <!-- Dados da listagem -->
                                                 <?php
                                                     include_once '../../model/database/DoacaoDAO.php';
                                                     $dao = new DoacaoDAO();
-                                                    $lista = $dao->listParc();
+                                                    $lista = $dao->listTriagem();
+                                                    foreach ($lista as $value) {
+                                                        
+                                                    
+                                                ?>
+						  <tr>
+							<th>Id</th>
+							<th>Título</th>
+							<th>Data</th>
+							<th>Doador(a)</th>
+							<th>Destino</th>
+						  </tr>
+						  <tr>
+							<td><?php echo $value->idDoacao;?></td>
+							<td><?php echo $value->titulo;?></td>                                                     
+							<td> <?php echo date("d/m/Y", strtotime($value->data_entrada));?></td>
+							<td><?php echo $value->nome;?></td>
+							<td><?php echo $value->destino;?></td>
+						  </tr>
+						  <?php
+                                                    }
+                                                ?>
+      
+					</table>
+				</div> <!--divTabG-->	
+                                <div id="divTabG">	
+					<h1 class="TformAdmCenter">Para Descarte</h1>				
+					<table class="tabela">
+                                             <!-- Dados da listagem -->
+                                                <?php
+                                                    include_once '../../model/database/DoacaoDAO.php';
+                                                    $dao = new DoacaoDAO();
+                                                    $lista = $dao->listDescarte();
                                                     foreach ($lista as $value) {
                                                         
                                                     

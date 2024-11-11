@@ -94,15 +94,47 @@
                                                                                 
 			<article id="articleConsultaG">
 			
-			<h1 class="TCategorias">Doações Recebidas</h1>
+			<h1 class="TCategorias">Doações aos Beneficiários</h1>
 				<div id="divTabG">	
-								
+					<h1 class="TformAdmCenter">Aguardando</h1>			
 					<table class="tabela">
                                              <!-- Dados da listagem -->
                                                 <?php
                                                     include_once '../../model/database/DoacaofinalDAO.php';
                                                     $dao = new DoacaofinalDAO();
-                                                    $lista = $dao->listParc();
+                                                    $lista = $dao->listAguardando();
+                                                    foreach ($lista as $value) {
+                                                        
+                                                    
+                                                ?>
+						  <tr>
+							<th>Id</th>
+							<th>Título</th>
+							<th>Data Agendada</th>
+							<th>Beneficiário(a)</th>
+							<th>Situação</th>
+						  </tr>
+						  <tr>
+							<td><?php echo $value->idDoacao_final;?></td>
+							<td><?php echo $value->titulo;?></td>                                                         
+							<td><?php echo date("d/m/Y", strtotime($value->data_saida));?></td>
+							<td><?php echo $value->nome;?></td>
+							<td><?php echo $value->situacao;?></td>
+						  </tr>
+						  <?php
+                                                    }
+                                                ?>
+      
+					</table>
+                                    
+                                    <div id="divTabG">	
+					<h1 class="TformAdmCenter">Entregues</h1>			
+					<table class="tabela">
+                                             <!-- Dados da listagem -->
+                                                <?php
+                                                    include_once '../../model/database/DoacaofinalDAO.php';
+                                                    $dao = new DoacaofinalDAO();
+                                                    $lista = $dao->listEntregue();
                                                     foreach ($lista as $value) {
                                                         
                                                     

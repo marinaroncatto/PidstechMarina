@@ -14,6 +14,7 @@
                 <?php
                     include_once '../../model/Login.php';
                     Login::verificaSessao();
+                    Login::verificaPerfil();
                 ?>
                  <script type="text/javascript">
                 function deletar(idUsuario){
@@ -98,30 +99,30 @@
                                                                                 foreach ($lista as $value) {
                                                                                     
                                                                          ?>
-                                <p class="right"> <button name="btnalterar" onclick="location.href='editarUsuario.php?idUsuario=<?php echo $value->idUsuario; ?>'" > Alterar</button></p>
-                                <p class="right"><button name="btnexcluir" onclick="javascript:deletar(<?php echo $value->idUsuario; ?>)" > Excluir</button></p>
-				<table class="tabela">
+                                 
+                                
+                                                <table class="tabela">
                                                                                                                                                      
                                                
                              
                                                                         <th>Nome</th>
                                                                         <th>Login</th>
-                                                                        <th>Perfil</th>
-                                                                        <th>CPF</th>
-                                                                        <th>RG</th>	
+                                                                        <th>Perfil</th>                                                                        	
                                                                         <th>Telefone</th>
                                                                         <th>E-mail</th>
+                                                                        <th></th>
+                                                                        <th></th>
                                                                   </tr>
                                                                   <tr>
                                                                       
                                                                       
                                                                         <td><?php echo $value->nome;?></td>                                                                        
                                                                         <td><?php echo $value->login; ?></td>
-                                                                        <td><?php echo $value->perfil_acesso; ?></td>                                                                                                                                                      
-                                                                        <td><?php echo $value->cpf;?></td>
-                                                                        <td><?php echo $value->rg;?></td>
+                                                                        <td><?php echo $value->perfil_acesso; ?></td>                                                                                                                                                                                                                              
                                                                         <td><?php echo $value->telefone;?></td>
                                                                         <td><?php echo $value->email;?></td>
+                                                                        <td><button name="btnalterar" onclick="location.href='editarUsuario.php?idUsuario=<?php echo $value->idUsuario; ?>'" > Alterar</button></td>
+                                                                        <td><button name="btnexcluir" onclick="javascript:deletar(<?php echo $value->idUsuario; ?>)" > Excluir</button></td>
                                                                   </tr>
 
                                                         </table>

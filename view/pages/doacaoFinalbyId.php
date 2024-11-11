@@ -97,8 +97,7 @@
                                             ?>
 				<div class="divCon1">
 				<h3 class="TformAdmCenter">Dados da Doação ao Beneficiário</h3>
-                                <p class="right"> <button name="btnalterar" onclick="location.href='editarDoacaoFinal.php?idDoacao_final=<?php echo $value->idDoacao_final; ?>'" > Alterar</button></p>
-                                <p class="right"><button name="btnexcluir" onclick="javascript:deletar(<?php echo $value->idDoacao_final; ?>)" > Excluir</button></p>
+                                                               
 				<table class="tabela">
                                      
                                    
@@ -107,7 +106,8 @@
                                                 <th>Descrição</th>
                                                 <th>Situação</th>
                                                 <th>Data de Saída</th>
-                                                
+                                                <th></th>
+                                                <th></th>
                                             </tr>
                                            
                                                 <tr>
@@ -115,6 +115,8 @@
                                                     <td><?php echo $value->descricao; ?></td>
                                                     <td><?php echo $value->situacao; ?></td>
                                                     <td><?php echo date("d/m/Y", strtotime($value->data_saida));?></td>
+                                                    <td><button name="btnalterar" onclick="location.href='editarDoacaoFinal.php?idDoacao_final=<?php echo $value->idDoacao_final; ?>'" <?php  if( $_SESSION['perfil']!='Administrador'){echo 'disabled'; }?>> Alterar</button></td>
+                                                    <td><button name="btnexcluir" onclick="javascript:deletar(<?php echo $value->idDoacao_final; ?>)" <?php  if( $_SESSION['perfil']!='Administrador'){echo 'disabled'; }?>> Excluir</button></td>
                                                 </tr>
                                                 
 				</table>
