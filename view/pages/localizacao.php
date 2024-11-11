@@ -55,17 +55,19 @@
 	<section id="sectionMeioLoc">
 	
 		<article id="articleEndereco">
-			<h1 id="TboldMenor">Localização Senac Tech</h1>
-			<h2 class="txtLocalizacao">Av. Venâncio Aires, 93 - Cidade Baixa, Porto Alegre - RS<h2>
-			<h2 class="txtLocalizacao">Funcionamento - Segunda a sexta-feira: 08:30 às 20:00</h2>
-			<h2 class="txtLocalizacao">Projeto Pids Tech - Quinta-Feira: 14h às 17h</h2>
-			<h2 class="txtLocalizacao">Contato: (51) 3288-7750</h2>
 			
+                        <div id="Divlocaliza">
+                            <h1 id="TboldMenor">Localização Senac Tech</h1>
+                            <h2 class="txtLocalizacao">Av. Venâncio Aires, 93 - Cidade Baixa, Porto Alegre - RS<h2>
+                            <h2 class="txtLocalizacao">Funcionamento - Segunda a sexta-feira: 08:30 às 20:00</h2>
+                            <h2 class="txtLocalizacao">Projeto Pids Tech - Quinta-Feira: 14h às 17h</h2>
+                            <h2 class="txtLocalizacao">Contato: (51) 3288-7750</h2>
+			</div>
 			
 		</article>
 		
 		<article id="articleMaps">
-			<iframe id="Maps" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3453.7926104071444!2d-51.22143362547202!3d-30.04280713119865!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x951978567e901f85%3A0x419bba8824e42f95!2sAv.%20Ven%C3%A2ncio%20Aires%2C%2093%20-%20Cidade%20Baixa%2C%20Porto%20Alegre%20-%20RS%2C%2090040-191!5e0!3m2!1spt-BR!2sbr!4v1729535424758!5m2!1spt-BR!2sbr" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                    <p class="center"><iframe id="Maps" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3453.7926104071444!2d-51.22143362547202!3d-30.04280713119865!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x951978567e901f85%3A0x419bba8824e42f95!2sAv.%20Ven%C3%A2ncio%20Aires%2C%2093%20-%20Cidade%20Baixa%2C%20Porto%20Alegre%20-%20RS%2C%2090040-191!5e0!3m2!1spt-BR!2sbr!4v1729535424758!5m2!1spt-BR!2sbr" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe></p>
 		</article>
 		
 		

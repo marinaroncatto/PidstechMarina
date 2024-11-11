@@ -55,6 +55,12 @@ header{
 	padding-top: 5%;
 	padding-bottom: 5%;
 }
+#Divlocaliza{
+    width: 500px;
+    height: auto;
+    margin: 0 auto;
+    
+}
 #articleMaps{
 	width: 50%;
 	height: auto;
@@ -232,6 +238,33 @@ header{
 	padding-top: 0%;
 	padding-bottom: 8%;
 }
+}
+@media all and (max-width: 1015px){
+#sectionMeioLoc{
+	width: 100%;
+	height: auto;
+	margin: 0 auto;
+	justify-content: center;
+	display: block;
+}
+#articleEndereco{
+	width: 100%;
+	height: auto;
+	padding-top: 5%;
+	padding-bottom: 5%;
+}
+#Divlocaliza{
+    width: 500px;
+    height: auto;
+    margin: 0 auto;
+    
+}
+#articleMaps{
+	width: 100%;
+	height: auto;
+	padding-top: 0%;
+	padding-bottom: 5%;
+}
 
 }
 @media all and (max-width: 1000px){
@@ -337,6 +370,7 @@ header{
 	}
 	
 }
+
 @media all and (max-width: 500px){
 	#divContorno{
 	width: 300px;
@@ -369,7 +403,12 @@ header{
 	padding-bottom:8%;
 	border-radius: 8px;
 }
-	
+ #Divlocaliza{
+    width: 80%;
+    height: auto;
+    margin: 0 auto;
+    
+} 
 	
 }
 @media all and (max-width: 450px){
@@ -383,6 +422,14 @@ header{
 	
 	}
 }
+@media all and (max-width: 430px){
+ #Divlocaliza{
+    width:90%;
+    height: auto;
+    margin: 0 auto;
+    
+} 
+}
 @media all and (max-width: 400px){
 	#divContorno{
 	width: 300px;
@@ -393,6 +440,14 @@ header{
 	margin-bottom: 5%;
 	
 	}
+}
+@media all and (max-width: 373px){
+ #Divlocaliza{
+    width:96%;
+    height: auto;
+    margin: 0 auto;
+    
+} 
 }
 @media all and (max-width: 350px){
 	#divContorno{
@@ -405,6 +460,12 @@ header{
 	margin-top: 3%;
 	
 	}
+    #Divlocaliza{
+    width:99%;
+    height: auto;
+    margin: 0 auto;
+    
+} 
 }
 @media all and (max-width: 300px){
 	#divContorno{
