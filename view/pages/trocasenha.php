@@ -28,7 +28,7 @@
                                         <h3 class="ussenha">Informe o seu E-mail:</h3>
 					<input class="txtBox" type="text" name="email" value="" required />																						
 				
-					<input id="btnEntrar" type="submit" name="btnEntrar" value="Enviar" />
+					<input id="btnEntrar2" type="submit" name="btnEntrar" value="Enviar" />
 				
 					</form>
 				</section>	

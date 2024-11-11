@@ -42,7 +42,7 @@
 					
 					
 				
-					<input id="btnEntrar" type="submit" name="btnEntrar" value="Redefinir" />
+					<input id="btnEntrar2" type="submit" name="btnEntrar" value="Redefinir" />
 				
 					</form>
                                     <?php
