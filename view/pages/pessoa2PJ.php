@@ -111,7 +111,7 @@
 				<div id="divBotoes">
 					<p class="center">
                                                 <input type="hidden" name="acao" value="inserirPJ"/>
-						<input class="btnAdms" type="submit" name="btnAvancar" value="Avançar" />
+						<input class="btnAdms" type="submit" name="btnAvancar" value="Salvar" />
 						<input class="btnAdms" type="reset" name="btnCancelar" value="Cancelar" />
 					</p>
 				</div>
