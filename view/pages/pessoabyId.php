@@ -121,7 +121,7 @@
                                         $id = $_GET['txtId'];
                                         $lista = $dao->listAllPessoas($id);
                                       
-                                        var_dump($lista);
+                                        
                                        if (!empty($lista)) {
                                              foreach ($lista as $value) {
                                        

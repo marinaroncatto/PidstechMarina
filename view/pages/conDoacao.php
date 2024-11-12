@@ -112,7 +112,7 @@
 						  <tr>
 							<th>Id</th>
 							<th>Título</th>
-							<th>Data</th>
+							<th>Data de Entrada</th>
 							<th>Doador(a)</th>
 							<th>Destino</th>
 						  </tr>
@@ -144,7 +144,7 @@
 						  <tr>
 							<th>Id</th>
 							<th>Título</th>
-							<th>Data</th>
+							<th>Data de Entrada</th>
 							<th>Doador(a)</th>
 							<th>Destino</th>
 						  </tr>

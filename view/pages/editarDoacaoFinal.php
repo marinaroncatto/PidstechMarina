@@ -82,7 +82,7 @@
                                 $lista = $dao->list($id);
                                 foreach ($lista as $value) {
                                     
-                                                                        
+                                                   
                               ?>
 				<div id="divDados1">	
 					<h1 class="TCategorias">Dados da Doação ao Beneficiário</h1>	

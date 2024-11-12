@@ -81,7 +81,7 @@
                                 $id = $_GET['idDoacao'];
                                 $lista = $dao->list($id);
                                 foreach ($lista as $value) {
-                                    var_dump($value);
+                                   
                                                                         
                               ?>
 				<div id="divDados1">	
