@@ -1,5 +1,7 @@
 # Projeto PIDS TECH
-![PHP](https://img.shields.io/badge/php-%23777BB4.svg?style=for-the-badge&logo=php&logoColor=white) ![MySQL](https://img.shields.io/badge/mysql-4479A1.svg?style=for-the-badge&logo=mysql&logoColor=white) ![HTML5](https://img.shields.io/badge/html5-%23E34F26.svg?style=for-the-badge&logo=html5&logoColor=white) ![CSS3](https://img.shields.io/badge/css3-%231572B6.svg?style=for-the-badge&logo=css3&logoColor=white) ![JavaScript](https://img.shields.io/badge/javascript-%23323330.svg?style=for-the-badge&logo=javascript&logoColor=%23F7DF1E) ![XAMPP](https://img.shields.io/badge/Xampp-F37623?style=for-the-badge&logo=xampp&logoColor=white) ![NotePad++](https://img.shields.io/badge/Notepad++-90E59A.svg?style=for-the-badge&logo=notepad%2B%2B&logoColor=black) ![ApacheNetBeans](https://img.shields.io/badge/apache%20netbeans-1B6AC6?style=for-the-badge&logo=apache%20netbeans%20IDE&logoColor=white)
+![PHP](https://img.shields.io/badge/php-%23777BB4.svg?style=for-the-badge&logo=php&logoColor=white) ![MySQL](https://img.shields.io/badge/mysql-4479A1.svg?style=for-the-badge&logo=mysql&logoColor=white) ![HTML5](https://img.shields.io/badge/html5-%23E34F26.svg?style=for-the-badge&logo=html5&logoColor=white) ![CSS3](https://img.shields.io/badge/css3-%231572B6.svg?style=for-the-badge&logo=css3&logoColor=white) ![JavaScript](https://img.shields.io/badge/javascript-%23323330.svg?style=for-the-badge&logo=javascript&logoColor=%23F7DF1E) 
+
+![XAMPP](https://img.shields.io/badge/Xampp-F37623?style=for-the-badge&logo=xampp&logoColor=white) ![NotePad++](https://img.shields.io/badge/Notepad++-90E59A.svg?style=for-the-badge&logo=notepad%2B%2B&logoColor=black) ![ApacheNetBeans](https://img.shields.io/badge/apache%20netbeans-1B6AC6?style=for-the-badge&logo=apache%20netbeans%20IDE&logoColor=white)
 
 ## 📌 Introdução
 
@@ -23,14 +25,17 @@ A iniciativa é mantida por Miguel Mattiola e conta com o apoio voluntário de a
 Desenvolver um **sistema web completo**, composto por:
 
 - Uma **interface pública** com, no mínimo, **6 páginas de Front-End**, contendo:
-  - Informações institucionais
-  - Formulário de contato
-  - Detalhes sobre o projeto
+  - Informações institucionais;
+  - Formulário de contato;
+  - Detalhes sobre o projeto.
 
 - Uma **área administrativa protegida**, com:
-  - Autenticação com senha criptografada no banco de dados
-  - Funcionalidades completas de **CRUD** (Criar, Ler, Atualizar e Deletar)
-  - Gerenciamento de doações e registros
+  - Autenticação com senha criptografada no banco de dados;
+  - Funcionalidades completas de **CRUD** (Criar, Ler, Atualizar e Deletar);
+  - Gerenciamento de doações e registros;
+  - Perfis de acesso diferenciados para administrador e usuário padrão.
+
+&nbsp;
 
 ## 🛠️ Metodologia
 
@@ -38,8 +43,23 @@ Desenvolver um **sistema web completo**, composto por:
 - Utilização de **metodologia ágil** com foco em entregas contínuas e adaptabilidade.
 - Aplicação da linguagem **Gherkin (BDD)** para descrever funcionalidades, estórias e testes de forma clara e acessível.
 
-## 📸 Preview
+&nbsp;
 
+## 🧩 Modelagem Funcional
+
+### Lista dos Atores
+
+| **Ator**                | **Descrição** |
+|-------------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| **Administrador**     | O administrador do sistema é encarregado de manter o banco de dados atualizado, tendo a responsabilidade de adicionar, excluir e editar todas as doações recebidas, assim como os perfis dos doadores, os quais podem ser classificados como Pessoa Física ou Pessoa Jurídica. <br><br>Além disso, o administrador é responsável pela gestão do estoque, podendo adicionar ou remover itens conforme necessário. <br><br>Também cabe ao administrador a criação, edição e exclusão de perfis de usuários secundários, garantindo um controle eficaz do sistema. |
+| **Usuário**            | O usuário padrão terá a função específica de registrar as doações recebidas e os doadores no sistema, com a capacidade de categorizá-los entre Pessoa Física ou Pessoa Jurídica. |
+| **Visitante**          | O Visitante não possui login na área administrativa, tendo acesso somente às informações do site e ao formulário de contato. |
+
+&nbsp;&nbsp;
+
+## 📸 Preview
+&nbsp;
+![mockup2](https://github.com/user-attachments/assets/83f9299d-0f27-44fd-9909-e82f4feaa489 "Mockup da página inicial com responsividade para desktop e mobile")
 
 
 # 📜 Licença
@@ -63,4 +83,4 @@ Para solicitações especiais de uso ou contribuições, entre em contato com a 
 
 
 
-© 2025 Marina M. Roncatto. Todos os direitos reservados.
+© 2024 Marina M. Roncatto. Todos os direitos reservados.
