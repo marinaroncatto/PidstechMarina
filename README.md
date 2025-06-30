@@ -3,49 +3,59 @@
 
 ![XAMPP](https://img.shields.io/badge/Xampp-F37623?style=for-the-badge&logo=xampp&logoColor=white) ![NotePad++](https://img.shields.io/badge/Notepad++-90E59A.svg?style=for-the-badge&logo=notepad%2B%2B&logoColor=black) ![ApacheNetBeans](https://img.shields.io/badge/apache%20netbeans-1B6AC6?style=for-the-badge&logo=apache%20netbeans%20IDE&logoColor=white)
 
-## 📌 Introdução
+Este projeto foi desenvolvido entre agosto e novembro de 2024 como requisito para a conclusão do curso Técnico em Informática do Senac Tech, em Porto Alegre.
 
-Este projeto foi desenvolvido entre agosto e novembro de 2024 como requisito para conclusão do curso Técnico em Informática, oferecido pelo **Senac Tech** (Porto Alegre).  
+## Sobre o Projeto
 
-O **design das páginas** foi elaborado nas aulas de *Photoshop*, e o **Front-End** foi implementado manualmente, sem o uso de frameworks, utilizando o **Notepad++**, com o objetivo de reforçar o aprendizado dos fundamentos.  
+O tema do site é o **PIDS TECH**, uma iniciativa idealizada pelo professor Miguel Mattiola que busca democratizar o acesso à tecnologia para pessoas em situação de vulnerabilidade social. O projeto realiza a coleta, triagem e recuperação de computadores, notebooks e peças eletrônicas, destinando os equipamentos revitalizados a quem mais precisa. Caso não seja possível o reaproveitamento, os itens são descartados de forma ambientalmente responsável.
 
-O **Back-End** foi desenvolvido em **PHP**, utilizando a IDE **Apache NetBeans 22**.
+A iniciativa é mantida pelo professor Mattiola com o apoio voluntário de alunos do Senac, que atuam na manutenção e montagem dos equipamentos.
 
-O site tem como tema o **PIDS TECH**, uma iniciativa idealizada pelo professor **Miguel Mattiola**, que visa democratizar o acesso à tecnologia para pessoas em situação de vulnerabilidade social, bem como para instituições com objetivos semelhantes.
-
-Por meio da **doação de computadores, notebooks e peças eletrônicas**, o projeto revitaliza os equipamentos, que passam por triagem, limpeza, testes e montagem, sendo posteriormente destinados a quem mais precisa — ou, quando inviável o reaproveitamento, são descartados de forma ambientalmente correta.
-
-A iniciativa é mantida por Miguel Mattiola e conta com o apoio voluntário de alunos da rede **Senac**, que atuam na recuperação e manutenção dos equipamentos.
-
-
-## 🎯 Objetivos
-
-### Objetivo Geral
-
-Desenvolver um **sistema web completo**, composto por:
-
-- Uma **interface pública** com, no mínimo, **6 páginas de Front-End**, contendo:
-  - Informações institucionais;
-  - Formulário de contato;
-  - Detalhes sobre o projeto.
-
-- Uma **área administrativa protegida**, com:
-  - Autenticação com senha criptografada no banco de dados;
-  - Funcionalidades completas de **CRUD** (Criar, Ler, Atualizar e Deletar);
-  - Gerenciamento de doações e registros;
-  - Perfis de acesso diferenciados para administrador e usuário padrão.
-
-&nbsp;
-
-## 🛠️ Metodologia
+## Metodologia
 
 - **Levantamento de requisitos** por meio de reuniões com o cliente (Miguel Mattiola).
 - Utilização de **metodologia ágil** com foco em entregas contínuas e adaptabilidade.
 - Aplicação da linguagem **Gherkin (BDD)** para descrever funcionalidades, estórias e testes de forma clara e acessível.
+&nbsp;
+## Tecnologias Utilizadas
+
+- **Front-End:**
+  - HTML5 e CSS3 (sem uso de frameworks)
+  - JavaScript (para validação de regras de login e acesso)
+  - Design das páginas desenvolvido com base nas aulas de Photoshop
+  - IDE: Notepad++
+
+- **Back-End:**
+  - PHP (sem frameworks)
+  - Arquitetura em três camadas: Model, View, Controller (MVC)
+  - IDE: Apache NetBeans 22
+
+## Estrutura do Projeto
+
+- A **camada View** é responsável pela interface do usuário e por encaminhar requisições à camada Controller.
+- A **Controller** aplica as regras de negócio e faz a mediação entre a View e a Model.
+- A **Model** representa as entidades e realiza o acesso ao banco de dados.
+
+As senhas são armazenadas utilizando o algoritmo SHA-1. *(Nota: sabe-se que SHA-1 não é mais recomendado para criptografia de senhas, uma melhoria futura incluirá a adoção de métodos mais seguros como `password_hash()`.)*
+
+## Funcionalidades
+
+- Sistema de autenticação com login de usuários
+- Controle de acesso com validação por perfil
+- Interface limpa, acessível e responsiva
+- Funcionalidade provisória de recuperação de senha 
+- Gerenciamento de doações recebidas pelo projeto (CRUD)
+- Gerenciamento de doações destinadas a beneficiários (CRUD)
+- Gerenciamento de usuários e perfis de acesso (CRUD)
+
+ *(CRUD: Create, Read, Update, Delete — funcionalidades completas de criação, visualização, edição e exclusão de registros.)*
+
+## Limitações
+
+- O recurso de recuperação de senha está implementado de forma funcional, mas depende da configuração de um servidor de e-mails para que o link de redefinição seja enviado ao e-mail do usuário cadastrado.
 
 &nbsp;
-
-## 🧩 Modelagem Funcional
+## Modelagem Funcional
 
 ### Lista dos Atores
 
@@ -57,23 +67,23 @@ Desenvolver um **sistema web completo**, composto por:
 
 &nbsp;&nbsp;
 
-## 📸 Preview
+## Preview
 &nbsp;
 ![mockup2](https://github.com/user-attachments/assets/83f9299d-0f27-44fd-9909-e82f4feaa489 "Mockup da página inicial com responsividade para desktop e mobile")
 
 
-# 📜 Licença
+# Licença
 
 Este projeto está protegido sob uma **Licença de Código-Fonte Visível com Uso Restrito**.
 
 ### Permissões
 
-- ✅ A visualização do código é **permitida apenas para fins educacionais e consulta**.
+- A visualização do código é **permitida apenas para fins educacionais e consulta**.
 
 ### Restrições
 
-- ❌ É **proibido copiar, modificar ou redistribuir** qualquer parte do código ou do design sem **autorização prévia da autora**.
-- ❌ É proibido o uso comercial do projeto sem permissão expressa.
+- É **proibido copiar, modificar ou redistribuir** qualquer parte do código ou do design sem **autorização prévia da autora**.
+- É proibido o uso comercial do projeto sem permissão expressa.
 
 ### Direitos Autorais
 
