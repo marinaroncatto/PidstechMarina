@@ -131,7 +131,7 @@
 		<article id="articleLinkSub">
 			<div id="slotsSubEsq">
 				<h1 id="LinkSub1">Ficou com alguma dúvida que não foi respondida?</h1>
-				<a href="./contato.html"><h1 id="LinkSub2">Mande mensagem por aqui!</h1></a>
+				<a href="./contato.php"><h1 id="LinkSub2">Mande mensagem por aqui!</h1></a>
 			</div>
 			<div id="slotsSubDir">
                             <p class="center">	<img id="imgPerguntasSub" src="../img/perguntas-frequentes.png" alt="perguntas frequentes" title="perguntas frequentes" /></p>
